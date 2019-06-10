@@ -14,6 +14,7 @@ class Blogs(models.Model):
         'User',
         on_delete=models.CASCADE,
     )
+    title = models.CharField(max_length=100,default='SOME STRING')
     Blog = models.TextField(blank=True)
 
 
