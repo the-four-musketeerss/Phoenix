@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "phoenix/bin/python"
+    "python.pythonPath": "phoenix/bin/python",
+    "git.ignoreLimitWarning": true
 }
