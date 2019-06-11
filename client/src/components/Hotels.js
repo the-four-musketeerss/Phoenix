@@ -29,17 +29,15 @@ class Hotels extends React.Component{
   
      render(){
       return(<div>
-           Hello Home Page
-           {/* <button id="button" onClick={this.server.bind(this)}>Show Api</button> */}
            {this.state.hotels.map(hotel =>
-            <div>
-              Name:{hotel.name}<br />
-              Rooms:{hotel.totalrooms}<br />
-              {/* country:{hotel.country}<br />
-              Phone Number:{hotel.phone}<br/> */}
-            </div>
+              <div>
+                Name:{hotel.name}<br />
+                Rooms:{hotel.totalrooms}<br />
+                country:{hotel.country}<br />
+                Phone Number:{hotel.phone}<br/>
+                <h1></h1>
+              </div>
             )}
-           
         </div>
     )}
   }
