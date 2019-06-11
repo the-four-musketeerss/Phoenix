@@ -11,6 +11,23 @@ class UserViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = UserSerializer
 
+
+
+class SignUp(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = UserSerializer
+
+class SignIn(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = UserSerializer
+
+
 class BlogsViewSet(viewsets.ModelViewSet):
     queryset = Blogs.objects.all()
     permission_classes = [

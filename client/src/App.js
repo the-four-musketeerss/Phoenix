@@ -1,71 +1,55 @@
+
 import React from 'react';
-import { BrowserRouter as Router, Route} from "react-router-dom";
-import Blogs from './components/Blogs'
-import Hotels from './components/Hotels'
-import logo from './logo.svg';
+// import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 import './App.css';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-class App extends React.Component{
-  constructor(props){
-		super(props);
-      this.state = {
-        name:'',				
-        email:'',
-        password:'',
-        image:'',
-        Bio:''
-      }
-  }
-  yourname(event){
-    this.setState({
-         name:event.target.value,
-         email:"lina@gmail.com",
-         password:"1213111",
-         image:"ni2s4ce image",
-         Bio:"heql3lo ahlam nice"
-       });
-   }
-  server(){
-    fetch("profile/", {
-      method: "POST",
-      headers : {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.state)
-    }).then((res)=>{
-      console.log('hello from fetch')
-    })
-  }
+import SignUp from './signUp.js';
+import SignIn from './signIn.js';
 
-   render(){
-    return(<div>
-        <Router>
-          <Route  exact path="/" component={Hotels}/>
-          <Route exact path="/Blogs" component={Blogs} />
-        </Router>
-      </div>
-  )}
+class App extends React.Component {
+	render() {
+		return (
+			<BrowserRouter>
+				<div>
+					<Route
+						exact
+						path="/"
+						render={() => (
+							<div>
+								<NavLink to="/" >
+									<h2>Home</h2>
+								</NavLink>
+							</div>
+						)}
+					/>
+          	<Route
+						exact
+						path="/"
+						render={() => (
+							<div>
+					<NavLink to="/SignUp" >
+					go to sign up
+					</NavLink>
+          	</div>
+						)}
+					/>
+					<Route
+						exact
+						path="/"
+						render={() => (
+							<div>
+								<NavLink to="/SignIn" activeStyle={{ color: 'red' }}>
+									sign In
+								</NavLink>
+							</div>
+						)}
+					/>
+					<Route path="/SignIn" component={SignIn} />
+					<Route path="/SignUp" component={SignUp} />
+				</div>
+			</BrowserRouter>
+		);
+	}
 }
-
 export default App;
