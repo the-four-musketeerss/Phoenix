@@ -3,9 +3,9 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 import './App.css';
-
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
+import Mainprofile from './mainprofile.js';
 
 class App extends React.Component {
 	render() {
@@ -45,6 +45,7 @@ class App extends React.Component {
 							</div>
 						)}
 					/>
+					<Route path="/Mainprofile" component={Mainprofile} />
 					<Route path="/SignIn" component={SignIn} />
 					<Route path="/SignUp" component={SignUp} />
 				</div>

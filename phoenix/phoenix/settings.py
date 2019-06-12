@@ -38,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pheonixapp',
-    'rest_framework'
+    'rest_framework',
+    "knox",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,27 +81,27 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'PhoenixDb',
-        'USER':'root',
-        'PASSWORD': '',
-        'HOST':'localhost',
-        'PORT':'3325',
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'aaaa',
+#         'NAME': 'PhoenixDb',
 #         'USER':'root',
 #         'PASSWORD': '',
 #         'HOST':'localhost',
 #         'PORT':'3325',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aaa',
+        'USER':'root',
+        'PASSWORD': '',
+        'HOST':'localhost',
+        'PORT':'3325',
+    }
+}
 
 
 
