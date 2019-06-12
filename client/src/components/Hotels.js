@@ -50,7 +50,7 @@ class Hotels extends React.Component{
                     <p className="card-text">Rating:{hotel.rating} stars</p>
                     <p className="card-text">Price:{hotel.price}</p>
                     <p className="card-text">description:{hotel.desc}</p>
-                    <a href="https://www.expedia.com/HotelCheckout?tripid=9bc5eb4b-1706-48ae-8b2b-9c54a2f416d2&c=ac9297bd-7dfb-46f5-9c88-484b75d42096&swpApplied=true" className="btn btn-primary">Reserved</a>
+                    <a href={hotel.link} className="btn btn-primary">Reservation</a>
                   </div>
                 </div>
         </div>

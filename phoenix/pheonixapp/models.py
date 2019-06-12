@@ -17,6 +17,7 @@ class Hotels(models.Model):
     rating = models.CharField(max_length=200,default='SOME STRING')
     price = models.CharField(max_length=200,default='SOME STRING')
     desc = models.CharField(max_length=500,default='SOME STRING')
+    link = models.CharField(max_length=900,default='SOME STRING')
 
 
 
