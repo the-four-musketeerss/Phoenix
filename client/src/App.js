@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import Blogs from './components/Blogs'
 import Hotels from './components/Hotels'
+import Flights from './components/Flights'
 import logo from './logo.svg';
 import './App.css';
 
@@ -63,6 +64,7 @@ class App extends React.Component{
         <Router>
           <Route  exact path="/" component={Hotels}/>
           <Route exact path="/Blogs" component={Blogs} />
+          <Route exact path="/Flights" component={Flights} />
         </Router>
       </div>
   )}
