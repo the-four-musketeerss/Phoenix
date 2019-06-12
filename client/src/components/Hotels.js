@@ -46,14 +46,14 @@ class Hotels extends React.Component{
                 <div className="card" style={{height:"39rem" ,width: "18rem" ,float:"left",margin:"10px"}}>
                   <img className="card-img-top" src={hotel.image} alt="Card image cap" height="200" width="42"/>
                   <div className="card-body">
-                    <h5 className="card-title">{hotel.name}</h5>
-                    <p className="card-text">Country:{hotel.country}</p>
-                    <p className="card-text">Phone:{hotel.phone}</p>
-                    <p className="card-text"><span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span> stars</p>
-                    <p className="card-text">Price:{hotel.price}</p>
-                    <p className="card-text">description:{hotel.desc}</p>
+                    <h5 className="card-title" style={{color:"crimson"}}>{hotel.name}</h5>
+                    <p className="card-text"><span style={{fontWeight:"bold"}}>Country:</span>{hotel.country}</p>
+                    <p className="card-text"><span style={{fontWeight:"bold"}}>Phone:</span>{hotel.phone}</p>
+                    <p className="card-text"><span class="fa fa-star checked" style={{color:"	gold"}}></span>
+                    <span class="fa fa-star checked" style={{color:"gold"}}></span><span class="fa fa-star checked" style={{color:"gold"}}></span><span class="fa fa-star checked" style={{color:"gold"}}></span>
+                    <span class="fa fa-star checked" style={{color:"gold"}}></span> stars</p>
+                    <p className="card-text"><span style={{fontWeight:"bold"}}>Price: </span><span style={{color:"green"}}>{hotel.price}</span></p>
+                    <p className="card-text"><span style={{fontWeight:"bold"}}>description:</span>{hotel.desc}</p>
                     <a href={hotel.link} className="btn btn-primary">Reservation</a>
                   </div>
                 </div>
