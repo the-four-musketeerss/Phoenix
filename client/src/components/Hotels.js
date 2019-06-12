@@ -4,8 +4,15 @@ class Hotels extends React.Component{
     constructor(props){
           super(props);
         this.state = {
-          hotels:[]
+          hotels:[],
+          search:""
         }
+    }
+
+    Search(event){
+      this.setState({
+        search : event.target.value
+      })
     }
   
     componentDidMount(){
@@ -20,8 +27,19 @@ class Hotels extends React.Component{
     }
   
     render(){
+      let filtered =this.state.hotels.filter(
+        (hotel) =>{
+          return hotel.country.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+        }
+      )
       return(<div>
-           {this.state.hotels.map(hotel =>
+        
+         <nav class="navbar navbar-light bg-light">
+          <form class="form-inline">
+           <input icon="search" label="Search Country" onChange= {this.Search.bind(this)} placeholder="Sarch for country"  />
+          </form>
+        </nav>
+           {filtered.map(hotel =>
         <div>
                 <div className="card" style={{height:"39rem" ,width: "18rem" ,float:"left",margin:"10px"}}>
                   <img className="card-img-top" src={hotel.image} alt="Card image cap" height="200" width="42"/>
@@ -32,7 +50,7 @@ class Hotels extends React.Component{
                     <p className="card-text">Rating:{hotel.rating} stars</p>
                     <p className="card-text">Price:{hotel.price}</p>
                     <p className="card-text">description:{hotel.desc}</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                    <a href="https://www.expedia.com/HotelCheckout?tripid=9bc5eb4b-1706-48ae-8b2b-9c54a2f416d2&c=ac9297bd-7dfb-46f5-9c88-484b75d42096&swpApplied=true" className="btn btn-primary">Reserved</a>
                   </div>
                 </div>
         </div>
