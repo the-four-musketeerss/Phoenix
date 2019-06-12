@@ -1,12 +1,16 @@
 
 import React from 'react';
+import { Redirect } from 'react-router-dom'
+import { browserHistory } from 'react-router';
 
 class Blogs extends React.Component{
     constructor(props){
           super(props);
         this.state = {
           books: [],
-          search:""			
+          search:""	,
+          newbook:"",
+          redirect:false	
         }
     }
     Search(event){
@@ -15,7 +19,6 @@ class Blogs extends React.Component{
       })
     }
     componentDidMount(){
-      
       fetch("blogs/")
         .then(data => data.json())
         .then((data) => {
@@ -23,8 +26,23 @@ class Blogs extends React.Component{
           this.setState({ books: data })
          })
       }
-    
-  
+    prof(){
+      console.log(this.state.newbook)
+      this.setState({
+        redirect:true
+      })
+    }
+
+    renderRedirect = () =>{
+      if(this.state.redirect){
+        // return <Redirect to ='Profile' />
+        return <Redirect to = {{
+          pathname:"Profile/",
+          state:{newbook:this.state.newbook}
+        }} />
+      }
+    }
+
      render(){
        let filtered =this.state.books.filter(
          (book) =>{
@@ -32,10 +50,15 @@ class Blogs extends React.Component{
          }
        )
       return(<div>
-          
+            {this.renderRedirect()}
             <input icon="search" label="Search Country" onChange= {this.Search.bind(this)} placeholder="Sarch for country" />
               {filtered.map(book =>
-                <div key={book.id}>
+                
+                <div key={book.id} onClick = {(e) => {
+                  this.setState({newbook:book},()=>{
+                    this.prof()
+                  });
+                }}>
                   <img src={book.image} width="100" height="100"/><br />
                   name : {book.UserId}<br/>
                   title :{book.title}<br />
@@ -43,6 +66,7 @@ class Blogs extends React.Component{
                   Blog:{book.Blog}
                 </div>
                 )}
+                
         </div>
     )}
   }
