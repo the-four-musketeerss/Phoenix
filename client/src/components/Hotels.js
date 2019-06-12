@@ -33,21 +33,25 @@ class Hotels extends React.Component{
         }
       )
       return(<div>
-        
+      
          <nav class="navbar navbar-light bg-light">
-          <form class="form-inline">
-           <input icon="search" label="Search Country" onChange= {this.Search.bind(this)} placeholder="Sarch for country"  />
+          <form class="form-inline" style={{float:"left",marginLeft:"40%"}}>
+          <i class="fa fa-search" ></i>
+           <input icon="search" style={{float:"left",margin:"10px",height:"30px"}} label="Search Country" class="fa fa-search" onChange= {this.Search.bind(this)} placeholder="Sarch for country"  />
           </form>
         </nav>
            {filtered.map(hotel =>
         <div>
+          
                 <div className="card" style={{height:"39rem" ,width: "18rem" ,float:"left",margin:"10px"}}>
                   <img className="card-img-top" src={hotel.image} alt="Card image cap" height="200" width="42"/>
                   <div className="card-body">
                     <h5 className="card-title">{hotel.name}</h5>
                     <p className="card-text">Country:{hotel.country}</p>
                     <p className="card-text">Phone:{hotel.phone}</p>
-                    <p className="card-text">Rating:{hotel.rating} stars</p>
+                    <p className="card-text"><span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span> stars</p>
                     <p className="card-text">Price:{hotel.price}</p>
                     <p className="card-text">description:{hotel.desc}</p>
                     <a href={hotel.link} className="btn btn-primary">Reservation</a>
