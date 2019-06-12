@@ -66,6 +66,7 @@ class Blogs extends React.Component{
                   Blog:{book.Blog}
                 </div>
                 )}
+             
                 
         </div>
     )}

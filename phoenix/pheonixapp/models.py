@@ -8,6 +8,17 @@ class User(models.Model):
     image = models.CharField(max_length=100,default='SOME STRING')
     Bio = models.CharField(max_length=200,default='SOME STRING')
 
+class Hotels(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100,default='SOME STRING')
+    country = models.CharField(max_length = 100,default='SOME STRING')
+    phone = models.CharField(max_length=50,default='SOME STRING')
+    image = models.CharField(max_length=500,default='SOME STRING')
+    rating = models.CharField(max_length=200,default='SOME STRING')
+    price = models.CharField(max_length=200,default='SOME STRING')
+    desc = models.CharField(max_length=500,default='SOME STRING')
+
+
 
 class Blogs(models.Model):
     UserId = models.ForeignKey(
@@ -18,5 +29,6 @@ class Blogs(models.Model):
     country = models.CharField(max_length=100,default='SOME STRING')
     Blog = models.TextField(blank=True)
     image = models.CharField(max_length=500,default='SOME STRING')
+
 
 

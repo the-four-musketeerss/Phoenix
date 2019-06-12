@@ -9,15 +9,7 @@ class Hotels extends React.Component{
     }
   
     componentDidMount(){
-      fetch("https://leejaew-hotels-in-singapore-v1.p.rapidapi.com/hotels?country=Singapore",{
-        method: "GET",
-        headers : {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-RapidAPI-Key":"db256ca299mshe3c2e4fe6cf1c19p1f959bjsn7d3664666d0b"
-        }
-        
-      })
+      fetch("hotels/")
         .then(data => data.json())
         .then((data) => {
            console.log(data)
@@ -27,16 +19,23 @@ class Hotels extends React.Component{
          })
     }
   
-     render(){
+    render(){
       return(<div>
            {this.state.hotels.map(hotel =>
-              <div>
-                Name:{hotel.name}<br />
-                Rooms:{hotel.totalrooms}<br />
-                country:{hotel.country}<br />
-                Phone Number:{hotel.phone}<br/>
-                <h1></h1>
-              </div>
+        <div>
+                <div className="card" style={{height:"39rem" ,width: "18rem" ,float:"left",margin:"10px"}}>
+                  <img className="card-img-top" src={hotel.image} alt="Card image cap" height="200" width="42"/>
+                  <div className="card-body">
+                    <h5 className="card-title">{hotel.name}</h5>
+                    <p className="card-text">Country:{hotel.country}</p>
+                    <p className="card-text">Phone:{hotel.phone}</p>
+                    <p className="card-text">Rating:{hotel.rating} stars</p>
+                    <p className="card-text">Price:{hotel.price}</p>
+                    <p className="card-text">description:{hotel.desc}</p>
+                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+        </div>
             )}
         </div>
     )}
