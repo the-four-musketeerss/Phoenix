@@ -17,3 +17,6 @@ class Blogs(models.Model):
     title = models.CharField(max_length=100,default='SOME STRING')
     country = models.CharField(max_length=100,default='SOME STRING')
     Blog = models.TextField(blank=True)
+    image = models.CharField(max_length=500,default='SOME STRING')
+
+
