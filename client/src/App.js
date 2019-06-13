@@ -1,7 +1,12 @@
 
 import React from 'react';
-// import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+
+import { BrowserRouter , Router, Route } from "react-router-dom";
+import { NavLink }  from 'react-router-dom';
+
+import Blogs from './components/Blogs'
+import Hotels from './components/Hotels'
+import Profile from './components/Profile'
 import './App.css';
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
@@ -45,6 +50,9 @@ class App extends React.Component {
 							</div>
 						)}
 					/>
+					<Route exact path="/Hotels" component={Hotels}/>
+         			<Route exact path="/Blogs" component={Blogs} />
+        			<Route exact path="/Profile" component={Profile} />
 					<Route path="/Mainprofile" component={Mainprofile} />
 					<Route path="/SignIn" component={SignIn} />
 					<Route path="/SignUp" component={SignUp} />

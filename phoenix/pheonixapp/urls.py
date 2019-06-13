@@ -7,10 +7,13 @@ from .api import SigninAPI
 from knox import views as knoxviews
 from django.urls import path, include
 from .api import UserAPI
+from .api import HotelsViewSet
+
 
 router = routers.DefaultRouter()
 # router.register('profile',UserViewSet,'profile')
 router.register('blogs',BlogsViewSet,'blogs')
+router.register('hotels',HotelsViewSet,'hotels')
 
 
 urlpatterns = [

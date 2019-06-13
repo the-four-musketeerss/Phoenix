@@ -3,6 +3,8 @@ from pheonixapp.models import Profile
 from pheonixapp.models import Blogs
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from pheonixapp.models import Hotels
+
 
 
 
@@ -10,6 +12,7 @@ from django.contrib.auth import authenticate
 #     class Meta:
 #         model = Profile
 #         fields = '__all__'
+
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -53,3 +56,8 @@ class SigninSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+class HotelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hotels
+        fields = '__all__'
+

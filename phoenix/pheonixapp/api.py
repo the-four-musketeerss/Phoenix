@@ -1,5 +1,6 @@
 from pheonixapp.models import Profile
 from pheonixapp.models import Blogs
+from pheonixapp.models import Hotels
 from rest_framework import viewsets, permissions
 from .serializers import UserSerializer
 # from .serializers import postSerializer
@@ -9,13 +10,14 @@ from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import SignupSerializer 
 from .serializers import SigninSerializer
-
+from .serializers import HotelsSerializer
 # class postViewSet(viewsets.ModelViewSet):
 #     queryset = Profile.objects.all()
 #     permission_classes = [
 #         permissions.AllowAny
 #     ]
 #     serializer_class = postSerializer
+
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [
@@ -92,3 +94,11 @@ class BlogsViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = BlogsSerializer
+
+
+class HotelsViewSet(viewsets.ModelViewSet):
+    queryset = Hotels.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = HotelsSerializer
