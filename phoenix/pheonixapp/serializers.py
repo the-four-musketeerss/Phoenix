@@ -1,21 +1,21 @@
 from rest_framework import serializers
-from pheonixapp.models import User1
+from pheonixapp.models import Profile
 from pheonixapp.models import Blogs
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 
 
-# class UserSerializer(serializers.ModelSerializer):
+# class postSerializer(serializers.ModelSerializer):
 #     class Meta:
-#         model = User1
+#         model = Profile
 #         fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ("id" , "username" ,"email")
+  class Meta:
+    model = User
+    fields = ('id', 'username', 'email')
 
 class BlogsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,11 +34,22 @@ class SignupSerializer(serializers.ModelSerializer):
         validated_data["username"],validated_data["password"])
         return user
 
+# class SigninSerializer(serializers.Serializer):
+#     username = serializers.CharField()
+#     password = serializers.CharField()
+#     def validate(self,data):
+#         user = authenticate(**data)
+#         if user and user.is_active:
+#             return user
+#         # raise serializers.ValidationError("ERORR")
+
+
 class SigninSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
-    def validate(self,data):
+    print("\n\n\n username: ", username, "\n\n\n password: ", password )
+    def validate(self, data):
         user = authenticate(**data)
         if user and user.is_active:
             return user
-        # raise serializers.validationError("ERORR")
+        raise serializers.ValidationError("Incorrect Credentials")

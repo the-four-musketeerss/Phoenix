@@ -6,11 +6,9 @@ import { Route, Redirect } from 'react-router'
     constructor(props){
           super(props);
         this.state = {
-          name:'',				
+          username:'',				
           email:'',
           password:'',
-          image:'',
-          Bio:'',
           toggleSignIn: false
 
         }
@@ -19,24 +17,26 @@ import { Route, Redirect } from 'react-router'
         this.setState({ [event.target.name]: event.target.value });
      }
     server(){
+      const token = localStorage.getItem('token');
       var that = this;
-      fetch("signUp/", {
+      fetch("auth/signUp", {
         method: "POST",
         headers : {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify(this.state)
-      }).then((res)=>{
-        // Redirect to="/dashboard"
+      }).then((response) => response.json())
+      .then((data)=>{
+        console.log(data.token)
+        const token = data.token
+        localStorage.setItem('token', token);
         that.setState({
-          name:'',				
+          username:'',				
           email:'',
           password:'',
-          image:'',
-          Bio:'',
           toggleSignIn: true
-        });
+        })
        
       })
     }
@@ -45,15 +45,13 @@ import { Route, Redirect } from 'react-router'
       return(<div id="div">
         {!this.state.toggleSignIn ? (
           <div>
-            <input  type="text" name = "name" onChange ={this.yourdata.bind(this)} placeholder="your name" required/> <br />
+            <input  type="text" name = "username" onChange ={this.yourdata.bind(this)} placeholder="your username" required/> <br />
             <input  type="text" name = "email" onChange ={this.yourdata.bind(this)} placeholder="your email" required/> <br />
-            <input  type="text" name = "password" onChange ={this.yourdata.bind(this)} placeholder="your password" required/> <br />
-            <input  type="text" name = "image" onChange ={this.yourdata.bind(this)} placeholder="your image" required/> <br />
-            <input  type="text" name = "Bio" onChange ={this.yourdata.bind(this)} placeholder="your Bio" required/> <br />
+            <input  type="password" name = "password" onChange ={this.yourdata.bind(this)} placeholder="your password" required/> <br />
             <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
             </div>
 				) : (
-          <Redirect to="/SignIn"/>
+          <Redirect to="/mainprofile"/>
 				)}
 			</div>
         

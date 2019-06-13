@@ -19,7 +19,7 @@ class SignIn extends React.Component{
     server(){
       var that = this
       fetch("signIn/", {
-        method: "get",
+        method: "post",
         headers : {
           Accept: "application/json",
           "Content-Type": "application/json"

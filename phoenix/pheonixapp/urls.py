@@ -3,21 +3,22 @@ from .api import UserViewSet
 from .api import BlogsViewSet
 from .api import SignupAPI
 from .api import SigninAPI
+# from .api import postViewSet
 from knox import views as knoxviews
 from django.urls import path, include
+from .api import UserAPI
 
-# router = routers.DefaultRouter()
+router = routers.DefaultRouter()
 # router.register('profile',UserViewSet,'profile')
-# router.register('blogs',BlogsViewSet,'blogs')
-path('auth' , include('knox.urls'))
-path('auth/signUp' , SignupAPI.as_view())
-path('auth/signin' , SigninAPI.as_view())
+router.register('blogs',BlogsViewSet,'blogs')
+
 
 urlpatterns = [
     path('auth' , include('knox.urls')),
     path('auth/signUp' , SignupAPI.as_view()),
-    path('auth/signin' , SigninAPI.as_view())   
-]
+    path('auth/signIn' , SigninAPI.as_view()),
+    path('auth/user' , UserAPI.as_view()) ,
+]   
+urlpatterns += router.urls 
 
-# urlpatterns = router.urls 
     

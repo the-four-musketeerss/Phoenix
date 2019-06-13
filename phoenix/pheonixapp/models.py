@@ -5,11 +5,8 @@ from django.contrib.auth.models import User
 
 
 
-class User1(models.Model):
+class Profile(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100,default='SOME STRING')
-    email = models.EmailField(max_length = 100, unique = True)
-    password = models.CharField(max_length=50,default='SOME STRING')
     image = models.CharField(max_length=100,default='SOME STRING')
     Bio = models.CharField(max_length=200,default='SOME STRING')
     owner = models.ForeignKey(
@@ -17,8 +14,8 @@ class User1(models.Model):
 
 
 class Blogs(models.Model):
-    User1Id = models.ForeignKey(
-        'User1',
+    ProfileId = models.ForeignKey(
+        'Profile',
         on_delete=models.CASCADE,
     )
     title = models.CharField(max_length=100,default='SOME STRING')
