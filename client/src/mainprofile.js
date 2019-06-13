@@ -39,9 +39,9 @@ class Mainprofile extends React.Component{
     }
      render(){
       return(<div id="div">
-           <h1>{this.props.alldata}<h1>
-          <h1>{this.props.alldata}<h1>
-
+           {/* <h1>{this.props.alldata}<h1> */}
+           {/* <h1>{this.props.alldata}<h1> */}
+           <h1>main page</h1>
         </div>
     )}
   }

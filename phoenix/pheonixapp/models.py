@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=100,default='SOME STRING')
+    email = models.CharField(max_length=100,default='SOME STRING')
+    password = models.CharField(max_length=100,default='SOME STRING')
     image = models.CharField(max_length=100,default='SOME STRING')
     Bio = models.CharField(max_length=200,default='SOME STRING')
     owner = models.ForeignKey(
