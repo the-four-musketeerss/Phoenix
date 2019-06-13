@@ -18,7 +18,6 @@ from .serializers import HotelsSerializer
 #     ]
 #     serializer_class = postSerializer
 
-
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [
         permissions.IsAuthenticated
@@ -55,28 +54,29 @@ class SignupAPI(generics.GenericAPIView):
             "token": AuthToken.objects.create(user)[1]
             })
 
-# class SigninAPI(generics.GenericAPIView): 
+class SigninAPI(generics.GenericAPIView):       
+    serializer_class = SigninSerializer
+    def post(self , request , *args , **kwargs):
+        print("hi")
+        serializer = self.get_serializer(data = request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+        return Response({
+            "user" : UserSerializer(user,context= self.get_serializer_context()).data,
+            "token": AuthToken.objects.create(user)[1]
+            })
+
+# class SigninAPI(generics.GenericAPIView):
 #     serializer_class = SigninSerializer
-#     def post(self , request , *args , **kwargs):
-#         serializer = self.get_serializer(data = request.data)
+
+#     def post(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data =request.data)
 #         serializer.is_valid(raise_exception=True)
 #         user = serializer.validated_data
 #         return Response({
-#             "user" : UserSerializer(user,context= self.get_serializer_context()).data,
-#             "token": AuthToken.objects.create(user)[1]
+#             "user": UserSerializer(user, context=self.get_serializer_context()).data,
+#             "token": AuthToken.objects.create(user)
 #             })
-
-class SigninAPI(generics.GenericAPIView):
-  serializer_class = SigninSerializer
-
-  def post(self, request, *args, **kwargs):
-    serializer = self.get_serializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    user = serializer.validated_data
-    return Response({
-      "user": UserSerializer(user, context=self.get_serializer_context()).data,
-      "token": AuthToken.objects.create(user)
-    })
 
 class UserAPI(generics.RetrieveAPIView):
   permission_classes = [
