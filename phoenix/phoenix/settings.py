@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'corsheaders',
     'pheonixapp',
     'rest_framework',
+    "knox",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,11 +90,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'PhoenixDb',
         'USER':'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST':'localhost',
         'PORT':'3325',
     }
 }
+
+
+
 
 
 
