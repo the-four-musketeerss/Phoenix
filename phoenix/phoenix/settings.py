@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'PhoenixDb',
         'USER':'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST':'localhost',
         'PORT':'3325',
     }

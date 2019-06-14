@@ -1,10 +1,18 @@
 import React from 'react';
+import Link from 'react-router-dom';
 
 class Flights extends React.Component{
     constructor(props){
           super(props);
         this.state = {
-          flights:[],
+          Agents:[],
+          Carriers:[],
+          Currencies:[],
+          Itineraries:[],
+          Legs:[],       
+          Places:[],
+          Query:[],
+          Segments:[],
           sessionKey:""
         }
     }
@@ -19,17 +27,18 @@ class Flights extends React.Component{
           "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
         },
         body:"inboundDate=2019-09-10&cabinClass=business&children=0&infants=0&country=US&currency=USD&locale=en-US&originPlace=SFO-sky&destinationPlace=LHR-sky&outboundDate=2019-09-01&adults=1"
-    }).then(function (response) {
+    }).then((response) => {
+      console.log("aaaaaaah")
       console.log(response.headers.get("location"))
       var sessionkey = response.headers.get("location");
       var arr = sessionkey.split("/");
-      console.log(arr);
+      console.log(arr[7],"hellllllooooo");
       that.setState({
-        sessionKey:arr[arr.length-1]
+        sessionKey: arr[7]
       })
-      console.log(that.state.sessionKey);
+      
+      console.log(that.state);
         // return response.json(); //response.json() is resolving its promise. It waits for the body to load
-    }).then(function () {
       fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/"+that.state.sessionKey+"?pageIndex=0&pageSize=10?",{
         method: "GET",
         headers : {
@@ -38,11 +47,19 @@ class Flights extends React.Component{
         }
     }).then(response => response.json())
     .then(json => {
-      console.log(json)
+      // console.log(json)
       that.setState({
-        flights:json
+        Agents:json.Agents,
+        Carriers:json.Carriers,
+        Currencies:json.Currencies,
+        Itineraries:json.Itineraries,
+        Legs:json.Legs,
+        Places:json.Places,
+        Query:json.Query,
+        Segments:json.Segments
       })
-      console.log(that.state.flights);
+      console.log(json,"hi");
+      console.log(that.state.Itineraries[0].PricingOptions[1].DeeplinkUrl,"hey");
         // return response.json(); //response.json() is resolving its promise. It waits for the body to load
     })
     }).catch((err)=>{
@@ -50,11 +67,53 @@ class Flights extends React.Component{
     })
     }
   
-     render(){
-      return(<div>
-        <h1>flights</h1>
-        </div>
-    )}
+    render(){
+      if (this.state.Itineraries.length == 0) {
+        console.log("hereee yes")
+        return(<div>this may take sometime...</div>);
+      } else {
+      var legs = this.state.Itineraries.map(function(Itinerary) {
+        var outboundId = Itinerary.OutboundLegId;
+        var inboundId = Itinerary.InboundLegId;
+        return(<div>
+          {this.state.Legs.map(function(leg){
+            if(leg.Id == outboundId){
+              return(
+                <div>
+                <div>Going Trip:</div>
+                <li key={"arrival_" + leg.Id}>Arrival:{leg.Arrival}</li>
+                <li key={"departure_" + leg.Id}>Departure: {leg.Departure}</li>
+                <li key={"flight_no_"+ leg.Id}>FlightNumber:{leg.FlightNumbers[0].FlightNumber}</li>
+                </div>
+              )
+            }
+            if(leg.Id == inboundId){
+              return(
+                <div>
+                  <div>Return Trip:</div>
+                <li key={"arrival_" + leg.Id}>Arrival:{leg.Arrival}</li>
+                <li key={"departure_" + leg.Id}>Departure: {leg.Departure}</li>
+                <li key={"flight_no_"+ leg.Id}>FlightNumber:{leg.FlightNumbers[0].FlightNumber}</li>
+                </div>
+              )
+            }
+          })
+          }
+        {Itinerary.PricingOptions.map(function(p) {return (<div>
+          <div> ticket Price:</div>
+          <li>price:{p.Price}</li>
+          <li> <a href={p.DeeplinkUrl}>Booking</a></li>
+        </div>)})}
+        <br/>
+        <br/>
+        </div>)
+      }.bind(this));
+      return(
+      <div>
+        {legs}
+    </div>
+      )}
+    }     
   }
   
   export default Flights;

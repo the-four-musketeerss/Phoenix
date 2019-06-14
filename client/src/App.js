@@ -7,6 +7,7 @@ import { NavLink }  from 'react-router-dom';
 import Blogs from './components/Blogs'
 import Hotels from './components/Hotels'
 import Profile from './components/Profile'
+import Flights from './components/Flights'
 import './App.css';
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
@@ -56,6 +57,8 @@ class App extends React.Component {
 					<Route path="/Mainprofile" component={Mainprofile} />
 					<Route path="/SignIn" component={SignIn} />
 					<Route path="/SignUp" component={SignUp} />
+					<Route path="/flights" component={Flights} />
+
 				</div>
 			</BrowserRouter>
 		);
