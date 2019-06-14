@@ -38,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pheonixapp',
-    'rest_framework'
+    'rest_framework',
+    "knox",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,6 +95,14 @@ DATABASES = {
 
 
 
+<<<<<<< HEAD
+=======
+REST_KNOX = {
+  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+}
+
+
+>>>>>>> cf96048685e0cbcb01f868c10a7033b68589df01
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
