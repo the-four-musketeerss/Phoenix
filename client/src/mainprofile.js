@@ -14,25 +14,34 @@ class Mainprofile extends React.Component{
         this.setState({ [event.target.name]: event.target.value });
      }
     server(){
-      var that = this
-      fetch("signIn/", {
-        method: "post",
-        headers : {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(this.state)
-      }).then((response) => response.json())
-      .then((data)=>{
-        
-      })
+     var that =  this
+      const token = localStorage.getItem('token');
+      fetch('auth/user', {
+        method: "get",
+       headers: {'x-access-token': token }
+      }).then(function(response) {
+            if (response.status == 200) {
+                response.json().then((body) => {
+                     console.log(body);
+                    // that.setState({
+      
+                    // }
+                    // )
+                    console.log(that.state);
+                    
+                });
+            } else {
+                response.then(() => {
+                    console.log("err")
+                });
+            }
+        });
     }
-  
      render(){
       return(<div id="div">
-            <input  type="text" name = "image" onChange ={this.yourdata.bind(this)} placeholder="your image" required/> <br />
-            <input  type="text" name = "Bio" onChange ={this.yourdata.bind(this)} placeholder="your Bio" required/> <br />
-            <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
+           {/* <h1>{this.props.alldata}<h1> */}
+           {/* <h1>{this.props.alldata}<h1> */}
+           <h1>main page</h1>
         </div>
     )}
   }

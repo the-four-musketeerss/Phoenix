@@ -8,10 +8,10 @@ from pheonixapp.models import Hotels
 
 
 
-# class postSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Profile
-#         fields = '__all__'
+class postSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
 
 
 
@@ -56,6 +56,8 @@ class SigninSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+
+
 class HotelsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotels
