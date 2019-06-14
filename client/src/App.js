@@ -3,7 +3,7 @@ import React from 'react';
 
 import { BrowserRouter , Router, Route } from "react-router-dom";
 import { NavLink }  from 'react-router-dom';
-
+import HomePage from "./components/HomePage";
 import Blogs from './components/Blogs'
 import Hotels from './components/Hotels'
 import Profile from './components/Profile'
@@ -50,6 +50,7 @@ class App extends React.Component {
 							</div>
 						)}
 					/>
+           <Route exact path="/" component={HomePage} />
 					<Route exact path="/Hotels" component={Hotels}/>
          			<Route exact path="/Blogs" component={Blogs} />
         			<Route exact path="/Profile" component={Profile} />
