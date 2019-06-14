@@ -84,25 +84,22 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'n6OKjAdVM2',
-        'USER':'n6OKjAdVM2',
-        'PASSWORD': 'Xabv4lDnSb',
-        'HOST':'remotemysql.com',
-        'PORT':'3306',
+        'NAME': 'PhoenixDb',
+        'USER':'root',
+        'PASSWORD': '',
+        'HOST':'localhost',
+        'PORT':'3325',
     }
 }
 
 
 
 
-<<<<<<< HEAD
-=======
 REST_KNOX = {
   'USER_SERIALIZER': 'knox.serializers.UserSerializer',
 }
 
 
->>>>>>> cf96048685e0cbcb01f868c10a7033b68589df01
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
