@@ -8,8 +8,10 @@ class SignIn extends React.Component{
         this.state = {			
           email :'',
           password:'',
-          toggleSignIn: false,
-          alldata :[]
+          username:"",
+          url:"",
+          bio:"",
+          toggleSignIn: false
         }
     }
     yourdata(event){
@@ -26,35 +28,26 @@ class SignIn extends React.Component{
         },
       }).then((response) => response.json())
       .then((data)=>{
-        console.log(data)
+        console.log(data[1])
         // const token = data.token
         // localStorage.setItem('token', token);
              for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
               that.setState({
-                email:'',
+                email:data[i].email,
                 password:'',
                 toggleSignIn: true,
-                allData : data
+                username:data[i].username,
+                url:data[i].url,
+                bio:data[i].bio,
+                
               });
             }
             }
         }
-        // for(var i = 0 ; i < data.length ; i++){
-        //   console.log(data[i].email , that.state.email)
-        //   if(that.state.email === data[i].email){
-        //  console.log("correct")
-        //   if(that.state.password === data[i].password){
-        //   that.setState({
-        //   email:'',				
-        //   password:'',
-        //   toggleSignIn: true,
-        //   alldata : data
-        // })
-        // }
-        // }
-        // }
+
+
       })
     }
   
@@ -68,7 +61,7 @@ class SignIn extends React.Component{
         </div>
         ) : (
           <Redirect to="/Mainprofile" 
-          alldata ={this.state.alldata}
+          username ={this.state.alldata.username}
            />
 				)}
 			</div>

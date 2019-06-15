@@ -3,7 +3,6 @@ import React from 'react';
 
 import { BrowserRouter , Router, Route } from "react-router-dom";
 import { NavLink }  from 'react-router-dom';
-
 import Blogs from './components/Blogs'
 import Hotels from './components/Hotels'
 import Profile from './components/Profile'
@@ -11,6 +10,8 @@ import './App.css';
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Mainprofile from './mainprofile.js';
+
+
 
 class App extends React.Component {
 	render() {

@@ -5,6 +5,7 @@ import './signUp.css';
 import SignIn from './signIn.js';
 import { Route, Redirect } from 'react-router'
 import { storage } from './firebase';
+import Mainprofile from './mainprofile.js';
 
   class SignUp extends React.Component{
      constructor(props){
@@ -16,7 +17,6 @@ import { storage } from './firebase';
           image:null,
           bio:"",
           url:"",
-          alldata:[],
           toggleSignIn: false
         }
    this.handleChange = this.handleChange.bind(this);
@@ -49,7 +49,7 @@ import { storage } from './firebase';
   }
 
      yourdata(event){
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({[event.target.name]: event.target.value });
      }
     server(){
       const token = localStorage.getItem('token');
@@ -60,14 +60,20 @@ import { storage } from './firebase';
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.state)
+        body: JSON.stringify({"username":this.state.username,
+        "email": this.state.email,
+        "password" : this.state.password})
       }).then((response) => response.json())
       .then((data)=>{
         console.log(data.token)
         const token = data.token
+        console.log(data.user)
         localStorage.setItem('token', token);
         that.setState({
+       toggleSignIn: true,
+       email:data.user.email
         },() => {
+          console.log("hi")
               that.signUp(that);
             })
        
@@ -81,27 +87,27 @@ import { storage } from './firebase';
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.state)
+        body: JSON.stringify({"username":this.state.username,
+        "email": this.state.email,
+        "password" : this.state.password,
+        "bio" : this.state.bio,
+        "url": this.state.url
+        } 
+        )
       }).then((response) => response.json())
       .then((data)=>{
         console.log(data)
-        // console.log(data.token)
-        // const token = data.token
-        // localStorage.setItem('token', token);     
+        const token = data.token
+        localStorage.setItem('token', token);     
           for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
-              console.log(data)
+
               that.setState({
-                username:'',        
-                email:'',
-                password:'',
-                toggleSignIn: true,
-                bio:"",
-                image:null,
-                url: "",
-                alldata:data[i]
-              });
+                toggleSignIn: true
+                
+              }
+              );
             }
             }
         }
@@ -128,15 +134,21 @@ import { storage } from './firebase';
               height="150"
               width="200"
             />
-           <input  type="text" name = "image" onChange ={this.yourdata.bind(this)} placeholder="your username" required/> <br />
             <input  type="text" name = "bio" onChange ={this.yourdata.bind(this)} placeholder="your bio" required/> <br />
             <input  type="text" name = "username" onChange ={this.yourdata.bind(this)} placeholder="your username" required/> <br />
             <input  type="text" name = "email" onChange ={this.yourdata.bind(this)} placeholder="your email" required/> <br />
             <input  type="password" name = "password" onChange ={this.yourdata.bind(this)} placeholder="your password" required/> <br />
             <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
             </div>
+
         ) : (
-          <Redirect to="/mainprofile" data = {this.state.allData} />
+          <Mainprofile              
+            username = {this.state.username} 
+			    	email={this.state.email}
+            bio={this.state.bio}
+					  url={this.state.url}  
+            Redirect to="/mainprofile"
+          />
         )}
       </div>
         
