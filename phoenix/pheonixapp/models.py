@@ -7,8 +7,8 @@ class Profile(models.Model):
     username = models.CharField(max_length=100,default='SOME STRING')
     email = models.CharField(max_length=100,default='SOME STRING')
     password = models.CharField(max_length=100,default='SOME STRING')
-    image = models.CharField(max_length=100,default='SOME STRING')
-    Bio = models.CharField(max_length=200,default='SOME STRING')
+    url = models.CharField(max_length=100,default='SOME STRING')
+    bio = models.CharField(max_length=200,default='SOME STRING')
     owner = models.ForeignKey(
         User , related_name="myapp", on_delete = models.CASCADE ,null = True)
 
