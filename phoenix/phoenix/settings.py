@@ -38,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pheonixapp',
-    'rest_framework'
+    'rest_framework',
+    "knox",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,14 +84,20 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'PhoenixDb',
-        'USER':'root',
-        'PASSWORD': '1111',
-        'HOST':'localhost',
-        'PORT':'3325',
+        'NAME': 'n6OKjAdVM2',
+        'USER':'n6OKjAdVM2',
+        'PASSWORD': 'Xabv4lDnSb',
+        'HOST':'remotemysql.com',
+        'PORT':'3306',
     }
 }
 
+
+
+
+REST_KNOX = {
+  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+}
 
 
 # Password validation

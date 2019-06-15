@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Redirect } from 'react-router-dom'
 import { browserHistory } from 'react-router';
@@ -66,6 +65,7 @@ class Blogs extends React.Component{
                   Blog:{book.Blog}
                 </div>
                 )}
+             
                 
         </div>
     )}
