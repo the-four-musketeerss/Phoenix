@@ -32,14 +32,37 @@ import { Route, Redirect } from 'react-router'
         const token = data.token
         localStorage.setItem('token', token);
         that.setState({
-          username:'',				
-          email:'',
-          password:'',
           toggleSignIn: true
-        })
+        },() => {
+							that.signUp(that);
+						})
        
       })
     }
+
+    signUp(that) {
+      fetch("post/", {
+        method: "POST",
+        headers : {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.state)
+      }).then((response) => response.json())
+      .then((data)=>{
+        console.log(data)
+
+        // console.log(data.token)
+        // const token = data.token
+        // localStorage.setItem('token', token);
+        that.setState({
+          username:'',				
+          email:'',
+          password:''
+          })
+       
+      })
+      }
   
      render(){
       return(<div id="div">

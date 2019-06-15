@@ -12,8 +12,8 @@ class Profile extends React.Component{
   
      render(){
       return(<div>
-           <h1>This Is Profile Page  </h1>
-           <img src={this.props.location.state.newbook.image} /><br />
+          
+           <img class = "rounded" src={this.props.location.state.newbook.image} style={{height:"500px",width:"100%"}}/><br />
            <h4> UserId :{this.props.location.state.newbook.UserId}</h4>
            <h4>Country :{this.props.location.state.newbook.country}</h4>
            <h4>Blogs : {this.props.location.state.newbook.Blog}</h4>
