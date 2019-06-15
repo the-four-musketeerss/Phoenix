@@ -2,6 +2,7 @@ import React from 'react';
 import './signIn.css';
 import { Route, Redirect } from 'react-router'
 import Mainprofile from './mainprofile.js';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 class SignIn extends React.Component{
     constructor(props){
@@ -57,11 +58,42 @@ class SignIn extends React.Component{
      render(){
       return(<div id="div">
          {!this.state.toggleSignIn ? (
-          <div>
-            <input  type="text" name = "email" onChange ={this.yourdata.bind(this)} placeholder="your email" required/> <br />
-            <input  type="text" name = "password" onChange ={this.yourdata.bind(this)} placeholder="your password" required/> <br />
-            <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
-        </div>
+          <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <form>
+            <p className="h5 text-center mb-4">Sign in</p>
+            <div className="grey-text">
+              <MDBInput
+               onChange ={this.yourdata.bind(this)}
+                name = "email"
+                label="Type your email"
+                icon="envelope"
+                group
+                type="email"
+                validate
+                error="wrong"
+                success="right"
+              />
+              <MDBInput
+                name = "password"
+                onChange ={this.yourdata.bind(this)}
+                label="Type your password"
+                icon="lock"
+                group
+                type="password"
+                validate
+              />
+            </div>
+            <div className="text-center">
+              <MDBBtn
+              onClick={this.server.bind(this)}
+              >Login</MDBBtn>
+            </div>
+          </form>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
         ) : (
          <Mainprofile              
             username = {this.state.username} 
@@ -76,6 +108,7 @@ class SignIn extends React.Component{
     )}
   }
   export default SignIn;
+
 
 
 
