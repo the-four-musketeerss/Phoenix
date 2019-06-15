@@ -99,6 +99,9 @@ DATABASES = {
 
 
 
+REST_KNOX = {
+  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+}
 
 
 # Password validation

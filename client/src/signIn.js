@@ -1,46 +1,54 @@
 import React from 'react';
 import './signIn.css';
 import { Route, Redirect } from 'react-router'
-
+import Mainprofile from './mainprofile.js';
 
 class SignIn extends React.Component{
     constructor(props){
           super(props);
         this.state = {			
-          email:'',
+          email :'',
           password:'',
-          toggleSignIn: false,
-          allData : []
+          username:"",
+          url:"",
+          bio:"",
+          toggleSignIn: false
         }
     }
     yourdata(event){
         this.setState({ [event.target.name]: event.target.value });
-     }
+     }    
     server(){
-      var that = this
-      fetch("signIn/", {
-        method: "post",
+      const token = localStorage.getItem('token');
+      var that = this;
+      fetch("/post", {
+        method: "GET",
         headers : {
           Accept: "application/json",
           "Content-Type": "application/json"
-        }
+        },
       }).then((response) => response.json())
       .then((data)=>{
-        for (var i = 0 ; i < data.length ; i++ ){
+        console.log(data[1])
+        // const token = data.token
+        // localStorage.setItem('token', token);
+             for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
-
               that.setState({
-                email:'',
+                email:data[i].email,
                 password:'',
                 toggleSignIn: true,
-                allData : data
+                username:data[i].username,
+                url:data[i].url,
+                bio:data[i].bio,
+                
               });
             }
             }
         }
 
-        
+
       })
     }
   
@@ -53,7 +61,13 @@ class SignIn extends React.Component{
             <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
         </div>
         ) : (
-          <Redirect to="/Mainprofile" />
+         <Mainprofile              
+            username = {this.state.username} 
+			    	email={this.state.email}
+            bio={this.state.bio}
+					  url={this.state.url}  
+            Redirect to="/mainprofile"
+          />
 				)}
 			</div>
     )}
