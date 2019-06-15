@@ -46,18 +46,20 @@ class Mainprofile extends React.Component{
 
     render(){
      return(<div id="div">
-            <h1>{this.props.bio}</h1>
-             <h1>{this.props.username}</h1>
-             <h1>{this.props.email}</h1>
-             <img
+            <img id = "a"
               src={
                 this.props.url ||
                 'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
               }
-              height="150"
-              width="200"
+             alt="uploaded image"
             />
-
+            <br/>
+            <br/>
+            <br/>
+            <h1>{this.props.bio}</h1>
+            <h1>{this.props.username}</h1>
+            <h1>{this.props.email}</h1>
+            <h1>{this.props.email}</h1>
            <br/>
              <NavLink to="./Component/Bloges" activeStyle={{ color: 'red' }}>
                <button id="button" >See Bloges</button>
@@ -68,9 +70,3 @@ class Mainprofile extends React.Component{
 
 
  export default Mainprofile;
-
-
-
-
-
- 
