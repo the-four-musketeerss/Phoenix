@@ -1,5 +1,28 @@
 import React from 'react';
 
+const divStyle = {
+  padding: '10px',
+  margin: '40px',
+  border: '5px solid orange'
+};
+const divS = {
+  padding: '10px',
+  margin: '40px',
+  border: '5px dashed black'
+};
+const div = {
+  height: '535px',
+  padding: '18px',
+  margin: '40px',
+  border: '5px solid black',
+  width: '389px',
+  marginLeft: '524px'
+};
+const font = {
+ fontSize:'50px'
+};
+  
+
 class Flights extends React.Component{
     constructor(props){
           super(props);
@@ -49,7 +72,6 @@ class Flights extends React.Component{
       })
       
       console.log(that.state);
-        // return response.json(); //response.json() is resolving its promise. It waits for the body to load
       fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/"+that.state.sessionKey+"?pageIndex=0&pageSize=10?",{
         method: "GET",
         headers : {
@@ -82,32 +104,7 @@ class Flights extends React.Component{
           cabinClass:e.target.value
         },()=>{console.log(this.state.cabinClass)})
     }
-    // handlePrint(event) {
-    //   if (this.state.value === 'economy') {
-    //       this.setState({
-    //         cabinClass:'economy'
-    //       })
-    //       console.log(this.state);
-    //   }
-    //   if (this.state.value === 'premiumeconomy') {
-    //     this.setState({
-    //       cabinClass:'premiumeconomy'
-    //     })
-    //     console.log(this.state);
-    //   }
-    //   if (this.state.value === 'business') {
-    //     this.setState({
-    //       cabinClass:'business'
-    //     })
-    //     console.log(this.state);
-    //   }
-    //   if (this.state.value === 'first') {
-    //     this.setState({
-    //       cabinClass:'first'
-    //     })
-    //     console.log(this.state);
-    //   }
-    // }
+
     changeinb(e){
       console.log("hiiiii")
       this.setState({
@@ -138,10 +135,8 @@ class Flights extends React.Component{
     }
     render(){
       if (this.state.Itineraries.length === 0) {
-        // console.log("wait...")
-        // return(<div>this may take sometime...</div>);
         return(
-            <div>
+            <div style={div}>
             <label>country:</label>
             <input></input>
             <br/>
@@ -153,16 +148,16 @@ class Flights extends React.Component{
             <br/>
             <br/>
             <label>
-            inboundDate:
+            Departure:
             </label>
-            {/* d.replace(/\//g,"-").split("-").reverse().join("-") */}
-            <input type="date" value={this.state.inboundDate} onChange={this.changeinb.bind(this)}></input>
+            <input type="date" value={this.state.outboundDate} onChange={this.changeoutb.bind(this)}></input>
             <br/>
             <br/>
             <label>
-            outboundDate:
+            Arrival:
             </label>
-            <input type="date" value={this.state.outboundDate} onChange={this.changeoutb.bind(this)}></input>
+            {/* d.replace(/\//g,"-").split("-").reverse().join("-") */}
+            <input type="date" value={this.state.inboundDate} onChange={this.changeinb.bind(this)}></input>
             <br/>
             <br/>
             <label>
@@ -205,36 +200,44 @@ class Flights extends React.Component{
         var legs = this.state.Itineraries.map(function(Itinerary) {
         var outboundId = Itinerary.OutboundLegId;
         var inboundId = Itinerary.InboundLegId;
-        return(<div>
+        return(<div style={divS}>
+          <div style={font}>Ticket</div>
           {this.state.Legs.map(function(leg){
             if(leg.Id === outboundId){
               return(
-                <div>
+                <div style={divStyle}>
                 <div>Going Trip:</div>
-                <li key={"arrival_" + leg.Id}>Arrival:{leg.Arrival}</li>
-                <li key={"departure_" + leg.Id}>Departure: {leg.Departure}</li>
-                <li key={"duration_" + leg.Id}>Duration: {Math.ceil(leg.Duration/60)+"hrs"} </li>
-                <li key={"flight_no_"+ leg.Id}>FlightNumber:{leg.FlightNumbers[0].FlightNumber}</li>
+                Arrival:{leg.Arrival}
+                <br/>
+                Departure: {leg.Departure}
+                <br/>
+                Duration: {Math.ceil(leg.Duration/60)+"hrs"}
+                <br/> 
+                FlightNumber:{leg.FlightNumbers[0].FlightNumber}
                 </div>
               )
             }
             if(leg.Id === inboundId){
               return(
-                <div>
+                <div style={divStyle}>
                   <div>Return Trip:</div>
-                <li key={"arrival_" + leg.Id}>Arrival:{leg.Arrival}</li>
-                <li key={"departure_" + leg.Id}>Departure: {leg.Departure}</li>
-                <li key={"duration_" + leg.Id}>Duration: {Math.ceil(leg.Duration/60)+"hrs"} </li>
-                <li key={"flight_no_"+ leg.Id}>FlightNumber:{leg.FlightNumbers[0].FlightNumber}</li>
+                Arrival:{leg.Arrival}
+                <br/>
+                Departure: {leg.Departure}
+                <br/>
+                Duration: {Math.ceil(leg.Duration/60)+"hrs"}
+                <br/>
+                FlightNumber:{leg.FlightNumbers[0].FlightNumber}
                 </div>
               )
             }
           })
           }
-        {Itinerary.PricingOptions.map(function(p) {return (<div>
+        {Itinerary.PricingOptions.map(function(p) {return (<div style={divStyle}>
           <div> ticket Price:</div>
-          <li>price:{p.Price}</li>
-          <li> <a href={p.DeeplinkUrl}>Booking</a></li>
+          price:{p.Price}
+          <br/>
+           <a href={p.DeeplinkUrl}>Booking</a>
           {/* <li>{this.state.Agents.map(function(agent){
             if(p.Agents == agent.Id){
               return <li>{agent.ImageUrl}</li>
@@ -254,4 +257,3 @@ class Flights extends React.Component{
   }
   
   export default Flights;
-  
