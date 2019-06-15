@@ -1,6 +1,7 @@
 import React from 'react';
 import './signIn.css';
 import { Route, Redirect } from 'react-router'
+import Mainprofile from './mainprofile.js';
 
 class SignIn extends React.Component{
     constructor(props){
@@ -60,9 +61,13 @@ class SignIn extends React.Component{
             <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
         </div>
         ) : (
-          <Redirect to="/Mainprofile" 
-          username ={this.state.alldata.username}
-           />
+         <Mainprofile              
+            username = {this.state.username} 
+			    	email={this.state.email}
+            bio={this.state.bio}
+					  url={this.state.url}  
+            Redirect to="/mainprofile"
+          />
 				)}
 			</div>
     )}
