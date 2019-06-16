@@ -185,6 +185,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
           image:null,
           bio:"",
           url:"",
+          id:"",
           toggleSignIn: false
         }
    this.handleChange = this.handleChange.bind(this);
@@ -238,8 +239,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         console.log(data.user)
         localStorage.setItem('token', token);
         that.setState({
-       toggleSignIn: true,
-       email:data.user.email
+       toggleSignIn: true
         },() => {
           console.log("hi")
               that.signUp(that);
@@ -259,8 +259,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         "email": this.state.email,
         "password" : this.state.password,
         "bio" : this.state.bio,
-        "url": this.state.url
-        } 
+        "url": this.state.url        } 
         )
       }).then((response) => response.json())
       .then((data)=>{
@@ -270,10 +269,8 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
           for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
-
               that.setState({
                 toggleSignIn: true
-                
               }
               );
             }
@@ -293,7 +290,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
        <button onClick={this.handleUpload.bind(this)} className="Button">
             Upload
        </button>
-         <img id = "a"
+         <img 
               src={
                 this.state.url ||
                 'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
@@ -359,13 +356,13 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
       </MDBRow>
     </MDBContainer>
               </div>
-
         ) : (
           <Mainprofile              
             username = {this.state.username} 
 			    	email={this.state.email}
             bio={this.state.bio}
 					  url={this.state.url}  
+            id = {this.state.id}  
             Redirect to="/mainprofile"
           />
         )}

@@ -10,7 +10,7 @@ class Blogs extends React.Component{
           books: [],
           search:""	,
           newbook:"",
-          redirect:false	
+          redirect:false
         }
     }
     Search(event){
@@ -51,6 +51,7 @@ class Blogs extends React.Component{
        )
       return(<div>
             {this.renderRedirect()}
+            <h1>{this.props.username}</h1>
             <input icon="search" label="Search Country" onChange= {this.Search.bind(this)} placeholder="Sarch for country" />
               {filtered.map(book =>
                 

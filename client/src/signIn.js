@@ -13,6 +13,7 @@ class SignIn extends React.Component{
           username:"",
           url:"",
           bio:"",
+          id:null,
           toggleSignIn: false
         }
     }
@@ -20,7 +21,7 @@ class SignIn extends React.Component{
         this.setState({ [event.target.name]: event.target.value });
      }    
     server(){
-      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('token');
       var that = this;
       fetch("/post", {
         method: "GET",
@@ -30,10 +31,9 @@ class SignIn extends React.Component{
         },
       }).then((response) => response.json())
       .then((data)=>{
-        console.log(data[1])
         // const token = data.token
         // localStorage.setItem('token', token);
-             for (var i = 0 ; i < data.length ; i++ ){
+          for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
               that.setState({
@@ -43,7 +43,7 @@ class SignIn extends React.Component{
                 username:data[i].username,
                 url:data[i].url,
                 bio:data[i].bio,
-                
+                id:data[i].id
               });
             }
             }
@@ -56,6 +56,7 @@ class SignIn extends React.Component{
      render(){
       return(<div id="div">
          {!this.state.toggleSignIn ? (
+           <div>
           <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
@@ -92,12 +93,14 @@ class SignIn extends React.Component{
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+           </div>
         ) : (
-         <Mainprofile              
+          <Mainprofile              
             username = {this.state.username} 
 			    	email={this.state.email}
             bio={this.state.bio}
 					  url={this.state.url}  
+            id = {this.state.id}  
             Redirect to="/mainprofile"
           />
 				)}
