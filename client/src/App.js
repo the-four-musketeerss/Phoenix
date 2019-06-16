@@ -1,6 +1,5 @@
 
 import React from 'react';
-
 import { BrowserRouter , Router, Route } from "react-router-dom";
 import { NavLink }  from 'react-router-dom';
 import HomePage from "./components/HomePage";
@@ -18,6 +17,7 @@ class App extends React.Component {
 		return (
 			<BrowserRouter>
 				<div>
+
 					 <header id="fh5co-header-section" className="sticky-banner">
         <div className="container">
           <div className="nav-header">
@@ -80,6 +80,8 @@ class App extends React.Component {
 									sign In
 								</NavLink>
 							</div>
+						)}
+					/>
 						)} */}
 					{/* /> */}
 					
@@ -91,6 +93,7 @@ class App extends React.Component {
 					<Route path="/SignIn" component={SignIn} />
 					<Route path="/SignUp" component={SignUp} />
 				</div>
+
 				{/* <footer>
         <div id="footer">
           <div className="container">
