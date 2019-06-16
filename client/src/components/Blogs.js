@@ -25,6 +25,7 @@ class Blogs extends React.Component{
           books: [],
           search:""	,
           newbook:"",
+          username:[],
           redirect:false	
         }
     }
@@ -37,12 +38,33 @@ class Blogs extends React.Component{
       fetch("blogs/")
         .then(data => data.json())
         .then((data) => {
-           console.log(data)
-          this.setState({ books: data })
+          this.setState({ books: data },()=>{
+                    this.username()
+          })
          })
       }
+
+     username(){
+       var that = this
+      fetch("post/")
+        .then(data => data.json())
+        .then((data) => {
+          for(var i = 0 ; i < data.length ; i++){
+            for(var j = 0 ; j < this.state.books.length ; j++){
+              if (this.state.books[j].ProfileId   === data[i].id){
+                that.state.books[j].username = data[i].username
+                }
+            }
+          // this.setState({ books: data })
+          }
+        // console.log(that.state.books)
+
+         })
+      }
+
+
     prof(){
-      console.log(this.state.newbook)
+      // console.log(this.state.books)
       this.setState({
         redirect:true
       })
@@ -61,14 +83,13 @@ class Blogs extends React.Component{
      render(){
        let filtered =this.state.books.filter(
          (book) =>{
+           console.log(book)
            return book.country.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
          }
        )
       return(<div>
-
             {this.renderRedirect()}
               <form style={{ display: 'flex', flexWrap: 'wrap'}} noValidate autoComplete="off">
-              <h1>{this.props.username}</h1>
                 <TextField
                   id="outlined-search"
                   label="Search To Country"
