@@ -5,7 +5,6 @@ from rest_framework import viewsets, permissions
 from .serializers import UserSerializer
 from .serializers import postSerializer
 from .serializers import BlogsSerializer
-from django.http import HttpResponse
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken

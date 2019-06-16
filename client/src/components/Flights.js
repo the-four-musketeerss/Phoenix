@@ -51,8 +51,7 @@ class Flights extends React.Component{
         }
     }
   
-    search(){
-      var that=this;
+    search =()=>{
       fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0",{
         method: "POST",
         headers : {
@@ -67,12 +66,12 @@ class Flights extends React.Component{
       var sessionkey = response.headers.get("location");
       var arr = sessionkey.split("/");
       console.log(arr[7],"hellllllooooo");
-      that.setState({
-        sessionKey: arr[7]
-      })
+      // this.setState({
+      //   sessionKey: arr[7]
+      // })
       
-      console.log(that.state);
-      fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/"+that.state.sessionKey+"?pageIndex=0&pageSize=10?",{
+      console.log(this.state);
+      fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/"+arr[7]+"?pageIndex=0&pageSize=10?",{
         method: "GET",
         headers : {
           "X-RapidAPI-Key":"dd3b215dacmsh0fc900bebe41f9fp1964ccjsn2a45d2ede313",
@@ -81,7 +80,7 @@ class Flights extends React.Component{
     }).then(response => response.json())
     .then(json => {
       // console.log(json)
-      that.setState({
+      this.setState({
         Agents:json.Agents,
         Carriers:json.Carriers,
         Currencies:json.Currencies,
@@ -92,7 +91,7 @@ class Flights extends React.Component{
         Segments:json.Segments
       })
       console.log(json,"hi");
-      console.log(that.state,"hey");
+      console.log(this.state,"hey");
         // return response.json(); //response.json() is resolving its promise. It waits for the body to load
     })
     }).catch((err)=>{

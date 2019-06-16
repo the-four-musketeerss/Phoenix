@@ -1,11 +1,12 @@
-//     // npm i firebase
-//     //yarn add firebase   
+
 import React from 'react';
 import './signUp.css';
 import SignIn from './signIn.js';
 import { Route, Redirect } from 'react-router'
 import { storage } from './firebase';
 import Mainprofile from './mainprofile.js';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+
 
   class SignUp extends React.Component{
      constructor(props){
@@ -17,6 +18,7 @@ import Mainprofile from './mainprofile.js';
           image:null,
           bio:"",
           url:"",
+          id:"",
           toggleSignIn: false
         }
    this.handleChange = this.handleChange.bind(this);
@@ -70,8 +72,7 @@ import Mainprofile from './mainprofile.js';
         console.log(data.user)
         localStorage.setItem('token', token);
         that.setState({
-       toggleSignIn: true,
-       email:data.user.email
+       toggleSignIn: true
         },() => {
           console.log("hi")
               that.signUp(that);
@@ -91,8 +92,7 @@ import Mainprofile from './mainprofile.js';
         "email": this.state.email,
         "password" : this.state.password,
         "bio" : this.state.bio,
-        "url": this.state.url
-        } 
+        "url": this.state.url        } 
         )
       }).then((response) => response.json())
       .then((data)=>{
@@ -102,10 +102,8 @@ import Mainprofile from './mainprofile.js';
           for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
-
               that.setState({
                 toggleSignIn: true
-                
               }
               );
             }
@@ -121,32 +119,52 @@ import Mainprofile from './mainprofile.js';
       return(<div id="div">
         {!this.state.toggleSignIn ? (
           <div>
-          <input type="file" name="image" onChange={this.handleChange} />
-            <button onClick={this.handleUpload.bind(this)} className="Button">
-              Upload
-            </button>
-          <img
+       <input type="file" name="image" onChange={this.handleChange} />
+       <button onClick={this.handleUpload.bind(this)} className="Button">
+            Upload
+       </button>
+         <img 
               src={
                 this.state.url ||
                 'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
               }
-              alt="uploaded image"
-              height="150"
-              width="200"
+             alt="uploaded image"
             />
-            <input  type="text" name = "bio" onChange ={this.yourdata.bind(this)} placeholder="your bio" required/> <br />
-            <input  type="text" name = "username" onChange ={this.yourdata.bind(this)} placeholder="your username" required/> <br />
-            <input  type="text" name = "email" onChange ={this.yourdata.bind(this)} placeholder="your email" required/> <br />
-            <input  type="password" name = "password" onChange ={this.yourdata.bind(this)} placeholder="your password" required/> <br />
-            <button id="button" onClick={this.server.bind(this)}>Click  to Submit</button>
-            </div>
-
+              <input
+               name = "username" 
+               onChange ={this.yourdata.bind(this)}
+                type="text"
+              />
+              <br/>
+              <input
+              name = "email"
+               onChange ={this.yourdata.bind(this)}
+                type="email"
+              />
+             <br/>
+              <input
+              name = "bio"
+              onChange ={this.yourdata.bind(this)}
+                type="text"
+              />
+              <br/>
+              <input
+              name = "password"
+              onChange ={this.yourdata.bind(this)}
+                type="password"
+              />
+              <br/>
+              <button
+              onClick={this.server.bind(this)}>
+              >Register</button>
+              </div>
         ) : (
           <Mainprofile              
             username = {this.state.username} 
 			    	email={this.state.email}
             bio={this.state.bio}
 					  url={this.state.url}  
+            id = {this.state.id}  
             Redirect to="/mainprofile"
           />
         )}
@@ -156,7 +174,3 @@ import Mainprofile from './mainprofile.js';
   }
   
   export default SignUp;
-
-
-
-

@@ -29,10 +29,10 @@ class Blogs(models.Model):
     ProfileId = models.ForeignKey(
         'Profile',
         on_delete=models.CASCADE,
+        
     )
     title = models.CharField(max_length=100,default='SOME STRING')
     country = models.CharField(max_length=100,default='SOME STRING')
-    Blog = models.TextField(blank=True)
+    Blog = models.TextField(blank=True,default='SOME STRING')
     image = models.CharField(max_length=500,default='SOME STRING')
-
 
