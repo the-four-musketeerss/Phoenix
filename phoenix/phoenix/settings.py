@@ -89,8 +89,18 @@ DATABASES = {
         'PASSWORD': '',
         'HOST':'localhost',
         'PORT':'3325',
-    }
+           }
 }
+# ATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'AWYcbMbFlH',
+#         'USER':'AWYcbMbFlH',
+#         'PASSWORD': 'wVubfkWxfe',
+#         'HOST':'remotemysql.com',
+#         'PORT':'3306',
+#     }
+# }
 
 
 

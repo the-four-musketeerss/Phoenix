@@ -13,8 +13,8 @@ class SignIn extends React.Component{
           username:"",
           url:"",
           bio:"",
-          id:null,
-          toggleSignIn: false
+          toggleSignIn: false,
+          id:""
         }
     }
     yourdata(event){
@@ -31,9 +31,11 @@ class SignIn extends React.Component{
         },
       }).then((response) => response.json())
       .then((data)=>{
+
+        console.log(data[1])
         // const token = data.token
         // localStorage.setItem('token', token);
-          for (var i = 0 ; i < data.length ; i++ ){
+             for (var i = 0 ; i < data.length ; i++ ){
           if ( that.state.email === data[i].email){
             if (that.state.password === data[i].password){
               that.setState({
@@ -44,6 +46,7 @@ class SignIn extends React.Component{
                 url:data[i].url,
                 bio:data[i].bio,
                 id:data[i].id
+
               });
             }
             }
