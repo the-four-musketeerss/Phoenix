@@ -35,7 +35,7 @@ class SignIn extends React.Component{
         this.setState({ [event.target.name]: event.target.value });
      }    
     server(){
-      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('token');
       var that = this;
       fetch("/post", {
         method: "GET",
@@ -45,6 +45,7 @@ class SignIn extends React.Component{
         },
       }).then((response) => response.json())
       .then((data)=>{
+
         console.log(data[1])
         // const token = data.token
         // localStorage.setItem('token', token);
@@ -59,7 +60,7 @@ class SignIn extends React.Component{
                 url:data[i].url,
                 bio:data[i].bio,
                 id:data[i].id
-                
+
               });
             }
             }
@@ -70,91 +71,57 @@ class SignIn extends React.Component{
     }
   
      render(){
-      return(
-        <Grid container component="main" style={{height: '100vh'}}>
-          <Grid item xs={false} sm={4} md={7} style={{backgroundImage:"url('https://source.unsplash.com/random')" ,backgroundRepeat:"no-repeat",backgroundSize:"cover", backgroundPosition: 'center'}} />
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-
-
-
-
-            <div id="div" style={{margin:"theme.spacing(8, 4)",display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
-              <Avatar style={{ margin:"theme.spacing(1)",backgroundColor:"theme.palette.secondary.main"}}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-              <form style={{ width: '100%', marginTop:'theme.spacing(1)'}} noValidate>
-              {!this.state.toggleSignIn ? (
-                     <div>
-                       <TextField
-                          onChange ={this.yourdata.bind(this)}
-                          variant="outlined"
-                          margin="normal"
-                          required
-                          fullWidth
-                          id="email"
-                          label="Email Address"
-                          name="email"
-                          autoComplete="email"
-                          autoFocus
-                        />
-                    {/* <input
-                      onChange ={this.yourdata.bind(this)}
-                      name = "email"
-                      placeholder=  " your email"
-                      type="email"
-                    /> */}
-
-                        <TextField
-                          onChange ={this.yourdata.bind(this)}
-                          variant="outlined"
-                          margin="normal"
-                          required
-                          fullWidth
-                          name="password"
-                          label="Password"
-                          type="password"
-                          id="password"
-                          autoComplete="current-password"
-                        />
-                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                          onClick={this.server.bind(this)}
-                          type="submit"
-                          fullWidth
-                          variant="contained"
-                          color="primary"
-                         style={{ margin: 'theme.spacing(3, 0, 2)'}}
-                        >
-                          Sign In
-                        </Button>
-                        <Grid container>
-                          <Grid item xs>
-                            <Link href="#" variant="body2">
-                              Forgot password?
-                            </Link>
-                          </Grid>
-                        </Grid>
-                    </div>
-              ) : (
-              <Mainprofile              
-                  username = {this.state.username} 
-                  email={this.state.email}
-                  bio={this.state.bio}
-                  url={this.state.url} 
-                  id={this.state.id} 
-                  Redirect to="/mainprofile"
-                />
-              )}
-              </form>
+      return(<div id="div">
+         {!this.state.toggleSignIn ? (
+           <div>
+          <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <form>
+            <p className="h5 text-center mb-4">Sign in</p>
+            <div className="grey-text">
+              <MDBInput
+               onChange ={this.yourdata.bind(this)}
+                name = "email"
+                label="Type your email"
+                icon="envelope"
+                group
+                type="email"
+                validate
+                error="wrong"
+                success="right"
+              />
+              <MDBInput
+                name = "password"
+                onChange ={this.yourdata.bind(this)}
+                label="Type your password"
+                icon="lock"
+                group
+                type="password"
+                validate
+              />
             </div>
-        </Grid>
-      </Grid>
+            <div className="text-center">
+              <MDBBtn
+              onClick={this.server.bind(this)}
+              >Login</MDBBtn>
+            </div>
+          </form>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+           </div>
+        ) : (
+          <Mainprofile              
+            username = {this.state.username} 
+			    	email={this.state.email}
+            bio={this.state.bio}
+					  url={this.state.url}  
+            id = {this.state.id}  
+            Redirect to="/mainprofile"
+          />
+				)}
+			</div>
     )}
   }
   export default SignIn;

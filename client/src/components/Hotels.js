@@ -37,6 +37,7 @@ class Hotels extends React.Component{
         }
       )
       return(<div>
+
               <form class="form-inline" style={{display: 'flex',flexWrap: 'wrap',}}>
                     <TextField
                       id="outlined-search"
@@ -64,10 +65,12 @@ class Hotels extends React.Component{
                   <a href={hotel.link} className="btn btn-primary">Reservation</a> 
                 </div>
             </div>
+
         </div>
             )}
         </div>
     )}
   }
+
   export default Hotels;
   

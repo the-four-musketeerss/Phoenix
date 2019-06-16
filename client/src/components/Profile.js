@@ -9,6 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
 class Profile extends React.Component{ 
     constructor(props){
           super(props);
@@ -20,6 +21,7 @@ class Profile extends React.Component{
   
      render(){
       return(<div>
+
           <Card style={{width:"100%"}}>
           <CardActionArea>
               <CardMedia

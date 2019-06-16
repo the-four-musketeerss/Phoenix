@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { Redirect } from 'react-router-dom'
 import { browserHistory } from 'react-router';
-
-//////////////
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -20,7 +17,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 
-/////////////////////////
+
 class Blogs extends React.Component{
     constructor(props){
           super(props);
@@ -68,13 +65,10 @@ class Blogs extends React.Component{
          }
        )
       return(<div>
-         
-
-
-
 
             {this.renderRedirect()}
               <form style={{ display: 'flex', flexWrap: 'wrap'}} noValidate autoComplete="off">
+              <h1>{this.props.username}</h1>
                 <TextField
                   id="outlined-search"
                   label="Search To Country"
@@ -121,7 +115,6 @@ class Blogs extends React.Component{
                     </CardActions>
                   </Card>
                 </div>
-                
                 )}
              
                 
