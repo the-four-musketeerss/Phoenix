@@ -31,10 +31,10 @@ class Profile extends React.Component{
                 <Typography gutterBottom variant="h4" component="h2">
                   {this.props.location.state.newbook.title}
                 </Typography>
-                <Typography gutterBottom variant="h6" component="h2">
+                <Typography gutterBottom variant="h5" component="h2">
                    {this.props.location.state.newbook.country}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" gutterBottom variant="h6" color="textSecondary" component="p">
                   {this.props.location.state.newbook.Blog}  
                 </Typography>
               </CardContent>
@@ -46,11 +46,11 @@ class Profile extends React.Component{
               </div> */}
            </CardActionArea>
            <CardActions>
-            <Button size="small" color="primary">
-              Share
+            <Button size='large' color="primary">
+              <span style={{fontSize:"12px"}}>Share</span>
             </Button>
-            <Button size="small" color="primary">
-              Learn More
+            <Button size='large' color="primary">
+            <span style={{fontSize:"12px"}}>Learn More</span>
             </Button>
           </CardActions>
            </Card>
