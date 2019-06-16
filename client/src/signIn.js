@@ -21,7 +21,7 @@ class SignIn extends React.Component{
         this.setState({ [event.target.name]: event.target.value });
      }    
     server(){
-      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('token');
       var that = this;
       fetch("/post", {
         method: "GET",
@@ -31,6 +31,7 @@ class SignIn extends React.Component{
         },
       }).then((response) => response.json())
       .then((data)=>{
+
         console.log(data[1])
         // const token = data.token
         // localStorage.setItem('token', token);
@@ -45,7 +46,7 @@ class SignIn extends React.Component{
                 url:data[i].url,
                 bio:data[i].bio,
                 id:data[i].id
-                
+
               });
             }
             }
@@ -58,6 +59,7 @@ class SignIn extends React.Component{
      render(){
       return(<div id="div">
          {!this.state.toggleSignIn ? (
+           <div>
           <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
@@ -94,13 +96,14 @@ class SignIn extends React.Component{
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+           </div>
         ) : (
-         <Mainprofile              
+          <Mainprofile              
             username = {this.state.username} 
 			    	email={this.state.email}
             bio={this.state.bio}
-            url={this.state.url} 
-            id={this.state.id} 
+					  url={this.state.url}  
+            id = {this.state.id}  
             Redirect to="/mainprofile"
           />
 				)}
