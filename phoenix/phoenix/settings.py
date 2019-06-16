@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'PhoenixDb',
 #         'USER':'root',
-#         'PASSWORD': 'root',
+#         'PASSWORD': '',
 #         'HOST':'localhost',
 #         'PORT':'3325',
 #            }
