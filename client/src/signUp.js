@@ -73,10 +73,12 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         localStorage.setItem('token', token);
         that.setState({
        toggleSignIn: true
-        },() => {
+        }
+        ,() => {
           console.log("hi")
               that.signUp(that);
-            })
+            }
+            )
        
       })
     }
