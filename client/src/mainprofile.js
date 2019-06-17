@@ -241,6 +241,42 @@ click(){
           <br/>
           <br/>
               <button id="button"  onClick={this.blog.bind(this)} >my Bloges</button>
+          <br/>
+          <br/>
+              <table>
+						<tbody>
+							{this.state.blogs.map((blog, i) => (
+								<tr
+									key={blog.id}
+									style={{
+										margin: '10px',
+										display: 'block',
+										color: 'white',
+										fontSize: '20px',
+										borderStyle: 'solid',
+										padding: '15px'
+									}}
+								>
+									<td style={{ color: 'orange', fontSize: '18px' }}>
+										<strong>Blog title:</strong>
+									</td>
+									<td>{blog.title}</td>
+									<td style={{ color: 'orange', fontSize: '18px' }}>
+										<strong>country:</strong>
+									</td>
+									<td>{blog.country}</td>
+									<td style={{ color: 'orange', fontSize: '18px' }}>
+										<strong>Blog</strong>
+									</td>
+									<td>{blog.Blog}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				)}
+
+
+
    </div>
     ) : (
          <Blogs              
