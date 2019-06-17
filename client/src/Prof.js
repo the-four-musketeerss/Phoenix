@@ -21,7 +21,6 @@ class Prof extends React.Component{
       fetch("post/")
         .then(data => data.json())
         .then((data) => {
-        console.log(data);
         for (var i = 0 ; i < data.length ; i++){
             if(data[i].username === this.props.username){
                this.setState({ books: data[i] }

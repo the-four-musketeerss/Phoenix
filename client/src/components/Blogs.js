@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import Prof from '../Prof.js';
 
 
 class Blogs extends React.Component{
