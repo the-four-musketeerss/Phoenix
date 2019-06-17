@@ -68,7 +68,7 @@ class Blogs extends React.Component{
 
             {this.renderRedirect()}
               <form style={{ display: 'flex', flexWrap: 'wrap'}} noValidate autoComplete="off">
-              <h1>{this.props.username}</h1>
+              {/* <h1>{this.props.username}</h1> */}
                 <TextField
                   id="outlined-search"
                   label="Search To Country"
