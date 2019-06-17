@@ -54,6 +54,9 @@ class Profile extends React.Component{
             <Button size='large' color="primary">
             <span style={{fontSize:"12px"}}>Learn More</span>
             </Button>
+            <Button size='large' color="primary">
+            <span style={{fontSize:"12px"}}>this Blog Wrote By {this.props.location.state.newbook.username}</span>
+            </Button>
           </CardActions>
            </Card>
         </div>
