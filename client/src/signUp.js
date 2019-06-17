@@ -72,11 +72,13 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         console.log(data.user)
         localStorage.setItem('token', token);
         that.setState({
-       toggleSignIn: true
-        },() => {
+      //  toggleSignIn: true
+        }
+        ,() => {
           console.log("hi")
               that.signUp(that);
-            })
+            }
+            )
        
       })
     }
@@ -99,16 +101,9 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         console.log(data)
         const token = data.token
         localStorage.setItem('token', token);     
-          for (var i = 0 ; i < data.length ; i++ ){
-          if ( that.state.email === data[i].email){
-            if (that.state.password === data[i].password){
               that.setState({
                 toggleSignIn: true
-              }
-              );
-            }
-            }
-        }
+              })
       })
       }
 
