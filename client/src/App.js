@@ -88,8 +88,8 @@ class App extends React.Component {
 					
                     <Route exact path="/" component={HomePage} />
 					<Route exact path="/Hotels" component={Hotels}/>
-         			<Route exact path="/Blogs" component={Blogs} />
-        			<Route exact path="/Profile" component={Profile} />
+         	<Route exact path="/Blogs" component={Blogs} />
+        	<Route exact path="/Profile" component={Profile} />
 					<Route path="/Mainprofile" component={Mainprofile} />
 					<Route path="/SignIn" component={SignIn} />
 					<Route path="/SignUp" component={SignUp} />

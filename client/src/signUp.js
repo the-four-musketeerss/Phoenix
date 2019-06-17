@@ -19,7 +19,8 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
           bio:"",
           url:"",
           id:"",
-          toggleSignIn: false
+          toggleSignIn: false,
+          error:""
         }
    this.handleChange = this.handleChange.bind(this);
 
@@ -72,7 +73,6 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         console.log(data.user)
         localStorage.setItem('token', token);
         that.setState({
-      //  toggleSignIn: true
         }
         ,() => {
           console.log("hi")
@@ -96,16 +96,26 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
         "bio" : this.state.bio,
         "url": this.state.url        } 
         )
-      }).then((response) => response.json())
-      .then((data)=>{
-        console.log(data)
-        const token = data.token
-        localStorage.setItem('token', token);     
-              that.setState({
-                toggleSignIn: true
-              })
-      })
-      }
+      }).then((response) => {
+        console.log(response.status)
+			if (response.status == 201) {
+				response.json().then((body) => {
+					this.setState(
+						{
+              toggleSignIn: true
+						}
+					);
+				});
+			} else {
+					this.setState(
+						{
+              error : "this email is ourready token"
+						}
+					);
+			}
+		});
+	}
+
 
 
 
@@ -152,15 +162,17 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
               <button
               onClick={this.server.bind(this)}>
               >Register</button>
+              {this.state.error}
               </div>
         ) : (
-          <Mainprofile              
+          <Mainprofile  
+                      
             username = {this.state.username} 
 			    	email={this.state.email}
             bio={this.state.bio}
 					  url={this.state.url}  
             id = {this.state.id}  
-            Redirect to="/mainprofile"
+            
           />
         )}
       </div>

@@ -5,6 +5,7 @@ import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Blogs from './components/Blogs.js';
 import { storage } from './firebase';
+import { Route, Redirect } from 'react-router'
 
 
 class Mainprofile extends React.Component{
@@ -25,7 +26,7 @@ class Mainprofile extends React.Component{
 
    }
 
- 
+
   
 
 
@@ -177,7 +178,6 @@ click(){
 
     render(){
      return(<div id="div">
-        {!this.state.status ? (
      <div>
             <img id = "a"
               src={
@@ -278,12 +278,7 @@ click(){
 
 
    </div>
-    ) : (
-         <Blogs              
-            username = {this.props.username}
-            Redirect to="/Blogs"
-          />
-				)}
+   
 
        </div>
    )}
