@@ -7,7 +7,6 @@ from pheonixapp.models import Hotels
 
 
 
-
 class postSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
