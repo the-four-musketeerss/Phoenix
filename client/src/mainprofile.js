@@ -142,7 +142,7 @@ class Mainprofile extends React.Component{
    //     const token = localStorage.getItem('token');
    //     fetch('/workerMainPage', {
    //         method: 'get',
-   //         headers: {'x-access-token': token }
+   //         headers: {'Authorization': token }
    //     }).then(function(response) {
    //         if (response.status == 200) {
    //             response.json().then((body) => {

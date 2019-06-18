@@ -49,7 +49,6 @@ class SignupSerializer(serializers.ModelSerializer):
 class SigninSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
-    print("\n\n\n username: ", username, "\n\n\n password: ", password )
     def validate(self, data):
         user = authenticate(**data)
         if user and user.is_active:

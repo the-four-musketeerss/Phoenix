@@ -11,6 +11,7 @@ import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Mainprofile from './mainprofile.js';
 import Prof from './Prof.js';
+import Weather from './weather.js';
 
 
 
@@ -96,6 +97,9 @@ class App extends React.Component {
 					<Route path="/SignUp" component={SignUp} />
 					<Route path="/flights" component={Flights} />
  					<Route path="/Prof" component={Prof} />
+ 					<Route path="/Weather" component={Weather} />
+
+           
 
 
 				</div>
