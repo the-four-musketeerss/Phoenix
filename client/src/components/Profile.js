@@ -65,8 +65,8 @@ class Profile extends React.Component{
             <Button size='large' color="primary">
             <span style={{fontSize:"12px"}}>Learn More</span>
             </Button>
-              <Button size='large' color="primary"  onClick={this.taggle.bind(this)}>
-              <span style={{fontSize:"12px"}} >this Blog belong to {this.props.location.state.newbook.username}</span>
+            <Button size='large' color="primary">
+            <span style={{fontSize:"12px"}}>this Blog Wrote By {this.props.location.state.newbook.username}</span>
             </Button>
           </CardActions>
            </Card>
