@@ -16,6 +16,7 @@ router = routers.DefaultRouter()
 router.register('blogs',BlogsViewSet,'blogs')
 router.register('hotels',HotelsViewSet,'hotels')
 router.register('post',SignIn,'post')
+router.register('Profile/post',SignIn,'Profile/post')
 
 
 urlpatterns = [

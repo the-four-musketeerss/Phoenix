@@ -24,6 +24,8 @@ import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Route, Redirect } from 'react-router'
+
 
 class Mainprofile extends React.Component{
    constructor(props){
@@ -356,13 +358,12 @@ return(<div id="div">
 				)}
          
    </div>
-    ) : (
+   ) : (
          <Blogs              
             username = {this.props.username}
             Redirect to="/Blogs"
           />
 				)}
-
        </div>
    )}
  }

@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import Prof from '../Prof.js';
 
 
 class Blogs extends React.Component{
@@ -57,14 +58,14 @@ class Blogs extends React.Component{
             }
           // this.setState({ books: data })
           }
-        // console.log(that.state.books)
+        console.log(that.state.books)
 
          })
       }
 
 
     prof(){
-      // console.log(this.state.books)
+      console.log(this.state.books)
       this.setState({
         redirect:true
       })
