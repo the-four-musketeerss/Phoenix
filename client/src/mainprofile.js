@@ -9,7 +9,7 @@ import Blogs from './components/Blogs.js';
 import { storage } from './firebase';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 /////////////////
-
+import MaterialTable from 'material-table';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
@@ -66,8 +66,6 @@ class Mainprofile extends React.Component{
          this.setState({id: data[i].id });
             }
         }
-
-
       })
     }
 
@@ -99,7 +97,8 @@ class Mainprofile extends React.Component{
    yourdata(event){
         this.setState({[event.target.name]: event.target.value });
      }
-   server(){
+   server(e){
+    e.preventDefault();
       // const token = localStorage.getItem('token');
       var that = this;
       fetch("blogs/", {
@@ -298,7 +297,6 @@ return(<div id="div">
               >
                 Add Blog
               </Button>
-              {this.state.text}
               <Button
                 onClick={this.click.bind(this)}
                 id="button"
@@ -317,46 +315,41 @@ return(<div id="div">
               >
                 my Bloges
               </Button>
-            
             </form>
+                  <table>
+                    <tbody>
+                        {this.state.blogs.map((blog, i) => (
+                      <tr
+                        key={blog.id}
+                        style={{
+                          margin: '10px',
+                          display: 'block',
+                          color: 'red',
+                          fontSize: '20px',
+                          borderStyle: 'solid',
+                          padding: '15px'
+                        }}
+                          >
+                        <td style={{ color: '#FA3905', fontSize: '18px' }}>
+                          <strong>Blog title:</strong>
+                        </td>
+                        <p>{blog.title}</p>
+                        <td style={{ color: '#FA3905', fontSize: '18px' }}>
+                          <strong>country:</strong>
+                        </td>
+                        <p>{blog.country}</p>
+                        <td style={{ color: '#FA3905', fontSize: '18px' }}>
+                          <strong>Blog</strong>
+                        </td>
+                          <p>{blog.Blog}</p>
+                        </tr>
+                      ))}
+                    </tbody>
+                </table>
             </div>
             </Grid>
             </Grid>
-
-
-
-              <table>
-						<tbody>
-							{this.state.blogs.map((blog, i) => (
-								<tr
-									key={blog.id}
-									style={{
-										margin: '10px',
-										display: 'block',
-										color: 'white',
-										fontSize: '20px',
-										borderStyle: 'solid',
-										padding: '15px'
-									}}
-								>
-									<td style={{ color: 'orange', fontSize: '18px' }}>
-										<strong>Blog title:</strong>
-									</td>
-									<td>{blog.title}</td>
-									<td style={{ color: 'orange', fontSize: '18px' }}>
-										<strong>country:</strong>
-									</td>
-									<td>{blog.country}</td>
-									<td style={{ color: 'orange', fontSize: '18px' }}>
-										<strong>Blog</strong>
-									</td>
-									<td>{blog.Blog}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				)}
-         
+                       
    </div>
    ) : (
          <Blogs              
