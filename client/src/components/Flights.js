@@ -1,5 +1,5 @@
 import React from 'react';
-
+//////////////////////////////////////////inline css////////////////////////////////////////
 const divStyle = {
   padding: '10px',
   margin: '40px',
@@ -22,7 +22,7 @@ const font = {
  fontSize:'50px'
 };
   
-
+////////////////////////////////////////flights component///////////////////////////////////
 class Flights extends React.Component{
     constructor(props){
           super(props);
@@ -35,7 +35,7 @@ class Flights extends React.Component{
           Places:[],
           Query:[],
           Segments:[],
-          sessionKey:"",
+
           cabinClass:"economy",
           currency:"USD",
           locale:"en-US",
@@ -46,12 +46,17 @@ class Flights extends React.Component{
           outboundDate:"",
           country:"US",
           originPlace:"SFO-sky",
-          destinationPlace:"LHR-sky"
-
+          destinationPlace:"LHR-sky",
+          countries:[]
         }
     }
-  
+///////////////////////////get the list of countries function///////////////////////////////
+    countries(){
+
+    }
+/////////////////////////////////////get the tickets function///////////////////////////////    
     search =()=>{
+      //make a post request to the external api and post the info from user
       fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0",{
         method: "POST",
         headers : {
@@ -66,11 +71,8 @@ class Flights extends React.Component{
       var sessionkey = response.headers.get("location");
       var arr = sessionkey.split("/");
       console.log(arr[7],"hellllllooooo");
-      // this.setState({
-      //   sessionKey: arr[7]
-      // })
-      
       console.log(this.state);
+      //make a get request to the external api and get the information abt the tickets
       fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/"+arr[7]+"?pageIndex=0&pageSize=10?",{
         method: "GET",
         headers : {
@@ -80,6 +82,7 @@ class Flights extends React.Component{
     }).then(response => response.json())
     .then(json => {
       // console.log(json)
+      //save the information in the state 
       this.setState({
         Agents:json.Agents,
         Carriers:json.Carriers,
@@ -92,41 +95,44 @@ class Flights extends React.Component{
       })
       console.log(json,"hi");
       console.log(this.state,"hey");
-        // return response.json(); //response.json() is resolving its promise. It waits for the body to load
     })
     }).catch((err)=>{
       console.log(err)
     })
     };
+/////////////////////////////change the cabin class onchange function///////////////////////
     handlePrint(e) {
         this.setState({
           cabinClass:e.target.value
         },()=>{console.log(this.state.cabinClass)})
     }
-
+/////////////////////////take the arrival date input and save it in state/////////////////
     changeinb(e){
       console.log("hiiiii")
       this.setState({
         inboundDate:e.target.value
       },()=>console.log(this.state))
     };
-
+//////////////////////////////////departure date and save it in the state//////////////////
     changeoutb(e){
       console.log("hiiiii")
       this.setState({
         outboundDate:e.target.value
       },()=>console.log(this.state))
     };
+////////////////////////////////take # of adults and save it in state///////////////////////    
     changeAd(e){
       this.setState({
         adults:e.target.value
       },()=>console.log(this.state))
     }
+//////////////////////////////take # of children and save it in state//////////////////////
     changech(e){
       this.setState({
         children:e.target.value
       },()=>console.log(this.state))
     }
+////////////////////////////////take # of infants and save it in state//////////////////////
     changeinf(e){
       this.setState({
         infants:e.target.value

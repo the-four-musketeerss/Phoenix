@@ -10,6 +10,7 @@ import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Mainprofile from './mainprofile.js';
 import Prof from './Prof.js';
+import Checklist from './components/Checklist';
 
 
 
@@ -70,6 +71,7 @@ class App extends React.Component {
           <Route path="/SignUp" component={SignUp} />
           <Route path="/flights" component={Flights} />
           <Route path="/Prof" component={Prof} />
+          <Route path="/TravelList" component={Checklist} />
         </div>
 
         <footer>
