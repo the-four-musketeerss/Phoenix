@@ -76,7 +76,8 @@ class Mainprofile extends React.Component{
     }
   }
 
-    handleUpload() {
+    handleUpload(e) {
+      e.preventDefault();
     const { image } = this.state;
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
      uploadTask.on(
@@ -204,6 +205,7 @@ return(<div id="div">
                       'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
                     }
                   alt="uploaded image"
+                  style={{objectFit: 'cover',height: '100%'}}
                   />     
                 </Avatar>
               <h1>{this.props.username}</h1>
@@ -234,12 +236,18 @@ return(<div id="div">
                 >
                     Upload
                 </Button>
-              <CardMedia
-                style={{height: 140}}
-                image="https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435"
-                title="Contemplative Reptile"
-              />
-         
+              <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+                <Avatar style={{borderRadius: '4px',width:'430px' ,margin:'theme.spacing(1)',height:"180px",margin: 'theme.spacing(1)',objectFit: 'cover'}}>
+                  <img 
+              src={
+                this.state.urlimg ||
+                'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
+              }
+             alt="uploaded image"
+             style={{objectFit: 'cover'}}
+            />
+                </Avatar>
+              </div>
             </form>
             <form>
              
@@ -286,7 +294,7 @@ return(<div id="div">
                 color="primary"
                 style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",marginLeft:"25%",marginRight:"10%",marginTop:"20px"}}
               >
-                Send
+                Add Blog
               </Button>
               {this.state.text}
               <Button
