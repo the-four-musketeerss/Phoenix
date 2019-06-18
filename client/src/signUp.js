@@ -154,7 +154,6 @@ function MadeWithLove() {
              alt="uploaded image"
              style={{ objectFit: 'cover',height: '100%'}}
             />
-
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign up
@@ -258,7 +257,6 @@ function MadeWithLove() {
                   <MadeWithLove />
               </Box>
         </Container>
-        <h1>{this.state.error}</h1>
               </div>
         ) : (
           <Mainprofile  

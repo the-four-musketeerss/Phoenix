@@ -1,4 +1,4 @@
-
+import axios from "axios"
 import React from 'react';
 import { BrowserRouter , Router, Route } from "react-router-dom";
 import { NavLink }  from 'react-router-dom';
@@ -12,7 +12,7 @@ import SignIn from './signIn.js';
 import Mainprofile from './mainprofile.js';
 import Prof from './Prof.js';
 import Weather from './weather.js';
-
+import Currancy from './currency.js'
 
 
 class App extends React.Component {
@@ -88,7 +88,7 @@ class App extends React.Component {
 						)} */}
 					{/* /> */}
 					
-                    <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
 					<Route exact path="/Hotels" component={Hotels}/>
          	<Route exact path="/Blogs" component={Blogs} />
         	<Route exact path="/Profile" component={Profile} />
@@ -98,9 +98,7 @@ class App extends React.Component {
 					<Route path="/flights" component={Flights} />
  					<Route path="/Prof" component={Prof} />
  					<Route path="/Weather" component={Weather} />
-
-           
-
+ 					<Route path="/Currancy" component={Currancy} />
 
 				</div>
 
