@@ -1,10 +1,30 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component } from 'react';
+
 import './mainprofile.css';
 import { NavLink }  from 'react-router-dom';
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Blogs from './components/Blogs.js';
 import { storage } from './firebase';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+/////////////////
+
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import CardMedia from '@material-ui/core/CardMedia';
+
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Route, Redirect } from 'react-router'
 
 
 class Mainprofile extends React.Component{
@@ -19,15 +39,13 @@ class Mainprofile extends React.Component{
         image:null,
         urlimg:"",
         text:"",
-        blogs:[]
+        blogs:[],
+        flipped: false
+
        }
         this.handleChange = this.handleChange.bind(this);
 
    }
-
- 
-  
-
 
    componentDidMount(){
         var that = this;
@@ -53,8 +71,6 @@ class Mainprofile extends React.Component{
       })
     }
 
-
-
     handleChange(e) {
     if (e.target.files[0]) {
       const image = e.target.files[0];
@@ -62,7 +78,8 @@ class Mainprofile extends React.Component{
     }
   }
 
-    handleUpload() {
+    handleUpload(e) {
+      e.preventDefault();
     const { image } = this.state;
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
      uploadTask.on(
@@ -106,11 +123,9 @@ class Mainprofile extends React.Component{
             })
     }
 
-
-
-
-       blog(){
+       blog(e){
       // const token = localStorage.getItem('token');
+      e.preventDefault();
       var that = this;
       fetch("blogs/", {
         method: "GET",
@@ -176,73 +191,140 @@ click(){
 
 
     render(){
-     return(<div id="div">
+
+return(<div id="div">
         {!this.state.status ? (
-     <div>
-            <img id = "a"
-              src={
-                this.props.url ||
-                'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
-              }
-             alt="uploaded image"
-            />
-             <br/>
-            <br/>
-            <br/>
-            <input type="file" name="image" onChange={this.handleChange} />
-       <button onClick={this.handleUpload.bind(this)} className="Button">
-            Upload
-       </button>
-            <br/>
-            <br/>
-            <br/>
-          <h1>add Bloges</h1>
-           <br/>
-            <br/>
-            <br/>
-         <img 
+     <div style={{width:"100%"}}>
+        <Grid container component="main" style={{height: '100vh'}}>
+        <Grid item xs={false} sm={4} md={7}  />
+        <Grid item xs={24} sm={16} md={10} component={Paper} elevation={12} square>
+          <div>
+            <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+                <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
+                  <img id = "a"
+                    src={
+                      this.props.url ||
+                      'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
+                    }
+                  alt="uploaded image"
+                  style={{objectFit: 'cover',height: '100%'}}
+                  />     
+                </Avatar>
+              <h1>{this.props.username}</h1>
+              <h3>{this.props.email}</h3>
+              <p>{this.props.bio}</p>
+              
+              
+            
+
+            </div>
+            
+            <form  style={{ width: '100%', marginTop:'theme.spacing(1)'}} noValidate>
+                <p  style={{marginLeft:"44%",marginBottom:"20px"}} >upload Travel image</p>
+                <input
+                  type="file"
+                  name="image"
+                  onChange={this.handleChange}
+                  style={{marginLeft:"47%",marginBottom:"20px"}} 
+                />
+                  
+                <Button
+                  onClick={this.handleUpload.bind(this)}
+                  type="submit"
+                  className="Button"
+                  fullWidth
+                  variant="contained"      
+                  style={{ margin: 'theme.spacing(3, 0, 2)',backgroundColor:"#FA3905", color:'white',marginBottom:'20px'}}
+                >
+                    Upload
+                </Button>
+              <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+                <Avatar style={{borderRadius: '4px',width:'430px' ,margin:'theme.spacing(1)',height:"180px",margin: 'theme.spacing(1)',objectFit: 'cover'}}>
+                  <img 
               src={
                 this.state.urlimg ||
                 'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
               }
              alt="uploaded image"
+             style={{objectFit: 'cover'}}
             />
-            <br/>
-            <br/>
-            <br/>
-            <h1>{this.props.bio}</h1>
-            <h1>{this.props.username}</h1>
-            <h1>{this.props.email}</h1>
-            	<input
-							type="text"
-							name="Blog"
-							placeholder="Blog"
-							onChange={this.yourdata.bind(this)}
-						/>
-            	<input
-							type="text"
-							name="title"
-							placeholder="title"
-							onChange={this.yourdata.bind(this)}
-						/>
-            	<input
-							type="text"
-							name="country"
-							placeholder="country"
-							onChange={this.yourdata.bind(this)}
-						/>
-            <button className="Button" onClick={this.server.bind(this)}>
-							send
-						</button>
-            {this.state.text}
-           <br/>
-           <br/>
-               <button id="button"  onClick={this.click.bind(this)} >See Bloges</button>
-          <br/>
-          <br/>
-              <button id="button"  onClick={this.blog.bind(this)} >my Bloges</button>
-          <br/>
-          <br/>
+                </Avatar>
+              </div>
+            </form>
+            <form>
+             
+              <TextField
+                onChange={this.yourdata.bind(this)}
+                variant="outlined"
+                margin="normal"
+                id="title"
+                label="title"
+                name="title"
+                autoComplete="title"
+                autoFocus
+                style={{marginLeft:"37%"}}
+              />
+              <TextField
+                onChange={this.yourdata.bind(this)}
+                variant="outlined"
+                margin="normal"
+                style={{marginLeft:"5%"}}
+                id="country"
+                label="country"
+                name="country"
+                autoComplete="country"
+                autoFocus
+              />
+               <TextField
+                onChange={this.yourdata.bind(this)}
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                id="Blog"
+                label="Blog"
+                name="Blog"
+                autoComplete="Blog"
+                autoFocus
+              />
+              <br/>
+              <Button
+              
+                onClick={this.server.bind(this)}
+                type="submit"
+                className="Button" 
+                variant="contained" 
+                color="primary"
+                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",marginLeft:"25%",marginRight:"10%",marginTop:"20px"}}
+              >
+                Add Blog
+              </Button>
+              {this.state.text}
+              <Button
+                onClick={this.click.bind(this)}
+                id="button"
+                type="submit"
+                variant="contained"      
+                style={{width:"10%",margin:'theme.spacing(1)',color:"white",backgroundColor:"#FA3905",marginRight:"10%",marginTop:"20px"}}
+              >
+                See Bloges
+              </Button>
+              <Button
+                onClick={this.blog.bind(this)}
+                id="button"
+                type="submit"
+                variant="contained"      
+                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px"}}
+              >
+                my Bloges
+              </Button>
+            
+            </form>
+            </div>
+            </Grid>
+            </Grid>
+
+
+
               <table>
 						<tbody>
 							{this.state.blogs.map((blog, i) => (
@@ -274,17 +356,14 @@ click(){
 						</tbody>
 					</table>
 				)}
-
-
-
+         
    </div>
-    ) : (
+   ) : (
          <Blogs              
             username = {this.props.username}
             Redirect to="/Blogs"
           />
 				)}
-
        </div>
    )}
  }

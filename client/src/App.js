@@ -2,13 +2,16 @@ import React from "react";
 import { BrowserRouter, Router, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import Blogs from "./components/Blogs";
-import Hotels from "./components/Hotels";
-import Profile from "./components/Profile";
-import Flights from "./components/Flights";
-import SignUp from "./signUp.js";
-import SignIn from "./signIn.js";
-import Mainprofile from "./mainprofile.js";
+import Blogs from './components/Blogs'
+import Hotels from './components/Hotels'
+import Profile from './components/Profile'
+import Flights from './components/Flights'
+import SignUp from './signUp.js';
+import SignIn from './signIn.js';
+import Mainprofile from './mainprofile.js';
+import Prof from './Prof.js';
+
+
 
 class App extends React.Component {
   render() {
@@ -66,6 +69,7 @@ class App extends React.Component {
           <Route path="/SignIn" component={SignIn} />
           <Route path="/SignUp" component={SignUp} />
           <Route path="/flights" component={Flights} />
+          <Route path="/Prof" component={Prof} />
         </div>
 
         <footer>
@@ -74,19 +78,19 @@ class App extends React.Component {
               <div className="row row-bottom-padded-md">
                 <div className="col-md-6 col-md-offset-3 text-center">
                   <p className="fh5co-social-icons">
-                    <a href="#">
+                    <a>
                       <i className="icon-twitter2" />
                     </a>
-                    <a href="#">
+                    <a>
                       <i className="icon-facebook2" />
                     </a>
-                    <a href="#">
+                    <a>
                       <i className="icon-instagram" />
                     </a>
-                    <a href="#">
+                    <a>
                       <i className="icon-dribbble2" />
                     </a>
-                    <a href="#">
+                    <a>
                       <i className="icon-youtube" />
                     </a>
                   </p>
