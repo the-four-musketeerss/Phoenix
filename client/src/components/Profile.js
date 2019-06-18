@@ -8,20 +8,31 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Prof from '../Prof.js';
 
 
 class Profile extends React.Component{ 
     constructor(props){
           super(props);
         this.state = {
+          change : false
         }
+    }
+    taggle(){
+      	this.setState(
+						{
+              change : true
+						}
+					);
+
     }
   
  
   
      render(){
       return(<div>
-
+         {!this.state.change ? (
+           <div>
           <Card style={{width:"100%"}}>
           <CardActionArea>
               <CardMedia
@@ -54,8 +65,18 @@ class Profile extends React.Component{
             <Button size='large' color="primary">
             <span style={{fontSize:"12px"}}>Learn More</span>
             </Button>
+              <Button size='large' color="primary"  onClick={this.taggle.bind(this)}>
+              <span style={{fontSize:"12px"}} >this Blog belong to {this.props.location.state.newbook.username}</span>
+            </Button>
           </CardActions>
            </Card>
+           </div>
+            ) : (
+          <Prof  
+            username = {this.props.location.state.newbook.username} 
+            
+          />
+        )}
         </div>
     )}
   }

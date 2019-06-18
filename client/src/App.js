@@ -10,6 +10,7 @@ import Flights from './components/Flights'
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Mainprofile from './mainprofile.js';
+import Prof from './Prof.js';
 
 
 
@@ -88,12 +89,14 @@ class App extends React.Component {
 					
                     <Route exact path="/" component={HomePage} />
 					<Route exact path="/Hotels" component={Hotels}/>
-         			<Route exact path="/Blogs" component={Blogs} />
-        			<Route exact path="/Profile" component={Profile} />
+         	<Route exact path="/Blogs" component={Blogs} />
+        	<Route exact path="/Profile" component={Profile} />
 					<Route path="/Mainprofile" component={Mainprofile} />
 					<Route path="/SignIn" component={SignIn} />
 					<Route path="/SignUp" component={SignUp} />
 					<Route path="/flights" component={Flights} />
+ 					<Route path="/Prof" component={Prof} />
+
 
 				</div>
 
