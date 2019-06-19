@@ -9,8 +9,7 @@ class Profile(models.Model):
     password = models.CharField(max_length=100,default='SOME STRING')
     url = models.TextField (max_length=21845,default='SOME STRING')
     bio = models.CharField(max_length=200,default='SOME STRING')
-    owner = models.ForeignKey(
-        User , related_name="myapp", on_delete = models.CASCADE ,null = True)
+
 
 class Hotels(models.Model):
     id = models.AutoField(primary_key=True)
