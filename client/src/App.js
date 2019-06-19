@@ -1,7 +1,7 @@
-import React from "react";
-import { BrowserRouter, Router, Route } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import HomePage from "./components/HomePage";
+import axios from "axios"
+import React from 'react';
+import { BrowserRouter , Router, Route } from "react-router-dom";
+import { NavLink }  from 'react-router-dom';
 import Blogs from './components/Blogs'
 import Hotels from './components/Hotels'
 import MapContainer from './components/MapContainer'
@@ -13,6 +13,9 @@ import Mainprofile from './mainprofile.js';
 import Prof from './Prof.js';
 import ScrollUpButton from "react-scroll-up-button"; //Add this line Here
 
+import Weather from './weather.js';
+import Currancy from './currency.js'
+import HomePage from './components/HomePage.js'
 
 
 class App extends React.Component {
@@ -80,7 +83,8 @@ class App extends React.Component {
           <Route path="/flights" component={Flights} />
           <Route path="/Prof" component={Prof} />
           <Route path="/MapContainer" component={MapContainer} />
-
+ 					<Route path="/Weather" component={Weather} />
+ 					<Route path="/Currancy" component={Currancy} />
         </div>
 
         {/* <footer>

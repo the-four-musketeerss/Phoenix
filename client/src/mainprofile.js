@@ -8,7 +8,6 @@ import SignIn from './signIn.js';
 import Blogs from './components/Blogs.js';
 import { storage } from './firebase';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-/////////////////
 import MaterialTable from 'material-table';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -155,7 +154,7 @@ class Mainprofile extends React.Component{
    //     const token = localStorage.getItem('token');
    //     fetch('/workerMainPage', {
    //         method: 'get',
-   //         headers: {'x-access-token': token }
+   //         headers: {'Authorization': token }
    //     }).then(function(response) {
    //         if (response.status == 200) {
    //             response.json().then((body) => {
