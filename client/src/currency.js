@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from "axios"
+// import axios from "axios"
 
 class Currancy extends React.Component {
     constructor(props){
@@ -8,15 +8,15 @@ class Currancy extends React.Component {
           cryptos:[]           
       }
      }
-     componentDidMount(){
-         axios.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,EUR")
-         .then(res => {
-        const cryptos = res.data 
-        console.log(cryptos)
-        this.setState({cryptos : cryptos});
+    //  componentDidMount(){
+    //      axios.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,EUR")
+    //      .then(res => {
+    //     const cryptos = res.data 
+    //     console.log(cryptos)
+    //     this.setState({cryptos : cryptos});
 
-         })
-     }
+    //      })
+    //  }
   
 	render() {
 		return (
