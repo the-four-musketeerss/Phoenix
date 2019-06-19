@@ -112,7 +112,7 @@ class Blogs extends React.Component{
                     <CardHeader
                         avatar={
                           <Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
-                            R
+                            P
                           </Avatar>
                         }
                         title={book.title}
