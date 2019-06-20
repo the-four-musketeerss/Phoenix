@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from 'react-router-dom'
 
 const section = {
    color: '#f78536',
@@ -31,7 +32,9 @@ class HomePage extends React.Component {
           country: "",
           Blogs : ""
         }
-      ]
+      ],
+      map:false,
+      weather:false
     };
   }
 
@@ -50,11 +53,38 @@ class HomePage extends React.Component {
        })
     }
 
+    map(){
+      this.setState({
+        map:true
+      })
+    }
+
+    weather(){
+      this.setState({
+        weather:true
+      })
+    }
+    renderRedirect = () =>{
+      if(this.state.map){
+        // return <Redirect to ='Profile' />
+        return <Redirect to = {{
+          pathname:"MapContainer/"
+        }} />
+      }
+      if(this.state.weather){
+        // return <Redirect to ='Profile' />
+        return <Redirect to = {{
+          pathname:"Weather/"
+        }} />
+      }
+    }
+
 
   render() {
   
     return (
       <div>
+         {this.renderRedirect()}
         <div id="fh5co-wrapper">
           <div id="fh5co-page">
             <div className="fh5co-hero">
@@ -342,7 +372,7 @@ class HomePage extends React.Component {
                           Find out how the weather will be before even getting to your destination
                           just incase you might need an umbrella 
                         </p>
-                        <p>
+                        <p onClick={this.weather.bind(this)}>
                           <a href="#">Learn More</a>
                         </p>
                       </div>
@@ -376,7 +406,7 @@ class HomePage extends React.Component {
                           Explore the best tourist places, restraunts, cafes with out city guide,
                           trust us you will never get lost
                         </p>
-                        <p>
+                        <p onClick={this.map.bind(this)}>
                           <a href="#">Learn More</a>
                         </p>
                       </div>
