@@ -1,3 +1,4 @@
 if u have any error with proxy go check the python server sometimes it's because 
 u need to install something new.
 1- install django-cors-headers
+2- npm install material-table --save

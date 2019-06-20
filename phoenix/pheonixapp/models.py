@@ -36,3 +36,7 @@ class Blogs(models.Model):
     Blog = models.TextField(blank=True,default='SOME STRING')
     image = models.CharField(max_length=500,default='SOME STRING')
 
+class List(models.Model):
+    id = models.AutoField(primary_key=True)
+    text = models.CharField(max_length=200)
+    done = models.BooleanField(default=False) 
