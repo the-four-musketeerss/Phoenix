@@ -62,7 +62,7 @@ class Hotels extends React.Component{
                   <span class="fa fa-star checked" style={{color:"gold"}}></span> stars</p>
                   <p className="card-text"><span style={{fontWeight:"bold"}}>Price: </span><span style={{color:"green"}}>{hotel.price}</span></p>
                   <p className="card-text"><span style={{fontWeight:"bold"}}>description:</span>{hotel.desc}</p>
-                  <a href={hotel.link} className="btn btn-primary">Reservation</a> 
+                  <a href={hotel.link} target="_blank" className="btn btn-primary">Reservation</a> 
                 </div>
             </div>
 

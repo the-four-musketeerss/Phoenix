@@ -63,6 +63,7 @@ class App extends React.Component {
                     <li>
                       <NavLink to="/SignUp">Sign Up</NavLink>
                     </li>
+                   
                   </ul>
                 </nav>
               </div>
