@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 const bt = {
 marginLeft: '10px',
 width: '67px',
@@ -102,8 +104,10 @@ class Checklist extends React.Component{
       
   render(){
     return(
-      <div className=".container">
-    <div className="row" style={{marginTop: '43px',marginLeft: '33px'}}>
+      
+      <div className=".container" style={{height:'100vh',background: 'linear-gradient(to left bottom, rgba(255,0,0,0), rgba(249, 105, 14, 1)'}}>
+
+    <div className="row" style={{marginLeft: '33px'}}>
         <div className="col-md-6">
             <div className="todolist not-done">
              <div className="checkbox">
@@ -119,7 +123,7 @@ class Checklist extends React.Component{
                         <br/>
                     <li className="ui-state-default">
                         <div className="checkbox">
-                            <label style ={{fontSize:'25px'}}>
+                            <label style ={{fontSize:'25px',color:'black'}}>
                                 <input type="checkbox" value="" style={{zoom: '1.9'}} />{item.text}</label>
                                 <button onClick={this.delete.bind(this)} value={item.id} class="btn btn-dark" style={bt}> delete</button>
                                 <hr/>

@@ -14,6 +14,7 @@
     "mdbreact": "^4.16.0",
     "react": "^16.8.6",
     "react-axios": "^2.0.3",
+    "react-body-backgroundcolor": "^1.2.1",
     "react-devtools": "^3.6.1",
     "react-dom": "^16.8.6",
     "react-flipcard-2": "^0.3.2",
