@@ -44,7 +44,6 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(default='SOME STRING', max_length=100)),
                 ('url', models.TextField(default='SOME STRING', max_length=21845)),
                 ('bio', models.CharField(default='SOME STRING', max_length=200)),
-                ('owner', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='myapp', to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
