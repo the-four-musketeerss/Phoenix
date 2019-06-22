@@ -51,7 +51,7 @@ class Hotels extends React.Component{
               </form>
               {filtered.map(hotel =>
         <div>
-             <div className="card" style={{height:"62rem" ,width: "24rem" ,float:"left",margin:"10px"}}>
+             <div className="card" style={{height:"40rem" ,width: "21rem" ,float:"left",margin:"10px"}}>
                 <img className="card-img-top" src={hotel.image} alt="Card image cap" height="200" width="42"/>
                 <div className="card-body">
                   <h5 className="card-title" style={{color:"crimson"}}>{hotel.name}</h5>

@@ -80,7 +80,8 @@ username(){
                that.setState({
                 username:data[i].username,
                 bio:data[i].bio,
-                url:data[i].url
+                url:data[i].url,
+                id:data[i].id
           })
             }
           }

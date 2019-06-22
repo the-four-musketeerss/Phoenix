@@ -108,7 +108,7 @@ class Blogs extends React.Component{
                     this.prof()
                   });
                 }}>
-                  <Card style={{maxWidth: 345 , float:"left",margin:"10px"}}>
+                  <Card style={{maxWidth: 320 ,maxHeight: 390,float:"left",margin:"10px"}}>
                     <CardHeader
                         avatar={
                           <Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
