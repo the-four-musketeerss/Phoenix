@@ -42,12 +42,21 @@ class UserViewSet(viewsets.ModelViewSet):
 #     ]
 #     serializer_class = UserSerializer
 
+
+
+
+
 class SignIn(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
     serializer_class = postSerializer
+
+
+
+
+
 
 class SignupAPI(generics.GenericAPIView):
     serializer_class = SignupSerializer

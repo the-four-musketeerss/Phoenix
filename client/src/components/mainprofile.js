@@ -195,10 +195,19 @@ username(){
 
     logout(){
       localStorage.clear();
+      this.setState({
+        flipped:true
+      })
       return <Redirect to='http://localhost:3000/SignIn'/>
     }
 
-
+  renderRedirect(){
+    if(this.state.flipped){
+       return <Redirect to = {{
+          pathname:"signIn/"
+        }} />
+    }
+  }
   
 
    // yourdata(event){
@@ -218,6 +227,7 @@ click(){
     render(){
 
 return(<div id="div">
+        {this.renderRedirect()}
         {!this.state.status ? (
      <div style={{width:"100%"}}>
         <Grid container component="main" style={{height: '100vh'}}>
