@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
 import os
+
+import datetime
+date = datetime.date.today()
+datetime.date(2013, 11, 12)
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,6 +30,7 @@ SECRET_KEY = '2z^^)c+bnmo6ju8+00rn(v6%3-%%&hzh_*m*#7u-q1(0q7&37m'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# AUTH_USER_MODEL = "accounts.User"
 
 
 # Application definition
@@ -42,9 +47,10 @@ INSTALLED_APPS = [
     "knox",
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+# }
+REST_FRAMEWORK = { 'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',) }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,7 +90,7 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'aa',
+#         'NAME': 'areej',
 #         'USER':'root',
 #         'PASSWORD': '',
 #         'HOST':'localhost',
@@ -130,6 +136,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+JWT_AUTH = {
+    # how long the original token is valid for
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=364),
+
+    # allow refreshing of tokens
+    'JWT_ALLOW_REFRESH': True,
+
+    # this is the maximum time AFTER the token was issued that
+    # it can be refreshed.  exprired tokens can't be refreshed.
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+}
 
 
 # Internationalization

@@ -6,12 +6,12 @@ import Blogs from './components/Blogs'
 import Hotels from './components/Hotels'
 import Profile from './components/Profile'
 import Flights from './components/Flights'
-import SignUp from './signUp.js';
-import SignIn from './signIn.js';
-import Mainprofile from './mainprofile.js';
-import Prof from './Prof.js';
-import Weather from './weather.js';
-import Currancy from './currency.js'
+import SignUp from './components/signUp.js';
+import SignIn from './components/signIn.js';
+import Mainprofile from './components/mainprofile.js';
+import Prof from './components/Prof.js';
+import Weather from './components/weather.js';
+import Currancy from './components/currency.js'
 import HomePage from './components/HomePage.js'
 
 

@@ -32,13 +32,9 @@ class SignIn extends React.Component{
   constructor(props){
         super(props);
       this.state = {            
-        email :'',
         password:'',
         username:"",
-        url:"",
-        bio:"",
-        toggleSignIn: false,
-        id:""
+        toggleSignIn: false
       }
   }
   yourdata(event){
@@ -48,38 +44,43 @@ class SignIn extends React.Component{
     // const token = localStorage.getItem('token');
     e.preventDefault();
     var that = this;
-    fetch("/post", {
-      method: "GET",
+    fetch("auth/signIn", {
+      method: "POST",
       headers : {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-    }).then((response) => response.json())
-    .then((data)=>{
+      body: JSON.stringify({
+        "username":this.state.username,
+        "password" : this.state.password
+        } 
+        )
+    }).then((response) => {
+        console.log(response.status)
+			if (response.status == 200) {
+				response.json().then((body) => {
+          const token = body.token
+          localStorage.setItem('token', token);
+					that.setState(
+						{
+              toggleSignIn: true
+						}
+					);
+				});
+			} else {
+					this.setState(
+						{
+              error : "this email is ourready token"
+						}
+					);
+			}
+		});
+	}
 
-      console.log(data[1])
-      // const token = data.token
-      // localStorage.setItem('token', token);
-           for (var i = 0 ; i < data.length ; i++ ){
-        if ( that.state.email === data[i].email){
-          if (that.state.password === data[i].password){
-            that.setState({
-              email:data[i].email,
-              password:'',
-              toggleSignIn: true,
-              username:data[i].username,
-              url:data[i].url,
-              bio:data[i].bio,
-              id:data[i].id
-
-            });
-          }
-          }
-      }
 
 
-    })
-  }
+
+
   
      render(){
       return(
@@ -106,9 +107,9 @@ class SignIn extends React.Component{
                           required
                           fullWidth
                           id="email"
-                          label="Email Address"
-                          name="email"
-                          autoComplete="email"
+                          label="Username Address"
+                          name="username"
+                          autoComplete="username"
                           autoFocus
                         />
                     {/* <input
@@ -165,14 +166,7 @@ class SignIn extends React.Component{
               </Grid>
                     </div>
               ) : (
-                <Mainprofile
-                username = {this.state.username}
-                         email={this.state.email}
-                bio={this.state.bio}
-                           url={this.state.url}
-                id = {this.state.id}
-                Redirect to="/mainprofile"
-              />
+                <Redirect to='/Mainprofile'/>
                      )}
            </div>
     )}
