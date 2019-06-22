@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=100,default='SOME STRING')
+    username = models.CharField(max_length=100,default='SOME STRING',unique=True)
     email = models.CharField(max_length=100,default='SOME STRING',unique=True)
     password = models.CharField(max_length=100,default='SOME STRING')
     url = models.TextField (max_length=21845,default='SOME STRING')
