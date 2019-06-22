@@ -12,6 +12,10 @@ import Mainprofile from './components/mainprofile.js';
 import Prof from './components/Prof.js';
 import Weather from './components/weather.js';
 import Currancy from './components/currency.js'
+import Checklist from './components/Checklist';
+import ScrollUpButton from "react-scroll-up-button";
+
+
 
 import HomePage from './components/HomePage.js'
 
@@ -69,7 +73,7 @@ class App extends React.Component {
             </div>
           </header>
           <div>
-          {/* <ScrollUpButton /> */}
+          <ScrollUpButton />
             </div>
            
           <Route exact path="/" component={HomePage} />
@@ -84,6 +88,7 @@ class App extends React.Component {
           <Route path="/MapContainer" component={MapContainer} />
  					<Route path="/Weather" component={Weather} />
  					<Route path="/Currancy" component={Currancy} />
+           <Route path="/TravelList" component={Checklist} />
         </div>
 
         {/* <footer>

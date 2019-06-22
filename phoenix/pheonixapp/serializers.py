@@ -4,7 +4,12 @@ from pheonixapp.models import Blogs
 from django.contrib.auth.models import User
 from pheonixapp.models import Hotels
 from django.contrib.auth import authenticate
+from pheonixapp.models import List
 
+class listSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = List
+        fields='__all__'
 
 
 class postSerializer(serializers.ModelSerializer):
