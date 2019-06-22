@@ -3,7 +3,6 @@ import './signIn.css';
 import { Route, Redirect } from 'react-router'
 import Mainprofile from './mainprofile.js';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
-/////////////////////////
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -76,6 +75,11 @@ class SignIn extends React.Component{
 			}
 		});
 	}
+
+
+
+
+
   
      render(){
       return(

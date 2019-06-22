@@ -5,7 +5,7 @@ import './mainprofile.css';
 import { NavLink }  from 'react-router-dom';
 import SignUp from './signUp.js';
 import SignIn from './signIn.js';
-import Blogs from './components/Blogs.js';
+import Blogs from './Blogs.js';
 import { storage } from './firebase';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
@@ -29,7 +29,11 @@ import { Route, Redirect } from 'react-router'
 class Mainprofile extends React.Component{
    constructor(props){
          super(props);
-       this.state = {            
+       this.state = {
+        email:"",
+        url:"",
+        username:"",
+        bio:"",           
         status : false,
         Blog:"",
         country:"",
@@ -46,27 +50,66 @@ class Mainprofile extends React.Component{
 
    }
 
-   componentDidMount(){
-        var that = this;
-      fetch("/post", {
-        method: "GET",
-        headers : {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-      }).then((response) => response.json())
-      .then((data)=>{
-        // const token = data.token
-        // localStorage.setItem('token', token);
-          for (var i = 0 ; i < data.length ; i++ ){
-          if ( that.props.username === data[i].username){
-             console.log(data[i].id)
 
-         this.setState({id: data[i].id });
+
+ componentDidMount(){
+       var that =  this
+       const token = "token " + localStorage.getItem('token');
+       fetch('auth/user', {
+           method: 'get',
+           headers: {'Authorization': token }
+       })
+       .then(data => data.json())
+
+        .then((data) => {
+          this.setState({username : data.username},()=>{
+                    this.username()
+          })
+         })
+      }
+
+username(){
+ var that = this
+      fetch("post/")
+        .then(data => data.json())
+        .then((data) => {
+          for (var i = 0 ; i < data.length ; i++){
+            // console.log(data[0])
+            console.log(this.state.username)
+            if (data[i].username  == this.state.username){
+               that.setState({
+                username:data[i].username,
+                bio:data[i].bio,
+                url:data[i].url,
+                id:data[i].id
+          })
             }
-        }
-      })
-    }
+          }
+         })
+      }
+
+
+  //  componentDidMount(){
+  //       var that = this;
+  //     fetch("/post", {
+  //       method: "GET",
+  //       headers : {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json"
+  //       },
+  //     }).then((response) => response.json())
+  //     .then((data)=>{
+  //       // const token = data.token
+  //       // localStorage.setItem('token', token);
+  //         for (var i = 0 ; i < data.length ; i++ ){
+  //         if ( that.props.username === data[i].username){
+  //            console.log(data[i].id)
+
+  //        this.setState({id: data[i].id });
+  //           }
+  //       }
+  //     })
+  //   }
 
     handleChange(e) {
     if (e.target.files[0]) {
@@ -149,30 +192,22 @@ class Mainprofile extends React.Component{
     }
 
 
-   // componentDidMount(){
-   //     var that =  this
-   //     const token = localStorage.getItem('token');
-   //     fetch('/workerMainPage', {
-   //         method: 'get',
-   //         headers: {'Authorization': token }
-   //     }).then(function(response) {
-   //         if (response.status == 200) {
-   //             response.json().then((body) => {
-   //                  console.log(body);
-   //                 that.setState({
-   //                     data : body
-   //                 }
-   //                 )
-   //                 console.log(that.state);
+    logout(){
+      localStorage.clear();
+      this.setState({
+        flipped:true
+      })
+      return <Redirect to='http://localhost:3000/SignIn'/>
+    }
 
-   //             });
-   //         } else {
-   //             response.then(() => {
-   //                 console.log("err")
-   //             });
-   //         }
-   //     });
-   // }
+  renderRedirect(){
+    if(this.state.flipped){
+       return <Redirect to = {{
+          pathname:"signIn/"
+        }} />
+    }
+  }
+  
 
    // yourdata(event){
    //     this.setState({ [event.target.name]: event.target.value });
@@ -191,6 +226,7 @@ click(){
     render(){
 
 return(<div id="div">
+        {this.renderRedirect()}
         {!this.state.status ? (
      <div style={{width:"100%"}}>
         <Grid container component="main" style={{height: '100vh'}}>
@@ -201,16 +237,16 @@ return(<div id="div">
                 <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
                   <img id = "a"
                     src={
-                      this.props.url ||
+                      this.state.url ||
                       'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'
                     }
                   alt="uploaded image"
                   style={{objectFit: 'cover',height: '100%'}}
                   />     
                 </Avatar>
-              <h1>{this.props.username}</h1>
-              <h3>{this.props.email}</h3>
-              <p>{this.props.bio}</p>
+              <h1>{this.state.username}</h1>
+              <h3>{this.state.email}</h3>
+              <p>{this.state.bio}</p>
               
               
             
@@ -313,6 +349,15 @@ return(<div id="div">
                 style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px"}}
               >
                 my Bloges
+              </Button>
+               <Button
+                onClick={this.logout.bind(this)}
+                id="button"
+                type="submit"
+                variant="contained"      
+                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px"}}
+              >
+                log out
               </Button>
             </form>
                   <table>

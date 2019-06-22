@@ -16,7 +16,8 @@ class Checklist extends React.Component{
       this.state = {
         items:"",
         list:[],
-        done:false
+        done:false,
+        id:""
       }
   }
   item(e){
@@ -46,22 +47,90 @@ class Checklist extends React.Component{
       
     }).then(function(){
       console.log('get')
-        fetch('TravelList/')
-        .then(data => data.json())
-        .then((data) => { that.setState({ list: data },()=>console.log(that.state.list))
-        that.setState({items:""}) 
-      }); 
+      fetch('TravelList/')
+      .then(data => data.json())
+      .then((data) => {
+        var arr = []
+        for(var i=0;i<data.length;i++){
+        if(data[i].userId === that.state.id){
+          arr.push(data[i])
+        }}
+        that.setState({ list: arr },()=>console.log(that.state.list))
+    });
       }).catch(function(err){
         return (err)
       })
   }
+  // componentDidMount(){
+  //   var that=this;
+  //   fetch('TravelList/')
+  //   .then(data => data.json())
+  //   .then((data) => { that.setState({ list: data },()=>console.log(that.state.list))
+  //  }); 
+  // }
+
+
   componentDidMount(){
-    var that=this;
-    fetch('TravelList/')
+    var that =  this
+    const token = "token " + localStorage.getItem('token');
+    fetch('auth/user', {
+        method: 'get',
+        headers: {'Authorization': token }
+    })
     .then(data => data.json())
-    .then((data) => { that.setState({ list: data },()=>console.log(that.state.list))
-   }); 
-  }
+
+     .then((data) => {
+       this.setState({username : data.username},()=>{
+        var that = this
+        fetch("post/")
+          .then(data => data.json())
+          .then((data) => {
+            for (var i = 0 ; i < data.length ; i++){
+              // console.log(data[0])
+              console.log(this.state.username)
+              if (data[i].username  == this.state.username){
+                 that.setState({
+                  id:data[i].id
+            })
+              }
+            }
+           }).then(()=>{
+            fetch('TravelList/')
+            .then(data => data.json())
+            .then((data) => {
+              console.log(data,data[0].userId,that.state.id)
+              var arr = []
+              for(var i=0;i<data.length;i++){
+              if(data[i].userId === that.state.id){
+                arr.push(data[i])
+              }}
+              that.setState({ list: arr },()=>console.log(that.state.list))
+            that.setState({items:""}) 
+          }); 
+          })
+       })
+      })
+   }
+
+username(){
+var that = this
+   fetch("post/")
+     .then(data => data.json())
+     .then((data) => {
+       for (var i = 0 ; i < data.length ; i++){
+         // console.log(data[0])
+         console.log(this.state.username)
+         if (data[i].username  == this.state.username){
+            that.setState({
+             id:data[i].id
+       })
+         }
+       }
+      })
+   }
+
+
+
   add=()=>{
     var that=this;
     fetch("TravelList/", {
@@ -71,7 +140,7 @@ class Checklist extends React.Component{
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({"text":that.state.items,"done":that.state.done})
+      body: JSON.stringify({"userId":this.state.id,"text":that.state.items,"done":that.state.done})
     }).then((response) => response.json())
     .then((data)=>{
       console.log(data)
@@ -80,7 +149,13 @@ class Checklist extends React.Component{
       console.log('get')
         fetch('TravelList/')
         .then(data => data.json())
-        .then((data) => { that.setState({ list: data },()=>console.log(that.state.list))
+        .then((data) => {
+          var arr = []
+          for(var i=0;i<data.length;i++){
+          if(data[i].userId === that.state.id){
+            arr.push(data[i])
+          }}
+          that.setState({ list: arr },()=>console.log(that.state.list))
         that.setState({items:""}) 
       }); 
       }).catch(function(err){
@@ -121,6 +196,7 @@ class Checklist extends React.Component{
                       return(
                         <div>
                         <br/>
+
                     <li className="ui-state-default">
                         <div className="checkbox">
                             <label style ={{fontSize:'25px',color:'black'}}>

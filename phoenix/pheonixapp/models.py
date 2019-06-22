@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+    
 
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
@@ -9,6 +10,8 @@ class Profile(models.Model):
     password = models.CharField(max_length=100,default='SOME STRING')
     url = models.TextField (max_length=21845,default='SOME STRING')
     bio = models.CharField(max_length=200,default='SOME STRING')
+    # owner = models.ForeignKey(
+    #     User , related_name="myapp", on_delete = models.CASCADE ,null = True)
 
 
 class Hotels(models.Model):
@@ -37,5 +40,9 @@ class Blogs(models.Model):
 
 class List(models.Model):
     id = models.AutoField(primary_key=True)
+    userId= models.ForeignKey(
+        'Profile',
+        on_delete=models.CASCADE, 
+    )
     text = models.CharField(max_length=200)
     done = models.BooleanField(default=False) 
