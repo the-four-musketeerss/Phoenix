@@ -1,5 +1,8 @@
 if u have any error with proxy go check the python server sometimes it's because 
 u need to install something new.
 1- install django-cors-headers
-2- install npm install --save google-maps-react for map 
+2- npm install material-table --save
+3- install npm install --save google-maps-react for map 
+4- npm i react-scroll-up-button
+
 

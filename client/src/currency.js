@@ -18,19 +18,19 @@ class Currancy extends React.Component {
     //      })
     //  }
   
-	render() {
-		return (
-            <div>
-            {Object.keys(this.state.cryptos).map((key) => (
-                <div>
-                <span>{key}</span>
-                <span>{this.state.cryptos[key].USD}</span>
+	// render() {
+	// 	return (
+    //         <div>
+    //         {Object.keys(this.state.cryptos).map((key) => (
+    //             <div>
+    //             <span>{key}</span>
+    //             <span>{this.state.cryptos[key].USD}</span>
 
-                </div>
-            ))}
-            </div>
+    //             </div>
+    //         ))}
+    //         </div>
 
-		);
-	}
+	// 	);
+	// }
 }
 export default Currancy;

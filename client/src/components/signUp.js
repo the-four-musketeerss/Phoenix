@@ -41,6 +41,7 @@ function MadeWithLove() {
           id:"",
           toggleSignIn: false,
           error:""
+          , token:""
         }
    this.handleChange = this.handleChange.bind(this);
 
@@ -85,15 +86,17 @@ function MadeWithLove() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({"username":this.state.username,
-        "email": this.state.email,
-        "password" : this.state.password})
+        "password" : this.state.password,
+        "email":this.state.email
+        })
       }).then((response) => response.json())
       .then((data)=>{
         console.log(data.token)
-        const token = data.token
-        console.log(data.user)
+        console.log("hi")
+        var token = data.token
         localStorage.setItem('token', token);
         that.setState({
+          token:data.token
         }
         ,() => {
           console.log("hi")
@@ -115,7 +118,9 @@ function MadeWithLove() {
         "email": this.state.email,
         "password" : this.state.password,
         "bio" : this.state.bio,
-        "url": this.state.url        } 
+        "url": this.state.url,
+        "token":this.state.token
+        } 
         )
       }).then((response) => {
         console.log(response.status)
@@ -259,14 +264,8 @@ function MadeWithLove() {
         </Container>
               </div>
         ) : (
-          <Mainprofile  
-                      
-            username = {this.state.username} 
-			    	email={this.state.email}
-            bio={this.state.bio}
-					  url={this.state.url}  
-            id = {this.state.id}  
-            
+          <  
+          Redirect to='/Mainprofile'      
           />
         )}
       </div>

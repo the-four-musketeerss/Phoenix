@@ -1,14 +1,16 @@
 import React from 'react';
-
-
-
-
+import "./weathstyle/stylee.css"
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class Form extends React.Component{
     render(){
         return(
             <div>
-            <h2>country : </h2>
+            {/* <h2>country : </h2>
             <h3>{this.props.country}</h3>
             <br/>
             <h2>city : </h2>
@@ -25,7 +27,7 @@ class Form extends React.Component{
             <br/>
             <h2> Wind Speed : </h2>
             <h3>{this.props.windspeed}</h3>
-            <br/>
+            <br/> */}
             </div>
         )
     }
@@ -46,6 +48,8 @@ constructor(props){
         windspeed: undefined
     }
     }
+
+    
 
    data(event) {
     this.setState({[event.target.name]: event.target.value });
@@ -69,7 +73,8 @@ getWeather = async (e) => {
         description: data.weather[0].description,
         error: "",
         toggle:true,
-        windspeed:data.wind.speed
+        windspeed:data.wind.speed,
+        pressure:data.main.pressure
       });
     } else {
       this.setState({
@@ -85,7 +90,8 @@ getWeather = async (e) => {
 
      render(){
       return(
-      <div style={{overflow: 'auto',height:'100vh',backgroundImage:"url('https://www.carbonbrief.org/wp-content/uploads/2016/04/Corbis-RM-Barcelona-in-the-rain.jpg')",backgroundRepeat:'no-repeat',backgroundSize:"cover"}}>
+      <div style={{backgroundImage:"url('https://www.carbonbrief.org/wp-content/uploads/2016/04/Corbis-RM-Barcelona-in-the-rain.jpg')",backgroundRepeat:'no-repeat',backgroundSize:"cover"}}>
+       
     <form style={{ marginLeft:'36%',display: 'flex',flexWrap: 'wrap',marginTop:'10%'}} noValidate autoComplete="off">
       <TextField
         onChange ={this.data.bind(this)}
@@ -118,7 +124,7 @@ getWeather = async (e) => {
 				<div class="weather-left-text">
 					<h4>{this.state.city}</h4>
           <h6 style={{color:"white"}}>{this.state.country}</h6>
-					<h5>{(new Date().toUTCString())}</h5>
+					<h5>Sunday, 12th March </h5>
 				</div>
 				<ul class="report">
 					<li><a href="#">{this.state.temperature}°C</a></li>

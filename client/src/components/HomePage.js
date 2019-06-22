@@ -38,7 +38,8 @@ class HomePage extends React.Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount(e){
+    // e.componentWillReceiveProps()
     fetch("blogs/")
       .then(data => data.json())
       .then((data) => {
