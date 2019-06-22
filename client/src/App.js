@@ -17,6 +17,7 @@ import Currancy from './currency.js'
 import HomePage from './components/HomePage.js'
 
 
+
 class App extends React.Component {
 
 
@@ -85,8 +86,9 @@ class App extends React.Component {
           <Route path="/MapContainer" component={MapContainer} />
  					<Route path="/Weather" component={Weather} />
  					<Route path="/Currancy" component={Currancy} />
+           
         </div>
-
+  
         {/* <footer>
           <div id="footer">
             <div className="container">
