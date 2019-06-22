@@ -6,15 +6,17 @@ import Hotels from './components/Hotels'
 import MapContainer from './components/MapContainer'
 import Profile from './components/Profile'
 import Flights from './components/Flights'
-import SignUp from './signUp.js';
-import SignIn from './signIn.js';
-import Mainprofile from './mainprofile.js';
-import Prof from './Prof.js';
+import SignUp from './components/signUp.js';
+import SignIn from './components/signIn.js';
+import Mainprofile from './components/mainprofile.js';
+import Prof from './components/Prof.js';
+import Weather from './components/weather.js';
+import Currancy from './components/currency.js'
 import Checklist from './components/Checklist';
-import ScrollUpButton from "react-scroll-up-button"; //Add this line Here
+import ScrollUpButton from "react-scroll-up-button";
 
-import Weather from './weather.js';
-import Currancy from './currency.js'
+
+
 import HomePage from './components/HomePage.js'
 
 

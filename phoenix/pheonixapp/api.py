@@ -85,12 +85,17 @@ class SigninAPI(generics.GenericAPIView):
     serializer_class = SigninSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data =request.data)
+        print ("\n\n\nInj Signin API, Serializer:", serializer, "\n\n\n\n")
+        
         serializer.is_valid(raise_exception=True)
+        print ("\n\n\nAfter is valid \n\n\n")
         user = serializer.validated_data
+        print(user, "hi")
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": AuthToken.objects.create(user)
+            "token": AuthToken.objects.create(user)[1]
             })
+
 
 # class SigninAPI(KnoxLoginView):
 #     permission_classes = (permissions.AllowAny,)

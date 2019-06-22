@@ -2,8 +2,8 @@ from rest_framework import serializers
 from pheonixapp.models import Profile
 from pheonixapp.models import Blogs
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
 from pheonixapp.models import Hotels
+from django.contrib.auth import authenticate
 from pheonixapp.models import List
 
 class listSerializer(serializers.ModelSerializer):
@@ -37,8 +37,11 @@ class SignupSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password':{'write_only':True}}
 
     def create(self , validated_data):
+        print(validated_data["password"])
         user = User.objects.create_user(
-        validated_data["username"],validated_data["password"])
+        validated_data["username"],validated_data["email"],
+        validated_data["password"] 
+        )
         return user
 
 # class SigninSerializer(serializers.Serializer):
@@ -54,7 +57,8 @@ class SignupSerializer(serializers.ModelSerializer):
 class SigninSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
-    def validate(self, data):
+    def validate(self,data):
+        print(data["username"] ,data["password"] )        
         user = authenticate(**data)
         if user and user.is_active:
             return user
@@ -65,4 +69,8 @@ class HotelsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotels
         fields = '__all__'
+
+
+
+
 
