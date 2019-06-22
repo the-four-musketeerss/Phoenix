@@ -10,6 +10,7 @@ import SignUp from './signUp.js';
 import SignIn from './signIn.js';
 import Mainprofile from './mainprofile.js';
 import Prof from './Prof.js';
+import Checklist from './components/Checklist';
 import ScrollUpButton from "react-scroll-up-button"; //Add this line Here
 
 import Weather from './weather.js';
@@ -85,6 +86,7 @@ class App extends React.Component {
           <Route path="/MapContainer" component={MapContainer} />
  					<Route path="/Weather" component={Weather} />
  					<Route path="/Currancy" component={Currancy} />
+           <Route path="/TravelList" component={Checklist} />
         </div>
 
         {/* <footer>
