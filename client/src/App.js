@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter , Router, Route } from "react-router-dom";
 import { NavLink }  from 'react-router-dom';
@@ -18,7 +19,6 @@ import ScrollUpButton from "react-scroll-up-button";
 
 
 import HomePage from './components/HomePage.js'
-
 
 
 class App extends React.Component {
@@ -91,7 +91,7 @@ class App extends React.Component {
  					<Route path="/Currancy" component={Currancy} />
            <Route path="/TravelList" component={Checklist} />
         </div>
-  
+
         {/* <footer>
           <div id="footer">
             <div className="container">
