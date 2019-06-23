@@ -1,4 +1,5 @@
 import React from 'react';
+import SelectSearch from 'react-select-search';
 //////////////////////////////////////////inline css////////////////////////////////////////
 const divStyle = {
   padding: '10px',
@@ -44,10 +45,13 @@ class Flights extends React.Component{
           infants:0,
           inboundDate:"",
           outboundDate:"",
-          country:"TR",
+          country:"JO",
           originPlace:"",
           destinationPlace:"",
-          countries:[]
+          countries:[],
+          From:[{PlaceName:"wait"}],
+          To:[],
+
         }
     }
 ///////////////////////////get the list of countries function///////////////////////////////
@@ -139,6 +143,7 @@ class Flights extends React.Component{
       },()=>console.log(this.state))
     }
     from(e){
+      var that=this;
       this.setState({
         originPlace:e.target.value
       },()=>{
@@ -149,7 +154,11 @@ class Flights extends React.Component{
             "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
           }
       }).then(response => response.json())
-      .then(json => {console.log(json)})
+      .then(data => {console.log(data)
+          this.setState({
+            From:data.Places
+          },()=>{console.log(this.state.From,'hey')})
+        })
       })
     }
     to(e){
@@ -170,6 +179,12 @@ class Flights extends React.Component{
       if (this.state.Itineraries.length === 0) {
         return(
             <div style={div}>
+              {/* <div>{this.state.From[0].PlaceName}</div> */}
+              {/* <select>
+                {this.state.From.map(test => 
+                  <option>{test.PlaceName}</option>
+                )}
+              </select> */}
             <label>
             Departure:
             </label>
@@ -196,6 +211,15 @@ class Flights extends React.Component{
             <br/>
             <label>
             From:
+            {/* <SelectSearch options={
+              // this.state.From.map((fr)=>{
+
+              //       name={fr.PlaceName}
+
+              // })
+              [
+                {name: 'English', value: 'en'},]
+            } value="{this.state.originPlace}" onChange={this.from.bind(this)} name="from" placeholder="Choose your destination" /> */}
             </label>
             <input value ={this.state.originPlace}onChange={this.from.bind(this)}></input>
             <br/>

@@ -40,8 +40,7 @@ function MadeWithLove() {
           url:"",
           id:"",
           toggleSignIn: false,
-          error:""
-          , token:""
+          error:"",
         }
    this.handleChange = this.handleChange.bind(this);
 
@@ -85,7 +84,8 @@ function MadeWithLove() {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({"username":this.state.username,
+        body: JSON.stringify({
+        "username":this.state.username,
         "password" : this.state.password,
         "email":this.state.email
         })

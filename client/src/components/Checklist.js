@@ -88,7 +88,7 @@ class Checklist extends React.Component{
             for (var i = 0 ; i < data.length ; i++){
               // console.log(data[0])
               console.log(this.state.username)
-              if (data[i].username  == this.state.username){
+              if (data[i].username  === this.state.username){
                  that.setState({
                   id:data[i].id
             })
@@ -120,7 +120,7 @@ var that = this
        for (var i = 0 ; i < data.length ; i++){
          // console.log(data[0])
          console.log(this.state.username)
-         if (data[i].username  == this.state.username){
+         if (data[i].username  === this.state.username){
             that.setState({
              id:data[i].id
        })
