@@ -4,5 +4,6 @@ u need to install something new.
 2- npm install material-table --save
 3- install npm install --save google-maps-react for map 
 4- npm i react-scroll-up-button
+npm install react-select-search --save
 
 
