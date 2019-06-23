@@ -35,7 +35,8 @@ class HomePage extends React.Component {
       ],
       map:false,
       weather:false,
-      checklist:false
+      checklist:false,
+      currency:false
     };
   }
 
@@ -66,6 +67,11 @@ class HomePage extends React.Component {
         weather:true
       })
     }
+    currency(){
+      this.setState({
+        currency:true
+      })
+    }
     list(){
       this.setState({
         checklist:true
@@ -82,6 +88,12 @@ class HomePage extends React.Component {
         // return <Redirect to ='Profile' />
         return <Redirect to = {{
           pathname:"Weather/"
+        }} />
+      }
+      if(this.state.currency){
+        // return <Redirect to ='Profile' />
+        return <Redirect to = {{
+          pathname:"Currancy"
         }} />
       }
       if(this.state.checklist){
@@ -402,7 +414,7 @@ class HomePage extends React.Component {
                           No need to hurt your head with counting money, this currency converter
                           will make sure all your calculations are intact
                         </p>
-                        <p>
+                        <p onClick={this.currency.bind(this)}>
                           <a href="#">Learn More</a>
                         </p>
                       </div>
