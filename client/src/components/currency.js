@@ -20,7 +20,7 @@ class Currancy extends React.Component {
          const type2 = this.state.type2
          const num1 = this.state.num1
          const num2 = this.state.num2
-         axios.get(`http://www.apilayer.net/api/live?access_key=e73c927d0f245c8eaf7c98cd347a329b&currencies&from=${type1}&to=${type2}&amount=${num1}&format=1`)
+         axios.get(`http://www.apilayer.net/api/live?access_key=c7c6be7d8dfd621f926b81c14f7473c7`)
          .then(res => {
         const cryptos = res.data 
         console.log(cryptos)
@@ -41,11 +41,12 @@ class Currancy extends React.Component {
 	render() {
 		return (
             <div>
-                <input type = "text" name = "USD" onChange ={this.yourdata.bind(this)} />
-                <input type = "text" name = "CAD" onChange ={this.yourdata.bind(this)} />
+                <input type = "text" name = "USD" onChange ={this.yourdata.bind(this)} /> 
+                <input type = "text" name = "CAD" onChange ={this.yourdata.bind(this)} /> 
                 <input type = "text" name = "PLN" onChange ={this.yourdata.bind(this)} />
                 <input type = "text" name = "MXN" onChange ={this.yourdata.bind(this)} />
                 <button onClick={this.Click.bind(this)} >to</button>
+                
             </div>
 
 		);
