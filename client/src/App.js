@@ -92,12 +92,14 @@ class App extends React.Component {
            <Route path="/TravelList" component={Checklist} />
         </div>
 
-        {/* <footer>
-          <div id="footer">
-            <div className="container">
-              <div className="row row-bottom-padded-md">
-                <div className="col-md-6 col-md-offset-3 text-center">
-                  <p className="fh5co-social-icons">
+        <footer>
+          <div>
+            <div>
+              <div>
+                <div  style={{backgroundColor:"#494949",  height: '500px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
+                  <div style={{position:'absolute',textAlign: 'center', clear: 'both',left: '0',bottom: '30', width: '100%'}}>
+                  <div style={{marginTop:'250px'}}>
+                  <p className="fh5co-social-icons" >
                     <a>
                       <i className="icon-twitter2" />
                     </a>
@@ -120,14 +122,18 @@ class App extends React.Component {
                     The Four Musketeers
                     {" "}
                   </p>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </footer> */}
+        </footer>
       </BrowserRouter>
     );
   }
 
 }
 export default App;
+// id="footer"
+// className="row row-bottom-padded-md"
