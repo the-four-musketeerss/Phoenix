@@ -102,12 +102,12 @@ class App extends React.Component {
                   <div class="container">
                   <div class="row row-bottom-padded-md">
                 <div style={{marginTop:"50px"}}>
-                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link" >
-                    <h3 style={{color:'white'}}>About Travel</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>About Travel</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia , there live the blind texts.</p>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3 style={{color:'white'}}>Top Flights Routes</h3>
+                    <h3 style={{color:'white',fontSize:'25px'}}>Top Flights</h3>
                     <ul>
                       <li>Manila flights</li>
                       <li>Dubai flights</li>
@@ -117,7 +117,7 @@ class App extends React.Component {
                     </ul>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3 style={{color:'white'}}>Top Hotels</h3>
+                    <h3 style={{color:'white',fontSize:'25px'}}>Top Hotels</h3>
                     <ul>
                       <li>Boracay Hotel</li>
                       <li>Dubai Hotel</li>
@@ -126,17 +126,16 @@ class App extends React.Component {
                     </ul>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3 style={{color:'white'}}>Interest</h3>
+                    <h3 style={{color:'white',fontSize:'25px'}}>Interest</h3>
                     <ul>
                       <li>Beaches</li>
                       <li>Family Travel</li>
-                      <li>Budget Travel</li>
                       <li>Food &amp; Drink</li>
                       <li>Honeymoon and Romance</li>
                     </ul>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3 style={{color:'white'}}>Best Places</h3>
+                    <h3 style={{color:'white',fontSize:'25px'}}>Best Places</h3>
                     <ul>
                       <li>Boracay Beach</li>
                       <li>Dubai</li>
@@ -145,7 +144,7 @@ class App extends React.Component {
                     </ul>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3 style={{color:'white'}}>Affordable</h3>
+                    <h3 style={{color:'white',fontSize:'25px'}}>Affordable</h3>
                     <ul>
                       <li>Food &amp; Drink</li>
                       <li>Fare Flights</li>
@@ -154,26 +153,26 @@ class App extends React.Component {
                   </div>
                   <div style={{marginTop:'120px',margin:'0 auto'}}>
                   <p className="fh5co-social-icons" >
-                    <a>
+                    <a href= '#'>
                       <i className="icon-twitter2" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-facebook2" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-instagram" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-dribbble2" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-youtube" />
                     </a>
                   </p>
-                  <p>
+                  <p style={{color:'white'}}>
                     Copyright 2019 Phoenix. All Rights
                     Reserved. Made with <i className="icon-heart3" /> by{" "}
-                    The Four Musketeers
+                    PHOENIX Team
                     {" "}
                   </p>
                   </div>
