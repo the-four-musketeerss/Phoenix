@@ -103,9 +103,9 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AWYcbMbFlH',
-        'USER':'AWYcbMbFlH',
-        'PASSWORD': 'wVubfkWxfe',
+        'NAME': 'nPVHOz899u',
+        'USER':'nPVHOz899u',
+        'PASSWORD': 'nlkhXsFGNm',
         'HOST':'remotemysql.com',
         'PORT':'3306',
     }

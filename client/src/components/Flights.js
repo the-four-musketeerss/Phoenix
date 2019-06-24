@@ -1,5 +1,7 @@
 import React from 'react';
 import SelectSearch from 'react-select-search';
+import Select from 'react-select';
+
 //////////////////////////////////////////inline css////////////////////////////////////////
 const divStyle = {
   padding: '10px',
@@ -23,6 +25,12 @@ const font = {
  fontSize:'50px'
 };
   
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
 ////////////////////////////////////////flights component///////////////////////////////////
 class Flights extends React.Component{
     constructor(props){
@@ -51,12 +59,17 @@ class Flights extends React.Component{
           countries:[],
           From:[{PlaceName:"wait"}],
           To:[],
-
+          selectedOption: null,
         }
     }
 ///////////////////////////get the list of countries function///////////////////////////////
     countries(){
 
+    }
+ ////////////////////////////////////////////////////////////////// select search
+    handleChange = selectedOption => {
+      this.setState({ selectedOption });
+      console.log(`Option selected:`, selectedOption);
     }
 /////////////////////////////////////get the tickets function///////////////////////////////    
     search =()=>{
@@ -176,6 +189,8 @@ class Flights extends React.Component{
       })
     }
     render(){
+      const { selectedOption } = this.state;
+
       if (this.state.Itineraries.length === 0) {
         return(
             <div style={div}>
