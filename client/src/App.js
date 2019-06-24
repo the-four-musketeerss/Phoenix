@@ -92,42 +92,103 @@ class App extends React.Component {
            <Route path="/TravelList" component={Checklist} />
         </div>
 
-        {/* <footer>
-          <div id="footer">
-            <div className="container">
-              <div className="row row-bottom-padded-md">
-                <div className="col-md-6 col-md-offset-3 text-center">
-                  <p className="fh5co-social-icons">
-                    <a>
+        <footer>
+          <div>
+            <div>
+              
+              <div>
+                <div  style={{backgroundColor:"#212F3D",marginTop:'75px',height: '500px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
+                  <div style={{position:'absolute',textAlign: 'center', clear: 'both',left: '0',bottom: '30', width: '100%'}}>
+                  <div class="container">
+                  <div class="row row-bottom-padded-md">
+                <div style={{marginTop:"140px"}}>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>About Travel</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia , there live the blind texts.</p>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>Top Flights</h3>
+                    <ul>
+                      <li>Manila flights</li>
+                      <li>Dubai flights</li>
+                      <li>Bangkok flights</li>
+                      <li>Tokyo Flight</li>
+                      <li>New York Flights</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>Top Hotels</h3>
+                    <ul>
+                      <li>Boracay Hotel</li>
+                      <li>Dubai Hotel</li>
+                      <li>Singapore Hotel</li>
+                      <li>Manila Hotel</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>Interest</h3>
+                    <ul>
+                      <li>Beaches</li>
+                      <li>Family Travel</li>
+                      <li>Food &amp; Drink</li>
+                      <li>Honeymoon and Romance</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>Best Places</h3>
+                    <ul>
+                      <li>Boracay Beach</li>
+                      <li>Dubai</li>
+                      <li>Singapore</li>
+                      <li>Hongkong</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3 style={{color:'white',fontSize:'25px'}}>Affordable</h3>
+                    <ul>
+                      <li>Food &amp; Drink</li>
+                      <li>Fare Flights</li>
+                    </ul>
+                  </div>
+                  </div>
+                  <div style={{marginTop:'120px',margin:'0 auto'}}>
+                  <p className="fh5co-social-icons" >
+                    <a href= '#'>
                       <i className="icon-twitter2" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-facebook2" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-instagram" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-dribbble2" />
                     </a>
-                    <a>
+                    <a href= '#'>
                       <i className="icon-youtube" />
                     </a>
                   </p>
-                  <p>
+                  <p style={{color:'white'}}>
                     Copyright 2019 Phoenix. All Rights
                     Reserved. Made with <i className="icon-heart3" /> by{" "}
-                    The Four Musketeers
+                    PHOENIX Team
                     {" "}
                   </p>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </footer> */}
+        </footer>
       </BrowserRouter>
     );
   }
 
 }
 export default App;
+// id="footer"
+// className="row row-bottom-padded-md"

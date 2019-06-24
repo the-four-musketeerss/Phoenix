@@ -296,7 +296,7 @@ return(<div id="div">
                 name="title"
                 autoComplete="title"
                 autoFocus
-                style={{marginLeft:"37%"}}
+                style={{marginLeft:"31%"}}
               />
               <TextField
                 onChange={this.yourdata.bind(this)}
@@ -328,7 +328,7 @@ return(<div id="div">
                 className="Button" 
                 variant="contained" 
                 color="primary"
-                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",marginLeft:"25%",marginRight:"10%",marginTop:"20px"}}
+                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",marginLeft:"15%",marginRight:"10%",marginTop:"20px"}}
               >
                 Add Blog
               </Button>
@@ -355,7 +355,7 @@ return(<div id="div">
                 id="button"
                 type="submit"
                 variant="contained"      
-                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px"}}
+                style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px",marginLeft:'10%'}}
               >
                 log out
               </Button>
@@ -368,24 +368,24 @@ return(<div id="div">
                         style={{
                           margin: '10px',
                           display: 'block',
-                          color: 'red',
+                          color: 'black',
                           fontSize: '20px',
                           borderStyle: 'solid',
                           padding: '15px'
                         }}
                           >
-                        <td style={{ color: '#FA3905', fontSize: '18px' }}>
+                        <span style={{ color: '#FA3905', fontSize: '18px'}}>
                           <strong>Blog title:</strong>
-                        </td>
-                        <p>{blog.title}</p>
-                        <td style={{ color: '#FA3905', fontSize: '18px' }}>
-                          <strong>country:</strong>
-                        </td>
-                        <p>{blog.country}</p>
-                        <td style={{ color: '#FA3905', fontSize: '18px' }}>
-                          <strong>Blog</strong>
-                        </td>
-                          <p>{blog.Blog}</p>
+                        </span>
+                        <span>{blog.title}</span>
+                        <span style={{ color: '#FA3905', fontSize: '18px' ,marginLeft:'20px'}}>
+                          <strong>country:    </strong>
+                        </span>
+                        <span>{blog.country}</span>
+                        <span style={{ color: '#FA3905', fontSize: '18px' ,marginLeft:'20px'}}>
+                          <strong>Blog:  </strong>
+                        </span>
+                          <span>{blog.Blog}</span>
                         </tr>
                       ))}
                     </tbody>
