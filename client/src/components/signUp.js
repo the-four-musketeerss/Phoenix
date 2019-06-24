@@ -147,9 +147,9 @@ function MadeWithLove() {
 
 
      render(){
-      return(<div id="div" style={{marginLeft:'80px',backgroundImage:"url('freeLogo.jpeg')",backgroundRepeat:'no-repeat',backgroundSize:"40% 100%",borderRadius:"36%"}}>
+      return(<div  style={{marginTop:'60px',marginLeft:'80px',backgroundImage:"url('https://image.freepik.com/free-photo/travel-objects-accessories-orange-background-with-passport-camera-plane_39408-1963.jpg')",backgroundRepeat:'no-repeat',backgroundSize:"69% 100%",borderRadius:'10px'}}>
         {!this.state.toggleSignIn ? (
-          <div style={{alignItems: 'center',marginLeft:"60px", marginTop:'theme.spacing(8)'}}>
+          <div style={{alignItems: 'center',marginLeft:"60%", marginTop:'theme.spacing(8)'}}>
               <Container component="main" maxWidth="xs">
          <CssBaseline />
           <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
@@ -160,7 +160,7 @@ function MadeWithLove() {
              style={{ objectFit: 'cover',height: '100%'}}
             />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" style={{color:'red'}}>
               Sign up
             </Typography>
             <form style={{width: '100%',marginTop:'theme.spacing(3)'}} noValidate>
@@ -219,6 +219,7 @@ function MadeWithLove() {
                   <FormControlLabel
                     control={<Checkbox value="allowExtraEmails" color="primary" />}
                     label="I want to receive inspiration, marketing promotions and updates via email."
+                    style={{color:'#F53400'}}
                   />
                 </Grid>
                 <input
