@@ -50,7 +50,7 @@ class App extends React.Component {
       window.location="Currancy"
     }
     if(this.state.value === 'City Guide'){
-       window.location="MapContainer"
+      return window.location="MapContainer"
     }
     
   }
@@ -101,7 +101,19 @@ class App extends React.Component {
                     <li>
                       <NavLink to="/SignUp">Sign Up</NavLink>
                     </li>  
-             
+                    {/* <FormControl  style={{}}>
+                      <InputLabel htmlFor="age-simple">Other</InputLabel>
+                      <Select
+                        inputProps={{
+                          name: 'age',
+                          id: 'age-simple',
+                        }}
+                      >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                  </FormControl> */}
                       <li style={{marginTop:'12px'}}>
                       <select value={this.state.value} onChange={this.trav.bind(this)}>
                         <option value="0">Other</option>
@@ -142,11 +154,11 @@ class App extends React.Component {
             <div>
               
               <div>
-                <div  style={{backgroundColor:"#212F3D",marginTop:'75px',height: '500px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
+                <div  style={{backgroundColor:"#212F3D",height: '350px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
                   <div style={{position:'absolute',textAlign: 'center', clear: 'both',left: '0',bottom: '30', width: '100%'}}>
                   <div class="container">
                   <div class="row row-bottom-padded-md">
-                <div style={{marginTop:"140px"}}>
+                <div style={{marginTop:"50px"}}>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
                     <h3 style={{color:'white',fontSize:'25px'}}>About Travel</h3>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia , there live the blind texts.</p>
