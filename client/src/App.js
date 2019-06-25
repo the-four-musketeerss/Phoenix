@@ -15,26 +15,53 @@ import Weather from './components/weather.js';
 import Currancy from './components/currency.js'
 import Checklist from './components/Checklist';
 import ScrollUpButton from "react-scroll-up-button";
-
-
-
+import { Redirect } from 'react-router-dom'
 import HomePage from './components/HomePage.js'
 
 
 
 class App extends React.Component {
 
+  constructor(props){
+    super(props)
+    this.state ={
+      value:'coconu'
+    }
 
+  }
 
+  trav(event){
+   
+    this.setState({
+      value:event.target.value
+    },()=>{console.log(this.state.value)})
+  }
 
+  renderRedirect(){
+    if(this.state.value === 'Travel list'){
+
+      window.location="TravelList"
+
+    }
+    if(this.state.value === 'Weather'){
+       window.location="Weather"
+    }
+    if(this.state.value === 'Currency Conv'){
+      window.location="Currancy"
+    }
+    if(this.state.value === 'City Guide'){
+       window.location="MapContainer"
+    }
+    
+  }
 
 
   render() {
- 
-
     return (
       <BrowserRouter>
         <div>
+   
+          {this.renderRedirect()}
           <header id="fh5co-header-section" className="sticky-banner">
             <div className="container">
               <div className="nav-header">
@@ -53,6 +80,8 @@ class App extends React.Component {
                  
                 </h1>
                 <nav id="fh5co-menu-wrap" role="navigation">
+             
+
                   <ul className="sf-menu" id="fh5co-primary-menu">
                     <li className="active">
                       <NavLink to="/">Home</NavLink>
@@ -71,10 +100,21 @@ class App extends React.Component {
                     </li>
                     <li>
                       <NavLink to="/SignUp">Sign Up</NavLink>
-                    </li>
-                   
+                    </li>  
+             
+                      <li style={{marginTop:'12px'}}>
+                      <select value={this.state.value} onChange={this.trav.bind(this)}>
+                        <option value="0">Other</option>
+                        <option value="Travel list">Travel list</option>
+                        <option value="Weather">Weather</option>
+                        <option value="Currency Conv">Currency Conv</option>
+                        <option value="City Guide">City Guide</option>
+                      </select>
+                      </li>
                   </ul>
+     
                 </nav>
+                
               </div>
             </div>
           </header>
