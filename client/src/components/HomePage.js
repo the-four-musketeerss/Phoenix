@@ -37,11 +37,18 @@ class HomePage extends React.Component {
       weather:false,
       checklist:false,
       currency:false
+      
     };
   }
 
   componentDidMount(e){
     // e.componentWillReceiveProps()
+  
+      if(!window.location.hash) {
+          window.location = window.location + '#loaded';
+          window.location.reload();
+      }
+  
     fetch("blogs/")
       .then(data => data.json())
       .then((data) => {

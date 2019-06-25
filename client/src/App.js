@@ -21,7 +21,12 @@ import ScrollUpButton from "react-scroll-up-button";
 import HomePage from './components/HomePage.js'
 
 
+
 class App extends React.Component {
+
+
+
+
 
 
   render() {
