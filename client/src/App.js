@@ -116,7 +116,7 @@ class App extends React.Component {
                   </FormControl> */}
                       <li style={{marginTop:'12px'}}>
                       <select value={this.state.value} onChange={this.trav.bind(this)}>
-                        <option value="0">Other</option>
+                        <option value="0">More</option>
                         <option value="Travel list">Travel list</option>
                         <option value="Weather">Weather</option>
                         <option value="Currency Conv">Currency Conv</option>
