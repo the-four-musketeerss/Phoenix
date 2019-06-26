@@ -15,21 +15,53 @@ import Weather from './components/weather.js';
 import Currancy from './components/currency.js'
 import Checklist from './components/Checklist';
 import ScrollUpButton from "react-scroll-up-button";
-
-
-
+import { Redirect } from 'react-router-dom'
 import HomePage from './components/HomePage.js'
+
 
 
 class App extends React.Component {
 
+  constructor(props){
+    super(props)
+    this.state ={
+      value:'coconu'
+    }
+
+  }
+
+  trav(event){
+   
+    this.setState({
+      value:event.target.value
+    },()=>{console.log(this.state.value)})
+  }
+
+  renderRedirect(){
+    if(this.state.value === 'Travel list'){
+
+      window.location="TravelList"
+
+    }
+    if(this.state.value === 'Weather'){
+       window.location="Weather"
+    }
+    if(this.state.value === 'Currency Conv'){
+      window.location="Currancy"
+    }
+    if(this.state.value === 'City Guide'){
+      return window.location="MapContainer"
+    }
+    
+  }
+
 
   render() {
- 
-
     return (
       <BrowserRouter>
         <div>
+   
+          {this.renderRedirect()}
           <header id="fh5co-header-section" className="sticky-banner">
             <div className="container">
               <div className="nav-header">
@@ -48,6 +80,8 @@ class App extends React.Component {
                  
                 </h1>
                 <nav id="fh5co-menu-wrap" role="navigation">
+             
+
                   <ul className="sf-menu" id="fh5co-primary-menu">
                     <li className="active">
                     <a href="/">Home</a>
@@ -66,10 +100,33 @@ class App extends React.Component {
                     </li>
                     <li>
                       <NavLink to="/SignUp">Sign Up</NavLink>
-                    </li>
-                   
+                    </li>  
+                    {/* <FormControl  style={{}}>
+                      <InputLabel htmlFor="age-simple">Other</InputLabel>
+                      <Select
+                        inputProps={{
+                          name: 'age',
+                          id: 'age-simple',
+                        }}
+                      >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                  </FormControl> */}
+                      <li style={{marginTop:'12px'}}>
+                      <select value={this.state.value} onChange={this.trav.bind(this)}>
+                        <option value="0">More</option>
+                        <option value="Travel list">Travel list</option>
+                        <option value="Weather">Weather</option>
+                        <option value="Currency Conv">Currency Conv</option>
+                        <option value="City Guide">City Guide</option>
+                      </select>
+                      </li>
                   </ul>
+     
                 </nav>
+                
               </div>
             </div>
           </header>
@@ -97,11 +154,11 @@ class App extends React.Component {
             <div>
               
               <div>
-                <div  style={{backgroundColor:"#212F3D",marginTop:'75px',height: '500px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
+                <div  style={{backgroundColor:"#212F3D",height: '350px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
                   <div style={{position:'absolute',textAlign: 'center', clear: 'both',left: '0',bottom: '30', width: '100%'}}>
                   <div class="container">
                   <div class="row row-bottom-padded-md">
-                <div style={{marginTop:"140px"}}>
+                <div style={{marginTop:"50px"}}>
                   <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
                     <h3 style={{color:'white',fontSize:'25px'}}>About Travel</h3>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia , there live the blind texts.</p>
