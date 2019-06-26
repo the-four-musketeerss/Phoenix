@@ -87,33 +87,33 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "sss",
-        'USER':'root',
-        'PASSWORD': '',
-        'HOST':'localhost',
-        'PORT':'3325',
-           }
-}
-
-
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'nPVHOz899u',
-#         'USER':'nPVHOz899u',
-#         'PASSWORD': 'nlkhXsFGNm',
-#         'HOST':'remotemysql.com',
-#         'PORT':'3306',
-#         'TEST':{
-#           'ENGINE': 'django.db.backends.mysql',
-#           'NAME':'test_nPVHOz899u'
-#         },
-#     }
+#         'NAME': "sss",
+#         'USER':'root',
+#         'PASSWORD': '',
+#         'HOST':'localhost',
+#         'PORT':'3325',
+#            }
 # }
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nPVHOz899u',
+        'USER':'nPVHOz899u',
+        'PASSWORD': 'nlkhXsFGNm',
+        'HOST':'remotemysql.com',
+        'PORT':'3306',
+        'TEST':{
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME':'test_nPVHOz899u'
+        },
+    }
+}
 
 
 
