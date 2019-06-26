@@ -50,7 +50,7 @@ class App extends React.Component {
                 <nav id="fh5co-menu-wrap" role="navigation">
                   <ul className="sf-menu" id="fh5co-primary-menu">
                     <li className="active">
-                      <NavLink to="/">Home</NavLink>
+                    <a href="/">Home</a>
                     </li>
                     <li>
                       <NavLink to="/flights">Flights</NavLink>

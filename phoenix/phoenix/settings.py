@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'areej',
+#         'NAME': 'aaaaa',
 #         'USER':'root',
 #         'PASSWORD': '',
 #         'HOST':'localhost',
@@ -103,15 +103,30 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AWYcbMbFlH',
-        'USER':'AWYcbMbFlH',
-        'PASSWORD': 'wVubfkWxfe',
+        'NAME': 'nPVHOz899u',
+        'USER':'nPVHOz899u',
+        'PASSWORD': 'nlkhXsFGNm',
         'HOST':'remotemysql.com',
         'PORT':'3306',
+        'TEST':{
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME':'test_nPVHOz899u'
+        },
     }
 }
 
 
+
+
+# Username: nPVHOz899u
+
+# Database name: nPVHOz899u
+
+# Password: nlkhXsFGNm
+
+# Server: remotemysql.com
+
+# Port: 3306
 
 
 REST_KNOX = {
