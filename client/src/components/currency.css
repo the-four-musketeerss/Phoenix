@@ -1,0 +1,42 @@
+.currency {
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  margin: auto;
+  margin-top: 8%;
+  position: relative;
+  width: 550px;
+  height: 450px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 24px;
+  font-weight: bold;
+  color: #09C;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+ 
+  background-image:url('https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rl1tgEw1zj9yaz0yt/storyblocks-money-and-coins-in-mini-shopping-cart-or-trolley-on-beige-color-background-for-spending-plan-investment-business-and-finance-concept_BVTJOlwvX_SB_PM.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+
+} 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #09C;
+    opacity: 1; /* Firefox */
+  }
+.maindiv{
+    background-image:url('https://www.featurepics.com/StockImage/20111119/sack-with-money-stock-photo-2050281.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+    height:100vh
+}
+

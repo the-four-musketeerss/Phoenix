@@ -1,4 +1,7 @@
 import React from 'react';
+import SelectSearch from 'react-select-search';
+import Select from 'react-select';
+
 //////////////////////////////////////////inline css////////////////////////////////////////
 const divStyle = {
   padding: '10px',
@@ -22,6 +25,12 @@ const font = {
  fontSize:'50px'
 };
   
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
 ////////////////////////////////////////flights component///////////////////////////////////
 class Flights extends React.Component{
     constructor(props){
@@ -44,15 +53,23 @@ class Flights extends React.Component{
           infants:0,
           inboundDate:"",
           outboundDate:"",
-          country:"US",
-          originPlace:"SFO-sky",
-          destinationPlace:"LHR-sky",
-          countries:[]
+          country:"JO",
+          originPlace:"",
+          destinationPlace:"",
+          countries:[],
+          From:[{PlaceName:"wait"}],
+          To:[],
+          selectedOption: null,
         }
     }
 ///////////////////////////get the list of countries function///////////////////////////////
     countries(){
 
+    }
+ ////////////////////////////////////////////////////////////////// select search
+    handleChange = selectedOption => {
+      this.setState({ selectedOption });
+      console.log(`Option selected:`, selectedOption);
     }
 /////////////////////////////////////get the tickets function///////////////////////////////    
     search =()=>{
@@ -138,20 +155,51 @@ class Flights extends React.Component{
         infants:e.target.value
       },()=>console.log(this.state))
     }
+    from(e){
+      var that=this;
+      this.setState({
+        originPlace:e.target.value
+      },()=>{
+        fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/USD/en-US/?query="+this.state.originPlace,{
+          method: "GET",
+          headers : {
+            "X-RapidAPI-Key":"dd3b215dacmsh0fc900bebe41f9fp1964ccjsn2a45d2ede313",
+            "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+          }
+      }).then(response => response.json())
+      .then(data => {console.log(data)
+          this.setState({
+            From:data.Places
+          },()=>{console.log(this.state.From,'hey')})
+        })
+      })
+    }
+    to(e){
+      this.setState({
+        destinationPlace:e.target.value
+      },()=>{
+        fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/USD/en-US/?query="+this.state.destinationPlace,{
+          method: "GET",
+          headers : {
+            "X-RapidAPI-Key":"dd3b215dacmsh0fc900bebe41f9fp1964ccjsn2a45d2ede313",
+            "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+          }
+      }).then(response => response.json())
+      .then(json => {console.log(json)})
+      })
+    }
     render(){
+      const { selectedOption } = this.state;
+
       if (this.state.Itineraries.length === 0) {
         return(
             <div style={div}>
-            <label>country:</label>
-            <input></input>
-            <br/>
-            <br/>
-            <label>
-            destination:
-            </label>
-            <input></input>
-            <br/>
-            <br/>
+              {/* <div>{this.state.From[0].PlaceName}</div> */}
+              {/* <select>
+                {this.state.From.map(test => 
+                  <option>{test.PlaceName}</option>
+                )}
+              </select> */}
             <label>
             Departure:
             </label>
@@ -177,9 +225,24 @@ class Flights extends React.Component{
             <br/>
             <br/>
             <label>
-            originPlace:
+            From:
+            {/* <SelectSearch options={
+              // this.state.From.map((fr)=>{
+
+              //       name={fr.PlaceName}
+
+              // })
+              [
+                {name: 'English', value: 'en'},]
+            } value="{this.state.originPlace}" onChange={this.from.bind(this)} name="from" placeholder="Choose your destination" /> */}
             </label>
-            <input></input>
+            <input value ={this.state.originPlace}onChange={this.from.bind(this)}></input>
+            <br/>
+            <br/>
+            <label>
+            TO:
+            </label>
+            <input value ={this.state.destinationPlace}onChange={this.to.bind(this)}></input>
             <br/>
             <br/>
             <label>

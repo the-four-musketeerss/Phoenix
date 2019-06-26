@@ -34,7 +34,9 @@ class HomePage extends React.Component {
         }
       ],
       map:false,
-      weather:false
+      weather:false,
+      checklist:false,
+      currency:false
     };
   }
 
@@ -65,6 +67,16 @@ class HomePage extends React.Component {
         weather:true
       })
     }
+    currency(){
+      this.setState({
+        currency:true
+      })
+    }
+    list(){
+      this.setState({
+        checklist:true
+      })
+    }
     renderRedirect = () =>{
       if(this.state.map){
         // return <Redirect to ='Profile' />
@@ -76,6 +88,18 @@ class HomePage extends React.Component {
         // return <Redirect to ='Profile' />
         return <Redirect to = {{
           pathname:"Weather/"
+        }} />
+      }
+      if(this.state.currency){
+        // return <Redirect to ='Profile' />
+        return <Redirect to = {{
+          pathname:"Currancy"
+        }} />
+      }
+      if(this.state.checklist){
+        // return <Redirect to ='Profile' />
+        return <Redirect to = {{
+          pathname:"TravelList"
         }} />
       }
     }
@@ -355,7 +379,7 @@ class HomePage extends React.Component {
                           Don't you just hate it when you forget to pack something for your trip,
                           Use our travel list to help you make sure you are all set
                         </p>
-                        <p>
+                        <p onClick={this.list.bind(this)}>
                           <a href="#">Learn More</a>
                         </p>
                       </div>
@@ -390,7 +414,7 @@ class HomePage extends React.Component {
                           No need to hurt your head with counting money, this currency converter
                           will make sure all your calculations are intact
                         </p>
-                        <p>
+                        <p onClick={this.currency.bind(this)}>
                           <a href="#">Learn More</a>
                         </p>
                       </div>
