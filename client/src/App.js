@@ -52,6 +52,13 @@ class App extends React.Component {
     if(this.state.value === 'City Guide'){
       return window.location="MapContainer"
     }
+    if(this.state.value === 'Profile'){
+      if(localStorage.getItem('token')){
+      return window.location = 'Mainprofile'
+      }else{
+        return window.location = 'SignIn'
+      }
+    }
     
   }
 
@@ -100,7 +107,7 @@ class App extends React.Component {
                     </li>
                     <li>
                       <NavLink to="/SignUp">Sign Up</NavLink>
-                    </li>  
+                    </li> 
                     {/* <FormControl  style={{}}>
                       <InputLabel htmlFor="age-simple">Other</InputLabel>
                       <Select
@@ -121,6 +128,7 @@ class App extends React.Component {
                         <option value="Weather">Weather</option>
                         <option value="Currency Conv">Currency Conv</option>
                         <option value="City Guide">City Guide</option>
+                        <option value='Profile'>MyProfile</option>
                       </select>
                       </li>
                   </ul>
