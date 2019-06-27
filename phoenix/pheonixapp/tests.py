@@ -35,7 +35,8 @@ class ProfileTestCase(TestCase):
         areej = Profile.objects.get(email="areej@yahoo.com")
         self.assertEqual(areej.url,"https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
     
-    
+
+
 class UserTestCase(TestCase):
     def setUp(self):
         User.objects.create(username="areej" , email="areej@yahoo.com",password="areej")
@@ -85,15 +86,42 @@ class HotelsTestCase(TestCase):
 
 
 
-# class ListTestCase(TestCase):
-#     def setUp(self):
-#         List.objects.create(text="any thing",done=True)
-#     def test_List_have_text(self):
-#         list = List.objects.get(text = "any thing")
-#         self.assertEqual(list.text , "any thing")
-#     def test_List_have_done(self):
-#         list = List.objects.get(text = "any thing")
-#         self.assertEqual(list.done , True)
+
+
+
+class BlogsTestCase(TestCase):
+    def setUp(self):
+        user =  Profile.objects.create(username="areej" , email="areej@yahoo.com",password="areej",bio="my name is areejAli",url="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+        Blogs.objects.create(ProfileId = user ,title="any thing" ,country="amman",Blog="my blog",image="https://ntmresizer.azureedge.net/sized/358/284/www.cfmedia.vfmleonardo.com/imageRepo/6/0/100/1/34/ammsi-exterior-3061-hor-clsc_S.jpg")
+
+    def test_Blogs_have_name(self):
+        Blog = Blogs.objects.get(title="any thing")
+        self.assertEqual(Blog.title, "any thing")
+    def test_Blogs_have_country(self):
+        Blog = Blogs.objects.get(title="any thing")
+        self.assertEqual(Blog.country, "amman")
+    def test_Blogs_have_phone(self):
+        Blog = Blogs.objects.get(title="any thing")
+        self.assertEqual(Blog.Blog,"my blog")
+    def test_Blogs_have_phone(self):
+        Blog = Blogs.objects.get(title="any thing")
+        self.assertEqual(Blog.image,"https://ntmresizer.azureedge.net/sized/358/284/www.cfmedia.vfmleonardo.com/imageRepo/6/0/100/1/34/ammsi-exterior-3061-hor-clsc_S.jpg")
+    
+
+
+
+
+class ListTestCase(TestCase):
+    def setUp(self):
+        user =  Profile.objects.create(username="areej" , email="areej@yahoo.com",password="areej",bio="my name is areejAli",url="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+        List.objects.create(userId=user,text="any thing",done=True)
+       
+    def test_List_have_text(self):
+        list = List.objects.get(text = "any thing")
+        self.assertEqual(list.text , "any thing")
+    def test_List_have_done(self):
+        list = List.objects.get(text = "any thing")
+        self.assertEqual(list.done , True)
 
 
 
@@ -146,14 +174,24 @@ class RequestsTest(TestCase):
         self.assertEqual(response.status_code, 201)
     
 
-    def test_getTrave(self):
+    def test_getTravel(self):
         self.client = Client()
         response = self.client.get('/TravelList/')
         self.assertEqual(response.status_code, 200)
     
+    def test_postTravel(self):
+        user =  Profile.objects.create(username="areej" , email="areej@yahoo.com",password="areej",bio="my name is areejAli",url="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+        self.client = Client()
+        response = self.client.post('/TravelList/',{ "userId": user.id,'text': 'any thing',"done":True})
+        self.assertEqual(response.status_code, 200)
 
-    # def test_postTrave(self):
-    #     self.client = Client()
-    #     response = self.client.post('/TravelList/',{ "userId":"1",'text': 'any thing',"done":True})
-    #     self.assertEqual(response.status_code, 200)
+    def test_postblog(self):
+        user =  Profile.objects.create(username="areej" , email="areej@yahoo.com",password="areej",bio="my name is areejAli",url="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+        self.client = Client()
+        response = self.client.post('/blogs/',{"ProfileId" : user.id ,"title":"any thing" ,"country":"amman","Blog":"my blog","image":"https://ntmresizer.azureedge.net/sized/358/284/www.cfmedia.vfmleonardo.com/imageRepo/6/0/100/1/34/ammsi-exterior-3061-hor-clsc_S.jpg"})
+        self.assertEqual(response.status_code, 201)
+
+
+ 
+
     
