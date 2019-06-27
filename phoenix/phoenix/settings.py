@@ -16,6 +16,7 @@ date = datetime.date.today()
 datetime.date(2013, 11, 12)
 
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'phoenix.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'areej',
+#         'NAME': "sss",
 #         'USER':'root',
 #         'PASSWORD': '',
 #         'HOST':'localhost',
@@ -108,10 +109,25 @@ DATABASES = {
         'PASSWORD': 'nlkhXsFGNm',
         'HOST':'remotemysql.com',
         'PORT':'3306',
+        'TEST':{
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME':'test_nPVHOz899u'
+        },
     }
 }
 
 
+
+
+# Username: nPVHOz899u
+
+# Database name: nPVHOz899u
+
+# Password: nlkhXsFGNm
+
+# Server: remotemysql.com
+
+# Port: 3306
 
 
 REST_KNOX = {
@@ -136,17 +152,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-JWT_AUTH = {
-    # how long the original token is valid for
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=364),
-
-    # allow refreshing of tokens
-    'JWT_ALLOW_REFRESH': True,
-
-    # this is the maximum time AFTER the token was issued that
-    # it can be refreshed.  exprired tokens can't be refreshed.
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
-}
 
 
 # Internationalization
