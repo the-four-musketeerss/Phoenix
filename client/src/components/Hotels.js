@@ -1,9 +1,10 @@
+// ipmort what i want from material - ui for design 
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-
+// Hotel class 
 class Hotels extends React.Component{
     constructor(props){
           super(props);
@@ -12,13 +13,13 @@ class Hotels extends React.Component{
           search:""
         }
     }
-
+  // i want to save what i write inside seach bar in the search to use it later when i want to bring the resultes
     Search(event){
       this.setState({
         search : event.target.value
       })
     }
-  
+  // to bring the data for hotels from database i use fetch and i save the data inside hotels array 
     componentDidMount(){
       fetch("hotels/")
         .then(data => data.json())
@@ -31,13 +32,14 @@ class Hotels extends React.Component{
     }
   
     render(){
+      // to filter the hotels depends on the search bar input
       let filtered =this.state.hotels.filter(
         (hotel) =>{
           return hotel.country.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
         }
       )
       return(<div>
-
+            {/* search bar using material - ui for style */}
               <form class="form-inline" style={{display: 'flex',flexWrap: 'wrap',}}>
                     <TextField
                       id="outlined-search"
@@ -49,8 +51,10 @@ class Hotels extends React.Component{
                       onChange= {this.Search.bind(this)}
                     />
               </form>
+              {/* to iterate ove the array and show all hotels inside this array  with material-ui style*/}
               {filtered.map(hotel =>
         <div>
+              {/* the main idea from span class fa fa-star to put the stars like rating   */}
              <div className="card" style={{height:"40rem" ,width: "21rem" ,float:"left",margin:"10px"}}>
                 <img className="card-img-top" src={hotel.image} alt="Card image cap" height="200" width="42"/>
                 <div className="card-body">
