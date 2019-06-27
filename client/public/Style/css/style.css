@@ -23,6 +23,11 @@ body {
   color: #848484;
   font-weight: 300;
   overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
+    min-height: 100vh;
+  
+
 }
 body.fh5co-offcanvas {
   overflow: hidden;
@@ -1679,6 +1684,9 @@ div.cs-select span {
 #footer {
   background: #393e46;
   padding: 60px 0 40px;
+  position: absolute;
+  right: 0;bottom:0;left:0;
+  
 }
 #footer p {
   color: rgba(255, 255, 255, 0.7);
