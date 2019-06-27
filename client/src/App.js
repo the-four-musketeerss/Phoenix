@@ -91,7 +91,7 @@ class App extends React.Component {
 
                   <ul className="sf-menu" id="fh5co-primary-menu">
                     <li className="active">
-                      <NavLink to="/">Home</NavLink>
+                    <a href="/">Home</a>
                     </li>
                     <li>
                       <NavLink to="/flights">Flights</NavLink>

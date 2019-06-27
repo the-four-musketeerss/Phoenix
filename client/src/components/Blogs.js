@@ -78,6 +78,7 @@ class Blogs extends React.Component{
         // return <Redirect to ='Profile' />
         return <Redirect to = {{
           pathname:"Profile/",
+          username:this.state.username,
           state:{newbook:this.state.newbook}
         }} />
       }
@@ -141,9 +142,7 @@ class Blogs extends React.Component{
                     </CardActions>
                   </Card>
                 </div>
-                )}
-             
-                
+                )}                
         </div>
     )}
   }
