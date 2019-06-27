@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from "axios";
+import './currency.css'
+import TextField from '@material-ui/core/TextField';
 
 class Currancy extends React.Component {
     constructor(props){
@@ -13,7 +15,8 @@ class Currancy extends React.Component {
      yourdata(event){
         this.setState({[event.target.name]: event.target.value });
      }
-      Click(){
+      Click(e){
+        e.preventDefault();
          const that = this
          const value = this.state.value
          const num = this.state.num
@@ -54,14 +57,21 @@ class Currancy extends React.Component {
 			return <option key={option}>{option}</option>;
 		});
 		return (
-            <div>
-                <input type = "number" name = "num" onChange ={this.yourdata.bind(this)} />
-                <select name="value" onChange ={this.yourdata.bind(this)}>
-                    {elm}
-						</select>
-                <button onClick={this.Click.bind(this)} >to</button>       
-                <br/>
-                <h1 style={{color:'black',fontFamily:'cursive',fontSize:'50px'}}>{this.state.total}</h1>         
+            <div className="maindiv">
+                <form  className="currency">
+                    <div style={{marginTop:'100px',marginLeft:'27%'}}>
+                        <input style ={{width: '30%', height: '40px',borderRadius:'10px'}} type = "number" placeholder="value in $" name = "num" onChange ={this.yourdata.bind(this)} />
+                   
+                        <span style={{fontSize:"20px",margin:'10px'}}>to</span> 
+                        <select style ={{width: '30%', height: '40px'}} name="value" onChange ={this.yourdata.bind(this)}>
+                            {elm}
+                        </select> 
+                        <button style={{marginLeft:'20px',borderRadius:'100%',width:'45px',height:'45px'}}onClick={this.Click.bind(this)} >C</button>       
+
+                       
+                    </div>
+                    <h1 style={{color:'#09C',fontFamily:'cursive',fontSize:'50px'}}>{this.state.total}</h1> 
+                </form>
             </div>
 
 		);
