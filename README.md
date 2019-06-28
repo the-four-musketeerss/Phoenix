@@ -21,23 +21,23 @@ Contributing
 Node 10.15.3
 
 ## Built With
-[ReactJS](https://reactjs.org/)
-[Python](https://www.python.org/) 
-[Django](https://www.djangoproject.com/)
-[MySQL](https://www.mysql.com/)
-[BootStrap](https://getbootstrap.com/)
-[MaterialUI](https://material-ui.com/)
+*[ReactJS](https://reactjs.org/)
+*[Python](https://www.python.org/) 
+*[Django](https://www.djangoproject.com/)
+*[MySQL](https://www.mysql.com/)
+*[BootStrap](https://getbootstrap.com/)
+*[MaterialUI](https://material-ui.com/)
 
 ## Development
 ### Installing Dependencies
 From within the root directory:
 ```
-1- pipenv shell
-2- cd to pheonix
-3- python manage.py runserver
-4- cd to client
-5- sudo npm install 
-6- npm start 
+1. pipenv shell
+2. cd to pheonix
+3. python manage.py runserver
+4. cd to client
+5. sudo npm install 
+6. npm start 
 ```
 
 Roadmap
