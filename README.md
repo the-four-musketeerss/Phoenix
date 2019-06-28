@@ -2,23 +2,21 @@
 >Trying to find all what you need for your adventure can be so hard, but with Pheonix we 
 >bring everything you need for your traveling experience in one place.
 
+## Table of Contents
+1. Team
+2. Requirements
+3. Built With
+4. Development
+5. Installing Dependencies
+6. Press-Release
+
 ## Team 
 **Product Owner:** Basma Al-Tayeh
 **Scrum Master:** Iman Elokour
 **Development Team Members:** Oday Abueid, Areej Obaid
 
-## Table of Contents
-Requirements
-Built With
-Development
-Installing Dependencies
-Tasks
-Team
-Contributing
-
-
 ## Requirements
-Node 10.15.3
+* Node 10.15.3
 
 ## Built With
 * [ReactJS](https://reactjs.org/)
@@ -40,8 +38,5 @@ From within the root directory:
 6. npm start 
 ```
 
-Roadmap
-View the project roadmap here
-
-Contributing
-See CONTRIBUTING.md for contribution guidelines.
+## Press-Release
+View the project press-release here
