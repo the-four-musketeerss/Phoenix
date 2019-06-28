@@ -6,12 +6,12 @@
 ![alt text](/readme.png)
 
 ## Table of Contents
-1. [Team]
-2. [Requirements]
-3. [Built With]
-4. [Development]
-5. [Installing Dependencies]
-6. [Press-Release]
+1. [Team](#Team)
+2. [Requirements](#Requirements)
+3. [Built With](#Built-With)
+4. [Development](#Development)
+5. [Installing Dependencies](#Installing-Dependencies)
+6. [Press-Release](#Press-Release)
 
 ## Team 
 * **Product Owner:** Basma Al-Tayeh
