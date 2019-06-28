@@ -2,12 +2,12 @@
 >Trying to find all what you need for your adventure can be so hard, but with Pheonix we 
 >bring everything you need for your traveling experience in one place.
 
-##Team 
+## Team 
 **Product Owner:** Basma Al-Tayeh
 **Scrum Master:** Iman Elokour
 **Development Team Members:** Oday Abueid, Areej Obaid
 
-##Table of Contents
+## Table of Contents
 Requirements
 Built With
 Development
@@ -17,10 +17,10 @@ Team
 Contributing
 
 
-##Requirements
+## Requirements
 Node 10.15.3
 
-##Built With
+## Built With
 [ReactJS](https://reactjs.org/)
 [Python](https://www.python.org/) 
 [Django](https://www.djangoproject.com/)
@@ -28,8 +28,8 @@ Node 10.15.3
 [BootStrap](https://getbootstrap.com/)
 [MaterialUI](https://material-ui.com/)
 
-##Development
-###Installing Dependencies
+## Development
+### Installing Dependencies
 From within the root directory:
 ```
 1- pipenv shell
