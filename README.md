@@ -21,12 +21,12 @@ Contributing
 Node 10.15.3
 
 ## Built With
-*[ReactJS](https://reactjs.org/)
-*[Python](https://www.python.org/) 
-*[Django](https://www.djangoproject.com/)
-*[MySQL](https://www.mysql.com/)
-*[BootStrap](https://getbootstrap.com/)
-*[MaterialUI](https://material-ui.com/)
+* [ReactJS](https://reactjs.org/)
+* [Python](https://www.python.org/) 
+* [Django](https://www.djangoproject.com/)
+* [MySQL](https://www.mysql.com/)
+* [BootStrap](https://getbootstrap.com/)
+* [MaterialUI](https://material-ui.com/)
 
 ## Development
 ### Installing Dependencies
