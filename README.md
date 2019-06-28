@@ -1,6 +1,7 @@
 # Phoenix
 >Trying to find all what you need for your adventure can be so hard, but with Pheonix we 
 >bring everything you need for your traveling experience in one place.
+![alt text](/readme.png)
 
 ## Table of Contents
 1. Team
@@ -11,9 +12,9 @@
 6. Press-Release
 
 ## Team 
-**Product Owner:** Basma Al-Tayeh
-**Scrum Master:** Iman Elokour
-**Development Team Members:** Oday Abueid, Areej Obaid
+* **Product Owner:** Basma Al-Tayeh
+* **Scrum Master:** Iman Elokour
+* **Development Team Members:** Oday Abueid, Areej Obaid
 
 ## Requirements
 * Node 10.15.3
@@ -39,4 +40,6 @@ From within the root directory:
 ```
 
 ## Press-Release
-View the project press-release here
+View the project press-release [here](/_PRESS-RELEASE.md)
+
+
