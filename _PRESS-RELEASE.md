@@ -1,18 +1,18 @@
 # Phoenix
-## Heading
->Traveling App
 
-## Sub-Heading
->This application has machine learning services, if you have a decision that needs public way of thinking, it's really easy to use google surveys, but, it's way accurate to use machine learning with them and use Ask'em as a profissional app for it.
+## Traveling App
+
+### This application is designed for adventure lovers to wrap their traveling experience in one place
+
 
 ## Summary
->If you want to pay alot of money on a decision that you made, you have firstly to know what people think if it's worth it or not, so dont waste money and Ask'em first.
+>In this app you can find everything that you need for traveling starting with booking flights and hotels. In addition to documenting your trips on your own profile and reading others blogs. Also, don't forget about the small details like knowing the weather for the country you're traveling to and creating your own packing list so you won't forget anything, you can also convert money with our currency converter. Finally, we have a map so that you can never get lost in a foriegn land, and in the furture it will be upgraded to a detailed city guide.
 
 ## Problem
->Marketing is poor in jordan, really poor, no plans no real data. It's usually random commercial announcements and so on.
+>Finding others experiences and booking flights and more in one place.
 
 ## Solution
->However, with Ask'em now you can know if your plans are successfull before even apply thme.
+>It combines all the things you need for traveling in the same website.
 
 ## How to Get Started
->If you know how to deal with our app machine learning go and add survey freely, if not, contact admin to make you one.
+>It's a piece of cake, just go to our website, create an account and start browsing. 
