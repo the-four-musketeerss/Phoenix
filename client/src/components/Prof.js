@@ -57,9 +57,9 @@ class Prof extends React.Component{
               />
               <div className="overlay">
                 <div className="text">
-                  <h1 style={{color:'white',fontFamily:'cursive',fontSize:'50px'}}>Name:{this.state.books.username}</h1>
-                  <h2 style={{color:'white',fontFamily:'cursive',fontSize:'40px'}}>Email:{this.state.books.email}</h2>
-                  <h3 style={{color:'white',fontFamily:'cursive',fontSize:'50px'}}>Bio:{this.state.books.bio}</h3>
+                  <h1 style={{color:'white',fontFamily:'cursive',fontSize:'30px'}}>Name:{this.state.books.username}</h1>
+                  <h2 style={{marginLeft:'30%',color:'white',fontFamily:'cursive',fontSize:'30px'}}>Email:{this.state.books.email}</h2>
+                  <h3 style={{marginLeft:'20%',color:'white',fontFamily:'cursive',fontSize:'30px'}}>Bio:{this.state.books.bio}</h3>
                 </div>
               </div>
               </div>
