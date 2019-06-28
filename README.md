@@ -12,6 +12,7 @@
 4. [Development](#Development)
 5. [Installing Dependencies](#Installing-Dependencies)
 6. [Press-Release](#Press-Release)
+7. [Demo](#Demo)
 
 ## Team 
 * **Product Owner:** Basma Al-Tayeh
@@ -43,5 +44,8 @@ From within the root directory:
 
 ## Press-Release
 View the project press-release [here](/_PRESS-RELEASE.md)
+
+## Demo
+
 
 
