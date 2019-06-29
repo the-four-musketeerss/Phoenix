@@ -59,25 +59,42 @@ class Currancy extends React.Component {
 		return (
             <div className="maindiv">
                 <form  className="currency">
+                    <div style={{float:"left",marginTop: '68px'}}>
                     <div style={{marginTop:'100px',marginLeft:'27%'}}>
-                        <input style ={{width: '30%', height: '40px',borderRadius:'10px'}} type = "number" placeholder="amount" name = "num" onChange ={this.yourdata.bind(this)} />
+                        <input style ={{width: '119%', height: '40px'}} type = "number" placeholder="amount" name = "num" onChange ={this.yourdata.bind(this)} />
+                   <br/>
                    <br/>
                         {/* <span style={{fontSize:"20px",margin:'10px'}}></span>  */}
-                        <select style ={{width: '30%', height: '40px'}} name="value" onChange ={this.yourdata.bind(this)}>
+                        <select style ={{width: '119%', height: '40px'}} name="value" onChange ={this.yourdata.bind(this)}>
                             {elm}
                         </select> 
-                        {/* <button style={{marginLeft:'20px',borderRadius:'100%',width:'45px',height:'45px'}}onClick={this.Click.bind(this)} >C</button>        */}
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                        
+                        
 
                        
+                    </div>
+                    <button style={{marginLeft: "100%",width:'179px',height:'45px'}}onClick={this.Click.bind(this)} >CONVERT</button>       
+
                     </div>
                     <div>
                     <h1 style={{
     color: "rgb(0, 153, 204)",
     float: "right",
     fontSize: "35px",
-    width: "116px",
+    width: "144px",
     height: "40px",
-    background: "white"}}>{this.state.total}</h1> 
+    marginTop:"36.8%",
+    marginRight:"13%",
+    background: "white"}}>{Math.round(this.state.total*Math.pow(10, 2 || 0)/Math.pow(10, 2 || 0))}</h1> 
+                    </div>
+                    <div>
+                        <h1>
+                            convert to USD
+                        </h1>
                     </div>
                 </form>
             </div>
