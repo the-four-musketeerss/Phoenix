@@ -12,6 +12,20 @@ class listSerializer(serializers.ModelSerializer):
         model = List
         fields='__all__'
 
+class putSerializer(serializers.Serializer):
+    url = serializers.CharField (max_length=21845,default='SOME STRING')
+    bio = serializers.CharField(max_length=200,default='SOME STRING')
+
+
+    def update(self, instance, validated_data):
+        instance.url = validated_data.get('url', instance.url)
+        instance.bio = validated_data.get('bio', instance.bio)
+
+        instance.save()
+        return instance
+
+
+
 
 class postSerializer(serializers.ModelSerializer):
     class Meta:
