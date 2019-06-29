@@ -44,8 +44,8 @@ class Mainprofile extends React.Component{
         text:"",
         blogs:[],
         flipped: false,
-        image1:null
-
+        image1:null,
+        bio1:""
        }
         this.handleChange = this.handleChange.bind(this);
         this.handleChange1 = this.handleChange1.bind(this);
@@ -151,7 +151,7 @@ username(){
        // const token = localStorage.getItem('token');
        var profile ={
         "url" : this.state.url,
-        "bio":this.state.bio
+        "bio":this.state.bio1
        }
        console.log( {"profile":profile})
     
@@ -167,7 +167,8 @@ username(){
         })
       }).then((response) => response.json())
       .then((data)=>{
-    console.log("done")
+        this.setState({bio:this.state.bio1
+      })
             })
 
   }
@@ -269,7 +270,7 @@ return(<div id="div">
         <Grid item xs={false} sm={4} md={7}  />
         <Grid item xs={24} sm={16} md={10} component={Paper} elevation={12} square>
           <div>
-          <input type = "text" name = "bio"   onChange={this.yourdata.bind(this)}/>
+          <input type = "text" name = "bio1"   onChange={this.yourdata.bind(this)}/>
           <Button onClick={this.update.bind(this)}>update</Button>
             <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
                 <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
