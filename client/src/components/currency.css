@@ -1,7 +1,7 @@
 .currency {
-  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
-  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  /* background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px); */
+  /* background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px); */
+  /* background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px); */
   margin: auto;
   margin-top: 8%;
   position: relative;
@@ -16,15 +16,17 @@
   text-decoration: none;
   border-radius: 10px;
   padding: 10px;
-  border: 1px solid #999;
-  border: inset 1px solid #333;
-  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  /* border: 1px solid #999; */
+  /* border: inset 1px solid #333; */
+  /* -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); */
+  /* -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); */
+  /* box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); */
  
-  background-image:url('https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rl1tgEw1zj9yaz0yt/storyblocks-money-and-coins-in-mini-shopping-cart-or-trolley-on-beige-color-background-for-spending-plan-investment-business-and-finance-concept_BVTJOlwvX_SB_PM.jpg');
+  /* background-image:url('https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rl1tgEw1zj9yaz0yt/storyblocks-money-and-coins-in-mini-shopping-cart-or-trolley-on-beige-color-background-for-spending-plan-investment-business-and-finance-concept_BVTJOlwvX_SB_PM.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: rgba(0,0,0,0.75);
+  box-shadow :0 0 0.8823em 0 rgba(0,0,0,0.5)
   
 
 } 
@@ -33,7 +35,7 @@
     opacity: 1; /* Firefox */
   }
 .maindiv{
-    background-image:url('https://www.featurepics.com/StockImage/20111119/sack-with-money-stock-photo-2050281.jpg');
+    background-image:url('https://images.unsplash.com/photo-1502920514313-52581002a659?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80');
     background-repeat: no-repeat;
     background-size: cover;
     overflow: auto;
