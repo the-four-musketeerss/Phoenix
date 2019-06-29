@@ -2,27 +2,11 @@
 import React, { Component } from 'react';
 
 import './mainprofile.css';
-import { NavLink }  from 'react-router-dom';
-import SignUp from './signUp.js';
-import SignIn from './signIn.js';
 import Blogs from './Blogs.js';
 import { storage } from './firebase';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MaterialTable from 'material-table';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import CardMedia from '@material-ui/core/CardMedia';
-
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Route, Redirect } from 'react-router'
 
 
@@ -265,10 +249,6 @@ return(<div id="div">
         {this.renderRedirect()}
         {!this.state.status ? (
      <div style={{width:"100%"}}>
-
-        <Grid container component="main" style={{height: '100vh'}}>
-        <Grid item xs={false} sm={4} md={7}  />
-        <Grid item xs={24} sm={16} md={10} component={Paper} elevation={12} square>
           <div>
           <input type = "text" name = "bio1"   onChange={this.yourdata.bind(this)}/>
           <Button onClick={this.update.bind(this)}>update</Button>
@@ -443,8 +423,6 @@ return(<div id="div">
                     </tbody>
                 </table>
             </div>
-            </Grid>
-            </Grid>
                        
    </div>
    ) : (
