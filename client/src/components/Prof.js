@@ -1,5 +1,18 @@
 import React from 'react';
 import './prof.css'
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import Typography from '@material-ui/core/Typography';
+
+
 const styles = {
  
     backgroundColor: '#00ffff',
@@ -76,36 +89,38 @@ class Prof extends React.Component{
               </div>
               </div>
              <h1> blogs</h1>
-              <table>
-                    <tbody>
-                        {this.state.blogs.map((blog, i) => (
-                      <tr
-                        key={blog.id}
-                        style={{
-                          margin: '10px',
-                          display: 'block',
-                          color: 'black',
-                          fontSize: '20px',
-                          borderStyle: 'solid',
-                          padding: '15px'
-                        }}
-                          >
-                        <span style={{ color: '#FA3905', fontSize: '18px'}}>
-                          <strong>Blog title:</strong>
-                        </span>
-                        <span>{blog.title}</span>
-                        <span style={{ color: '#FA3905', fontSize: '18px' ,marginLeft:'20px'}}>
-                          <strong>country:    </strong>
-                        </span>
-                        <span>{blog.country}</span>
-                        <span style={{ color: '#FA3905', fontSize: '18px' ,marginLeft:'20px'}}>
-                          <strong>Blog:  </strong>
-                        </span>
-                          <span>{blog.Blog}</span>
-                        </tr>
-                      ))}
-                    </tbody>
-                </table>
+             {this.state.blogs.map(blog =>
+           
+                  <Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
+                    <CardHeader
+                        avatar={
+                          <Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
+                            P
+                          </Avatar>
+                        }
+                        title={blog.title}
+                        subheader="September 14, 2018"
+                        action={blog.country}
+                        />
+                    <CardMedia
+                      style={{height: "0", paddingTop: '56.25%'}}
+                      image={blog.image}
+                    />
+                    <CardContent>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        {blog.Blog}
+                      </Typography>
+                    </CardContent>
+                    <CardActions disableSpacing>
+                      <IconButton aria-label="Add to favorites" style={{color: "#E72C32"}}>
+                        <FavoriteIcon />
+                      </IconButton>
+                      <IconButton aria-label="Share" style={{color: "#3D91EA"}}>
+                        <ShareIcon />
+                      </IconButton>
+                    </CardActions>
+                  </Card>
+                )}     
              
            </div>
     )}

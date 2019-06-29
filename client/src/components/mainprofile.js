@@ -45,7 +45,8 @@ class Mainprofile extends React.Component{
         blogs:[],
         flipped: false,
         image1:null,
-        bio1:""
+        bio1:"",
+        hide:false
        }
         this.handleChange = this.handleChange.bind(this);
         this.handleChange1 = this.handleChange1.bind(this);
@@ -167,7 +168,8 @@ username(){
         })
       }).then((response) => response.json())
       .then((data)=>{
-        this.setState({bio:this.state.bio1
+        this.setState({bio:this.state.bio1,
+          hide : false
       })
             })
 
@@ -255,10 +257,16 @@ click(){
   })
 }
 
-
-
-
-
+hide(){
+  this.setState({
+    hide : true
+})
+}
+show(){
+  this.setState({
+    hide : false
+})
+}
     render(){
 
 return(<div id="div">
@@ -270,8 +278,6 @@ return(<div id="div">
         <Grid item xs={false} sm={4} md={7}  />
         <Grid item xs={24} sm={16} md={10} component={Paper} elevation={12} square>
           <div>
-          <input type = "text" name = "bio1"   onChange={this.yourdata.bind(this)}/>
-          <Button onClick={this.update.bind(this)}>update</Button>
             <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
                 <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
                   <img id = "a"
@@ -302,7 +308,20 @@ return(<div id="div">
                 </Button>
               <h1>{this.state.username}</h1>
               <h3>{this.state.email}</h3>
+              {!this.state.hide ? (
+                <div>
               <p>{this.state.bio}</p>
+              <Button onClick={this.hide.bind(this)} >update bio</Button>
+              </div>
+              ) : (<div>
+          <input type = "text" name = "bio1"   onChange={this.yourdata.bind(this)}/>
+          <Button onClick={this.update.bind(this)}>update</Button>
+          <Button onClick={this.show.bind(this)} >cansle</Button>
+
+                </div>)
+              }
+              
+
             </div>
             
             <form  style={{ width: '100%', marginTop:'theme.spacing(1)'}} noValidate>
