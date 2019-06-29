@@ -33,7 +33,7 @@ class ProfileTestCase(TestCase):
         self.assertEqual(areej.bio,"my name is areejAli")
     def test_profiles_have_url(self):
         areej = Profile.objects.get(email="areej@yahoo.com")
-        self.assertEqual(areej.url,"https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+        self.assertEqual(areej.0,"https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
     
 
 
@@ -190,6 +190,7 @@ class RequestsTest(TestCase):
         self.client = Client()
         response = self.client.post('/blogs/',{"ProfileId" : user.id ,"title":"any thing" ,"country":"amman","Blog":"my blog","image":"https://ntmresizer.azureedge.net/sized/358/284/www.cfmedia.vfmleonardo.com/imageRepo/6/0/100/1/34/ammsi-exterior-3061-hor-clsc_S.jpg"})
         self.assertEqual(response.status_code, 201)
+    
 
 
  
