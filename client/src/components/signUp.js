@@ -1,11 +1,25 @@
 
-import React from 'react';
-import './signUp.css';
-import SignIn from './signIn.js';
+// import React from 'react';
+// import './signUp.css';
+// import SignIn from './signIn.js';
+// import Mainprofile from './mainprofile.js';
+// import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+// import Avatar from '@material-ui/core/Avatar';
+// import Button from '@material-ui/core/Button';
+// import CssBaseline from '@material-ui/core/CssBaseline';
+// import TextField from '@material-ui/core/TextField';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import Link from '@material-ui/core/Link';
+// import Grid from '@material-ui/core/Grid';
+// import Box from '@material-ui/core/Box';
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// import Typography from '@material-ui/core/Typography';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Container from '@material-ui/core/Container';
 import { Route, Redirect } from 'react-router'
 import { storage } from './firebase';
-import Mainprofile from './mainprofile.js';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,12 +27,12 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 function MadeWithLove() {
   return (
@@ -143,30 +157,29 @@ function MadeWithLove() {
 	}
 
 
-
-
-
-     render(){
-      return(<div  style={{marginTop:'60px',marginLeft:'80px',backgroundImage:"url('https://image.freepik.com/free-photo/travel-objects-accessories-orange-background-with-passport-camera-plane_39408-1963.jpg')",backgroundRepeat:'no-repeat',backgroundSize:"69% 100%",borderRadius:'10px'}}>
-        {!this.state.toggleSignIn ? (
-          <div style={{alignItems: 'center',marginLeft:"60%", marginTop:'theme.spacing(8)'}}>
-              <Container component="main" maxWidth="xs">
-         <CssBaseline />
-          <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
-            <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
+    render(){
+      return(
+        <div>
+            {!this.state.toggleSignIn ? (
+           <Grid container component="main" style={{ height:'100vh'}}>
+            <CssBaseline />
+              <Grid item xs={false} sm={4} md={7} style={{backgroundImage:"url('https://images.unsplash.com/photo-1503221043305-f7498f8b7888?ixlib=rb-1.2.1&auto=format&fit=crop&w=1035&q=80')" ,backgroundRepeat:"no-repeat",backgroundSize:"cover", backgroundPosition: 'center'}} />
+              <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+              <div style={{marginLeft:"30px",display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+              <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
             <img 
-            src={this.state.url ||'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'}
-             alt="uploaded image"
-             style={{ objectFit: 'cover',height: '100%'}}
-            />
+              src={this.state.url ||'https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435'}
+              alt="uploaded image"
+              style={{ objectFit: 'cover',height: '100%'}}
+              />
             </Avatar>
-            <Typography component="h1" variant="h5" style={{color:'red'}}>
-              Sign up
-            </Typography>
-            <form style={{width: '100%',marginTop:'theme.spacing(3)'}} noValidate>
-              <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
+                <Typography component="h1" variant="h5" >
+                   SignUp
+                </Typography>
+                <form  style={{ width: '100%', marginTop:'theme.spacing(1)'}} noValidate>
+                <Grid container spacing={2}>
+               <Grid item xs={12}>
+                 <TextField
                   onChange ={this.yourdata.bind(this)}
                   autoComplete="uname"
                   name="username"
@@ -257,21 +270,18 @@ function MadeWithLove() {
                 </Grid>
             </Grid>
                 </Grid>
-              </form>
-               </div>
-               <Box mt={5}>
-                  <MadeWithLove />
-              </Box>
-        </Container>
+                </form>
               </div>
-        ) : (
-          <  
-          Redirect to='/Mainprofile'      
-          />
-        )}
-      </div>
-        
-    )}
+            </Grid>
+           </Grid>
+            ):(
+              <  
+              Redirect to='/Mainprofile'      
+              />
+            )}
+        </div>
+      )
+    }
   }
   
   export default SignUp;
