@@ -82,7 +82,8 @@ username(){
                 username:data[i].username,
                 bio:data[i].bio,
                 url:data[i].url,
-                id:data[i].id
+                id:data[i].id,
+                bio1:data[i].bio
           })
             }
           }
@@ -148,7 +149,6 @@ username(){
 
 
   update(){
-       // const token = localStorage.getItem('token');
        var profile ={
         "url" : this.state.url,
         "bio":this.state.bio1
