@@ -60,17 +60,25 @@ class Currancy extends React.Component {
             <div className="maindiv">
                 <form  className="currency">
                     <div style={{marginTop:'100px',marginLeft:'27%'}}>
-                        <input style ={{width: '30%', height: '40px',borderRadius:'10px'}} type = "number" placeholder="value in $" name = "num" onChange ={this.yourdata.bind(this)} />
-                   
-                        <span style={{fontSize:"20px",margin:'10px'}}>to</span> 
+                        <input style ={{width: '30%', height: '40px',borderRadius:'10px'}} type = "number" placeholder="amount" name = "num" onChange ={this.yourdata.bind(this)} />
+                   <br/>
+                        {/* <span style={{fontSize:"20px",margin:'10px'}}></span>  */}
                         <select style ={{width: '30%', height: '40px'}} name="value" onChange ={this.yourdata.bind(this)}>
                             {elm}
                         </select> 
-                        <button style={{marginLeft:'20px',borderRadius:'100%',width:'45px',height:'45px'}}onClick={this.Click.bind(this)} >C</button>       
+                        {/* <button style={{marginLeft:'20px',borderRadius:'100%',width:'45px',height:'45px'}}onClick={this.Click.bind(this)} >C</button>        */}
 
                        
                     </div>
-                    <h1 style={{color:'#09C',fontFamily:'cursive',fontSize:'50px'}}>{this.state.total}</h1> 
+                    <div>
+                    <h1 style={{
+    color: "rgb(0, 153, 204)",
+    float: "right",
+    fontSize: "35px",
+    width: "116px",
+    height: "40px",
+    background: "white"}}>{this.state.total}</h1> 
+                    </div>
                 </form>
             </div>
 

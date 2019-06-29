@@ -280,8 +280,8 @@ class Flights extends React.Component{
   })
 
       if (this.state.Itineraries.length === 0) {
-        return(
-                  <div className="tab-content" style={{width: '421px', marginLeft:' 33%',background: '#172738',marginTop: '52px'}}>
+        return(<div style={{height:'100vh', backgroundImage:"url('http://tempusaircraft.com/wp-content/uploads/2019/01/105562621-1541696972779gettyimages-686525960.1910x1000.jpeg')",backgroundRepeat: "no-repeat",marginTop: '-51px'}}>
+                  <div className="tab-content" style={{width: '421px', marginLeft:' 35%',backgroundColor: 'rgba(0,0,0,0.75)',marginTop: '145px',boxShadow:"0 0 0.8823em 0 rgba(0,0,0,0.5)",float: 'left'}}>
                             <div
                               role="tabpanel"
                               className="tab-pane active"
@@ -441,77 +441,8 @@ class Flights extends React.Component{
                               </div>
                             </div>
                             </div> 
+                            </div>
           
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // <div style={div}>
-            // <label>
-            // Departure:
-            // </label>
-            // <input type="date" value={this.state.outboundDate} onChange={this.changeoutb.bind(this)}></input>
-            // <br/>
-            // <br/>
-            // <label>
-            // Arrival:
-            // </label>
-            // <input type="date" value={this.state.inboundDate} onChange={this.changeinb.bind(this)}></input>
-            // <br/>
-            // <br/>
-            // <label>
-            // cabinClass:
-            // </label>
-            // <select onChange={this.handlePrint.bind(this)}>
-            //   <option value="economy" >economy</option>
-            //   <option value="premiumeconomy">premiumeconomy</option>
-            //   <option value="business">business</option>
-            //   <option value="first">first</option>
-            // </select>
-            // <br/>
-            // <br/>
-            // <label>
-            // From:
-            // </label>
-            // <Select
-            //   name="form-field-name"
-            //   value={this.state.originPlace}
-            //   onInputChange={this.from.bind(this)}
-            //   onChange={this.select.bind(this)}
-            //   onSelectResetsInput={false}
-            //   onBlurResetsInput={false}
-            //   placeholder="Select country"
-            //   searchable={false}
-            //   labelKey='PlaceName'
-            //   valueKey='PlaceId'
-            //   options={options1}                  
-            // />
-            // {/* <input value ={this.state.originPlace}onChange={this.from.bind(this)}></input> */}
-            // <br/>
-            
-            // <label>
-            // TO:
-            // </label>
-            // <Select
-            //   name="form-field-name"
-            //   value={this.state.destinationPlace}
-            //   onInputChange={this.to.bind(this)}
-            //   onChange={this.select2.bind(this)}
-            //   onSelectResetsInput={false}
-            //   onBlurResetsInput={false}
-            //   placeholder="Select country"
-            //   searchable={false}
-            //   labelKey='PlaceName'
-            //   valueKey='PlaceId'
-            //   options={options2}                  
-            // />
-            // {/* <input value ={this.state.destinationPlace}onChange={this.to.bind(this)}></input> */}
-            // <br/>
-            // <label>
-            // adults:
-            // </label>
-            // <input type ="number" min="1" max="8" value = {this.state.adults} onChange={this.changeAd.bind(this)}></input>
-            // <br/>
-            // <br/>
-            // <button onClick={this.search.bind(this)}>search </button>
-            // </div>
           )
       }
        else {
@@ -524,7 +455,7 @@ class Flights extends React.Component{
         return(
           
         <div >
-          <div className="card" style={{height:"22rem" ,width: "48rem" ,float:"left",margin:"10px",border: 'solid',borderWidth: '25px 3px 3px 3px',marginLeft: '22%'}}>
+          <div className="card" style={{height:"22rem" ,width: "48rem" ,float:"left",margin:"10px",border: 'solid',borderWidth: '25px 3px 3px 3px',marginLeft: '22%',borderColor:"#172738"}}>
 
 {/* // {Itinerary.PricingOptions.map(function(p) {
 //   var that=this
@@ -637,150 +568,6 @@ class Flights extends React.Component{
       return(
       <div>
         {legs}
-        {/* <div className="tab-content" style={{width: '421px', marginLeft:' 33%',background: '#172738',marginTop: '52px'}}>
-                            <div
-                              role="tabpanel"
-                              className="tab-pane active"
-                              id="flights"
-                            >
-                              <div className="row">
-                                <div className="col-xxs-12 col-xs-6 mt">
-                                  <div className="input-field">
-                                    <label htmlFor="from" style={{color: 'white'}}>From:</label>
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      id="from-place"
-                                      placeholder="Los Angeles, USA"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-xxs-12 col-xs-6 mt">
-                                  <div className="input-field">
-                                    <label htmlFor="from" style={{color: 'white'}}>To:</label>
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      id="to-place"
-                                      placeholder="Tokyo, Japan"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-xxs-12 col-xs-6 mt alternate">
-                                  <div className="input-field">
-                                    <label htmlFor="date-start" style={{color: 'white'}}>
-                                      Check In:
-                                    </label>
-                                    <input
-                                    style={{color: '#f78536',
-                                    width: '10pc',
-                                    background: 'rgba(255, 255, 255)',
-                                    border: 'none',
-                                    boxShadow: 'none',
-                                    fontWeight: 'bold',
-                                    fontSize: '14px',
-                                    padding: '5px 10px',height: '35px'}}
-                                      type="date"
-                                      className="form-control"
-                                      id="date-start"
-                                      placeholder="mm/dd/yyyy"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-xxs-12 col-xs-6 mt alternate">
-                                  <div className="input-field">
-                                    <label htmlFor="date-end" style={{color: 'white'}}>Check Out:</label>
-                                    <input
-                                    style={{color: '#f78536',
-                                    width: '10pc',
-                                    background: 'rgba(255, 255, 255)',
-                                    border: 'none',
-                                    boxShadow: 'none',
-                                    fontWeight: 'bold',
-                                    fontSize: '14px',
-                                    padding: '5px 10px',height: '35px'}}
-                                      type="date"
-                                      className="form-control"
-                                      id="date-end"
-                                      placeholder="mm/dd/yyyy"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 mt" >
-                                  <section>
-                                    <label htmlFor="class" style={{color: 'white'}}>Class:</label>
-                                    <br/>
-                                    <select className="cs-select cs-skin-border" style={{color: '#f78536',
-                                          width: '10pc',
-                                          background: 'rgba(255, 255, 255)',
-                                          border: 'none',
-                                          boxShadow: 'none',
-                                          fontWeight: 'bold',
-                                          fontSize: '14px',
-                                          padding: '5px 10px',height: '35px'}}>
-                                      <option value="" disabled selected>
-                                        Economy
-                                      </option>
-                                      <option value="economy">Economy</option>
-                                      <option value="first">First</option>
-                                      <option value="business">Business</option>
-                                    </select>
-                                  </section>
-                                </div>
-                                <div className="col-xxs-12 col-xs-6 mt">
-                                  <section >
-                                    <label htmlFor="class" style={{color: 'white'}}>Adult:</label>
-                                    <br/>
-                                    <select className="cs-select cs-skin-border" style={{color: '#f78536',
-                                        width: '10pc',
-                                        background: 'rgba(255, 255, 255)',
-                                        border: 'none',
-                                        boxShadow: 'none',
-                                        fontWeight: 'bold',
-                                        fontSize: '14px',
-                                        padding: '5px 10px',height: '35px'}}>
-                                      <option value="" disabled selected>
-                                        1
-                                      </option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                    </select>
-                                  </section>
-                                </div>
-                                <div className="col-xxs-12 col-xs-6 mt">
-                                  <section>
-                                    <label htmlFor="class" style={{color: 'white'}}>Children:</label>
-                                    <br/>
-                                    <select className="cs-select cs-skin-border" style={{color: '#f78536',
-                                        width: '10pc',
-                                        background: 'rgba(255, 255, 255)',
-                                        border: 'none',
-                                        boxShadow: 'none',
-                                        fontWeight: 'bold',
-                                        fontSize: '14px',
-                                        padding: '5px 10px',height: '35px'}}>
-                                      <option value="" disabled selected>
-                                        1
-                                      </option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                    </select>
-                                  </section >
-                                </div>
-                                <div className="col-xs-12">
-                                  <input
-                                    type="submit"
-                                    className="btn btn-primary btn-block"
-                                    value="Search Flight"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            </div> */}
     </div>
     
       )}
