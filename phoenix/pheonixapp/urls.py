@@ -22,8 +22,7 @@ urlpatterns = [
     path('auth' , include('knox.urls')),
     path('auth/signUp' , SignupAPI.as_view(),name='SignUp'),
     path('auth/user' , UserAPI.as_view(),name='Mainprofile') ,
-    path('auth/signIn' , SigninAPI.as_view(), name='Signin')
-    # path("auth/logout",knox_views.logoutView.as_view(),name= "knox_logout"),
+    path('auth/signIn' , SigninAPI.as_view(), name='Signin'),
 ]   
 urlpatterns += router.urls 
 

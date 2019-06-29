@@ -4,7 +4,9 @@ from rest_framework.views import APIView
 from pheonixapp.models import List
 from pheonixapp.serializers import listSerializer
 from django.shortcuts import get_object_or_404
-from rest_framework import status
+from pheonixapp.models import Profile
+from pheonixapp.serializers import putSerializer
+
 
 class ListView (APIView):
   def get(self, request):
@@ -30,3 +32,16 @@ class detailListView(APIView):
     return Response('success')
   
 
+
+
+
+class UpDateProfiledata(APIView):
+ 
+
+    def put(self, request, pk):
+        saved_profile = get_object_or_404(Profile.objects.all(), pk=pk)
+        data = request.data.get('profile')
+        serializer = putSerializer(instance=saved_profile, data=data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            profile_saved = serializer.save()
+        return Response({"success": "Profile '{}' updated successfully".format(profile_saved.bio)})
