@@ -320,7 +320,7 @@ return(<div id="div">
                   className="Button"
                   fullWidth
                   variant="contained"      
-                  style={{ margin: 'theme.spacing(3, 0, 2)',backgroundColor:"#FA3905", color:'white',marginBottom:'20px'}}
+                  style={{ margin: 'theme.spacing(3, 0, 2)',backgroundColor:"#FA3905", color:'white',marginBottom:'10px'}}
                 >
                     Upload
                 </Button>

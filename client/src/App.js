@@ -18,6 +18,7 @@ import ScrollUpButton from "react-scroll-up-button";
 import { Redirect } from 'react-router-dom'
 import HomePage from './components/HomePage.js'
 
+import { Select } from 'antd';
 
 
 class App extends React.Component {
@@ -51,6 +52,13 @@ class App extends React.Component {
     }
     if(this.state.value === 'City Guide'){
       return window.location="MapContainer"
+    }
+    if(this.state.value === 'Profile'){
+      if(localStorage.getItem('token')){
+      return window.location = 'Mainprofile'
+      }else{
+        return window.location = 'SignIn'
+      }
     }
     
   }
@@ -100,7 +108,7 @@ class App extends React.Component {
                     </li>
                     <li>
                       <NavLink to="/SignUp">Sign Up</NavLink>
-                    </li>  
+                    </li> 
                     {/* <FormControl  style={{}}>
                       <InputLabel htmlFor="age-simple">Other</InputLabel>
                       <Select
@@ -114,14 +122,17 @@ class App extends React.Component {
                       <MenuItem value={30}>Thirty</MenuItem>
                       </Select>
                   </FormControl> */}
-                      <li style={{marginTop:'12px'}}>
-                      <select value={this.state.value} onChange={this.trav.bind(this)}>
+                      <li>
+                      <div >
+                      <select class="custom-select" style={{marginTop:'5px',width:'100px'}} value={this.state.value} onChange={this.trav.bind(this)}>
                         <option value="0">More</option>
                         <option value="Travel list">Travel list</option>
                         <option value="Weather">Weather</option>
                         <option value="Currency Conv">Currency Conv</option>
                         <option value="City Guide">City Guide</option>
+                        <option value='Profile'>MyProfile</option>
                       </select>
+                      </div>
                       </li>
                   </ul>
      
@@ -154,7 +165,7 @@ class App extends React.Component {
             <div>
               
               <div>
-                <div  style={{backgroundColor:"#212F3D",height: '350px',textAlign: 'center', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
+                <div  style={{backgroundColor:"#212F3D",height: '350px',textAlign: 'center',marginTop:'50px', clear: 'both',position: 'relative', left: '0',bottom: '0', width: '100%'}} >
                   <div style={{position:'absolute',textAlign: 'center', clear: 'both',left: '0',bottom: '30', width: '100%'}}>
                   <div class="container">
                   <div class="row row-bottom-padded-md">
