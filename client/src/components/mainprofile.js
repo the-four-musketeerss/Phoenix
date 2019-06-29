@@ -43,11 +43,12 @@ class Mainprofile extends React.Component{
         urlimg:"",
         text:"",
         blogs:[],
-        flipped: false
+        flipped: false,
+        image1:null
 
        }
         this.handleChange = this.handleChange.bind(this);
-
+        this.handleChange1 = this.handleChange1.bind(this);
    }
 
 
@@ -89,27 +90,6 @@ username(){
       }
 
 
-  //  componentDidMount(){
-  //       var that = this;
-  //     fetch("/post", {
-  //       method: "GET",
-  //       headers : {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json"
-  //       },
-  //     }).then((response) => response.json())
-  //     .then((data)=>{
-  //       // const token = data.token
-  //       // localStorage.setItem('token', token);
-  //         for (var i = 0 ; i < data.length ; i++ ){
-  //         if ( that.props.username === data[i].username){
-  //            console.log(data[i].id)
-
-  //        this.setState({id: data[i].id });
-  //           }
-  //       }
-  //     })
-  //   }
 
     handleChange(e) {
     if (e.target.files[0]) {
@@ -136,12 +116,67 @@ username(){
     );
   }
 
+
+
+
+  handleChange1(e) {
+    if (e.target.files[0]) {
+      const image1 = e.target.files[0];
+      this.setState(() => ({ image1}));
+    }
+  }
+
+    handleUpload1(e) {
+      e.preventDefault();
+    const { image1 } = this.state;
+    const uploadTask = storage.ref(`images/${image1.name}`).put(image1);
+     uploadTask.on(
+      `state_changed`,
+      (snapshot) => {
+      },
+      (error) => {},
+      () => {
+        storage.ref(`images`).child(image1.name).getDownloadURL().then(( url) => {
+          console.log( url);
+          this.setState({ url },()=>{
+            this.update()
+  });
+        });
+      }
+    );
+  }
+
+
+  update(){
+       // const token = localStorage.getItem('token');
+       var profile ={
+        "url" : this.state.url,
+        "bio":this.state.bio
+       }
+       console.log( {"profile":profile})
+    
+      fetch(`Update/${this.state.id}`, {
+        
+        method: "PUT",
+        headers : {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "profile" : profile
+        })
+      }).then((response) => response.json())
+      .then((data)=>{
+    console.log("done")
+            })
+
+  }
+
    yourdata(event){
         this.setState({[event.target.name]: event.target.value });
      }
    server(e){
     e.preventDefault();
-      // const token = localStorage.getItem('token');
       var that = this;
       fetch("blogs/", {
         method: "POST",
@@ -229,10 +264,13 @@ return(<div id="div">
         {this.renderRedirect()}
         {!this.state.status ? (
      <div style={{width:"100%"}}>
+
         <Grid container component="main" style={{height: '100vh'}}>
         <Grid item xs={false} sm={4} md={7}  />
         <Grid item xs={24} sm={16} md={10} component={Paper} elevation={12} square>
           <div>
+          <input type = "text" name = "bio"   onChange={this.yourdata.bind(this)}/>
+          <Button onClick={this.update.bind(this)}>update</Button>
             <div style={{alignItems: 'center', marginTop:'theme.spacing(8)',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
                 <Avatar style={{ margin:'theme.spacing(1)',width:'150px',height:"150px",margin: 'theme.spacing(1)',border: 0,objectFit: 'cover'}}>
                   <img id = "a"
@@ -244,13 +282,26 @@ return(<div id="div">
                   style={{objectFit: 'cover',height: '100%'}}
                   />     
                 </Avatar>
+                <input
+                  type="file"
+                  name="image1"
+                  onChange={this.handleChange1}
+                  style={{marginLeft:"47%",marginBottom:"20px"}} 
+                />
+                  
+                <Button
+                  onClick={this.handleUpload1.bind(this)}
+                  type="submit"
+                  className="Button"
+                  fullWidth
+                  variant="contained"      
+                  style={{ margin: 'theme.spacing(3, 0, 2)',backgroundColor:"#FA3905", color:'white',marginBottom:'20px'}}
+                >
+                    update
+                </Button>
               <h1>{this.state.username}</h1>
               <h3>{this.state.email}</h3>
               <p>{this.state.bio}</p>
-              
-              
-            
-
             </div>
             
             <form  style={{ width: '100%', marginTop:'theme.spacing(1)'}} noValidate>
