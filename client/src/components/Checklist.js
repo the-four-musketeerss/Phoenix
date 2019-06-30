@@ -60,8 +60,9 @@ class Checklist extends React.Component{
       }).catch(function(err){
         return (err)
       })
-  }
-  // componentDidMount(){
+    }
+
+    // componentDidMount(){
   //   var that=this;
   //   fetch('TravelList/')
   //   .then(data => data.json())
@@ -218,7 +219,6 @@ var that = this
           <br/>
           <ul style={{marginLeft:'19px',fontSize:'26px',color: 'white'}}>
             <li> √ don't forget the toothbrush</li>
-            <li> √ hat</li>
             <li> √ book for long trips</li>
             <li> √ passport</li>
 

@@ -269,7 +269,8 @@ show(){
 }
     render(){
 
-return(<div id="div">
+return(
+<div id="div">
         {this.renderRedirect()}
         {!this.state.status ? (
      <div style={{width:"100%"}}>
@@ -316,7 +317,7 @@ return(<div id="div">
               ) : (<div>
           <input type = "text" name = "bio1"   onChange={this.yourdata.bind(this)}/>
           <Button onClick={this.update.bind(this)}>update</Button>
-          <Button onClick={this.show.bind(this)} >cansle</Button>
+          <Button onClick={this.show.bind(this)} >cancel</Button>
 
                 </div>)
               }
