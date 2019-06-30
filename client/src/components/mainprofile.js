@@ -77,6 +77,8 @@ class Mainprofile extends React.Component{
         this.setState({ username: data.username }, () => {
           this.username();
         });
+      }).then(()=>{
+        this.blog();
       });
   }
 
@@ -205,12 +207,20 @@ class Mainprofile extends React.Component{
       .then(response => response.json())
       .then(data => {
         this.setState({ text: "your blog is uptodate" });
+      }).then(()=>{
+        this.setState({
+          title:"",
+          country:"",
+          blog:""
+        })
+      }).then(()=>{
+        this.closeModal()
       });
   }
 
   blog(e) {
     // const token = localStorage.getItem('token');
-    e.preventDefault();
+    // e.preventDefault();
     var that = this;
     fetch("blogs/", {
       method: "GET",
@@ -262,6 +272,7 @@ class Mainprofile extends React.Component{
   click() {
     this.setState({
       status: true
+    
     });
   }
 
@@ -292,6 +303,15 @@ closeModal() {
       {this.renderRedirect()}
       {!this.state.status ? (
         <div>
+        <Button
+        onClick={this.logout.bind(this)}
+        id="button"
+        type="submit"
+        variant="contained"      
+        style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px",marginLeft:'87%'}}
+        >
+        log out
+        </Button>
     <section className="section1 no-background">
         <div className="container1 has-text-centered">
             <figure className="image1 is-128x128 center1" style={{marginLeft: "41%",
@@ -373,9 +393,12 @@ closeModal() {
       <div>
         <Button onClick={() => this.openModal()}
                     style={{border:'solid',
-                    borderColor:'blue'}}>Add blog</Button>
-        <Modal visible={this.state.visible} width="500" height="700" effect="fadeInUp" onClickAway={() => this.closeModal()}>
-            <div>
+                    borderColor:'blue',             
+                      float: "right",
+                      marginRight:'1%'
+                    }}>Add blog</Button>
+        <Modal visible={this.state.visible} width="500" height="600" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+            <div style={{    marginLeft: '7%'}}>
             <form
             noValidate
           >
@@ -393,6 +416,7 @@ closeModal() {
               type="submit"
               className="Button"
               variant="contained"
+              style={{marginRight: '-64%'}}
             >
               Upload
             </Button>
@@ -461,22 +485,53 @@ closeModal() {
             >
               Add Blog
             </Button>
-            <Button
+            {/* <Button
               onClick={this.click.bind(this)}
               id="button"
               type="submit"
               variant="contained"
 
-            ></Button>
+            ></Button> */}
             </form>
-                <a href="javascript:void(0);" onClick={() => this.closeModal()}>share</a>
+                {/* <a href="javascript:void(0);" onClick={() => this.closeModal()}>share</a> */}
             </div>
         </Modal>
         </div>
-  {/* <section className="row">
-        
 
-      </section> */}
+ <div>
+{this.state.blogs.map(blog =>
+
+<Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
+<CardHeader
+avatar={
+<Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
+P
+</Avatar>
+}
+title={blog.title}
+subheader="September 14, 2018"
+action={blog.country}
+/>
+<CardMedia
+style={{height: "0", paddingTop: '56.25%'}}
+image={blog.image}
+/>
+<CardContent>
+<Typography variant="body2" color="textSecondary" component="p">
+{blog.Blog}
+</Typography>
+</CardContent>
+<CardActions disableSpacing>
+<IconButton aria-label="Add to favorites" style={{color: "#E72C32"}}>
+<FavoriteIcon />
+</IconButton>
+<IconButton aria-label="Share" style={{color: "#3D91EA"}}>
+<ShareIcon />
+</IconButton>
+</CardActions>
+</Card>
+)}         
+</div>
       </div>
     )
   }
