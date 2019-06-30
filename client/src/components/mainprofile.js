@@ -347,10 +347,113 @@ closeModal() {
       ):(
         <Blogs username={this.props.username} Redirect to="/Blogs" />
       )}
-      <section className="row">
+      <div>
+        <Button onClick={() => this.openModal()}
+                    style={{border:'solid',
+                    borderColor:'blue'}}>Add blog</Button>
+        <Modal visible={this.state.visible} width="500" height="700" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+            <div>
+            <form
+            noValidate
+          >
+            <p>
+              upload Travel image
+            </p>
+            <input
+              type="file"
+              name="image"
+              onChange={this.handleChange}
+            />
+
+            <Button
+              onClick={this.handleUpload.bind(this)}
+              type="submit"
+              className="Button"
+              variant="contained"
+            >
+              Upload
+            </Button>
+            <div
+            >
+              <Avatar
+                style={{
+                  borderRadius: "4px",
+                  width: "430px",
+                  margin: "theme.spacing(1)",
+                  height: "180px",
+                  margin: "theme.spacing(1)",
+                  objectFit: "cover"
+                }}
+              >
+                <img
+                  src={
+                    this.state.urlimg ||
+                    "https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435"
+                  }
+                  alt="uploaded image"
+                  style={{ objectFit: "cover" }}
+                />
+              </Avatar>
+            </div>
+          </form>
+          <form>
+            <TextField
+              onChange={this.yourdata.bind(this)}
+              variant="outlined"
+              margin="normal"
+              id="title"
+              label="title"
+              name="title"
+              autoComplete="title"
+              autoFocus
+            />
+            <TextField
+              onChange={this.yourdata.bind(this)}
+              variant="outlined"
+              margin="normal"
+              id="country"
+              label="country"
+              name="country"
+              autoComplete="country"
+              autoFocus
+            />
+            <TextField
+              onChange={this.yourdata.bind(this)}
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="Blog"
+              label="Blog"
+              name="Blog"
+              autoComplete="Blog"
+              autoFocus
+            />
+            <br />
+            <Button
+              onClick={this.server.bind(this)}
+              type="submit"
+              className="Button"
+              variant="contained"
+              color="primary"
+            >
+              Add Blog
+            </Button>
+            <Button
+              onClick={this.click.bind(this)}
+              id="button"
+              type="submit"
+              variant="contained"
+
+            ></Button>
+            </form>
+                <a href="javascript:void(0);" onClick={() => this.closeModal()}>share</a>
+            </div>
+        </Modal>
+        </div>
+  {/* <section className="row">
         
 
-      </section>
+      </section> */}
       </div>
     )
   }
