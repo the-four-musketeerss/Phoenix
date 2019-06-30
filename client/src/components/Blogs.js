@@ -19,6 +19,7 @@ import { red } from '@material-ui/core/colors';
 import Prof from './Prof.js';
 
 
+
 class Blogs extends React.Component{
     constructor(props){
           super(props);
