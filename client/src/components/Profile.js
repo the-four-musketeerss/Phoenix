@@ -78,7 +78,7 @@ class Profile extends React.Component{
             
           />
         )}
-        <Comments/>
+        {/* <Comments/> */}
         </div>
     )}
   }

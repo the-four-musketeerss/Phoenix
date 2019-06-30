@@ -131,7 +131,7 @@ function MadeWithLove() {
 			} else {
 					this.setState(
 						{
-              error : "this email is ourready token"
+              error : "this email is already taken"
 						}
 					);
 			}
