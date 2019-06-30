@@ -11,7 +11,8 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import Typography from '@material-ui/core/Typography';
-
+import { Redirect } from 'react-router-dom'
+import Profile from './Profile.js';
 
 const styles = {
  
@@ -27,8 +28,8 @@ class Prof extends React.Component{
         super(props);
       this.state = { 
           books:[],
-          blogs:[]           
-       
+          blogs:[],           
+          redirect:false
       }
   }
   
@@ -67,9 +68,18 @@ class Prof extends React.Component{
           that.setState({blogs:arr})
          })
       }
-  
+
+
+
+    // prof(){
+    //   this.setState({
+    //     redirect:true
+    //   })
+    // }
+
      render(){
       return(
+      
             <div className="container">
               <div className="size">
                 <img id = "a"
@@ -90,40 +100,42 @@ class Prof extends React.Component{
               </div>
              <h1> blogs</h1>
              {this.state.blogs.map(blog =>
-           
-                  <Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
-                    <CardHeader
-                        avatar={
-                          <Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
-                            P
-                          </Avatar>
-                        }
-                        title={blog.title}
-                        subheader="September 14, 2018"
-                        action={blog.country}
-                        />
-                    <CardMedia
-                      style={{height: "0", paddingTop: '56.25%'}}
-                      image={blog.image}
-                    />
-                    <CardContent>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        {blog.Blog}
-                      </Typography>
-                    </CardContent>
-                    <CardActions disableSpacing>
-                      <IconButton aria-label="Add to favorites" style={{color: "#E72C32"}}>
-                        <FavoriteIcon />
-                      </IconButton>
-                      <IconButton aria-label="Share" style={{color: "#3D91EA"}}>
-                        <ShareIcon />
-                      </IconButton>
-                    </CardActions>
-                  </Card>
-                )}     
-             
-           </div>
+
+    <Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
+      <CardHeader
+          avatar={
+            <Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
+              P
+            </Avatar>
+          }
+          title={blog.title}
+          subheader="September 14, 2018"
+          action={blog.country}
+          />
+      <CardMedia
+        style={{height: "0", paddingTop: '56.25%'}}
+        image={blog.image}
+      />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {blog.Blog}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="Add to favorites" style={{color: "#E72C32"}}>
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="Share" style={{color: "#3D91EA"}}>
+          <ShareIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
+  )}       
+ </div>
+
     )}
   }
 export default Prof;
 
+
+     

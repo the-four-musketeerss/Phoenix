@@ -1,45 +1,68 @@
 // import React from 'react';
-import React, { Component } from "react";
-import Blogs from "./Blogs.js";
-import { storage } from "./firebase";
-import Button from "@material-ui/core/Button";
-import Avatar from "@material-ui/core/Avatar";
-import TextField from "@material-ui/core/TextField";
-import { Route, Redirect } from "react-router";
-import "./mainProfile.css"
+import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+// import './mainprofile.css';
+import { NavLink }  from 'react-router-dom';
+import SignUp from './signUp.js';
+import SignIn from './signIn.js';
+import Blogs from './Blogs.js';
+import { storage } from './firebase';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import MaterialTable from 'material-table';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Route, Redirect } from 'react-router'
 import Modal from 'react-awesome-modal';
 import { StylesProvider } from "@material-ui/styles";
-
 
 const style = {
   "text-align": "center"
 }
-class Mainprofile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      url: "",
-      username: "",
-      bio: "",
-      status: false,
-      Blog: "",
-      country: "",
-      title: "",
-      id: "",
-      image: null,
-      urlimg: "",
-      text: "",
-      blogs: [],
-      flipped: false,
-      image1: null,
-      bio1: "",
-      hide: false,
-      visible : false
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChange1 = this.handleChange1.bind(this);
-  }
+class Mainprofile extends React.Component{
+   constructor(props){
+         super(props);
+       this.state = {
+        email:"",
+        url:"",
+        username:"",
+        bio:"",           
+        status : false,
+        Blog:"",
+        country:"",
+        title:"",
+        id:"",
+        image:null,
+        urlimg:"",
+        text:"",
+        blogs:[],
+        flipped: false,
+        image1:null,
+        bio1:"",
+        hide:false
+       }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleChange1 = this.handleChange1.bind(this);
+   }
+
+
 
   componentDidMount() {
     var that = this;
@@ -537,135 +560,95 @@ export default Mainprofile;
 //               onChange={this.handleChange}
 //             />
 
-//             <Button
-//               onClick={this.handleUpload.bind(this)}
-//               type="submit"
-//               className="Button"
-//               variant="contained"
-//             >
-//               Upload
-//             </Button>
-//             <div
-//             >
-//               <Avatar
-//                 style={{
-//                   borderRadius: "4px",
-//                   width: "430px",
-//                   margin: "theme.spacing(1)",
-//                   height: "180px",
-//                   margin: "theme.spacing(1)",
-//                   objectFit: "cover"
-//                 }}
-//               >
-//                 <img
-//                   src={
-//                     this.state.urlimg ||
-//                     "https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435"
-//                   }
-//                   alt="uploaded image"
-//                   style={{ objectFit: "cover" }}
-//                 />
-//               </Avatar>
-//             </div>
-//           </form>
-//           <form>
-//             <TextField
-//               onChange={this.yourdata.bind(this)}
-//               variant="outlined"
-//               margin="normal"
-//               id="title"
-//               label="title"
-//               name="title"
-//               autoComplete="title"
-//               autoFocus
-//             />
-//             <TextField
-//               onChange={this.yourdata.bind(this)}
-//               variant="outlined"
-//               margin="normal"
-//               id="country"
-//               label="country"
-//               name="country"
-//               autoComplete="country"
-//               autoFocus
-//             />
-//             <TextField
-//               onChange={this.yourdata.bind(this)}
-//               variant="outlined"
-//               margin="normal"
-//               fullWidth
-//               id="Blog"
-//               label="Blog"
-//               name="Blog"
-//               autoComplete="Blog"
-//               autoFocus
-//             />
-//             <br />
-//             <Button
-//               onClick={this.server.bind(this)}
-//               type="submit"
-//               className="Button"
-//               variant="contained"
-//               color="primary"
-//             >
-//               Add Blog
-//             </Button>
-//             <Button
-//               onClick={this.click.bind(this)}
-//               id="button"
-//               type="submit"
-//               variant="contained"
+//               <Button
+              
+// onClick={this.server.bind(this)}
+// type="submit"
+// className="Button" 
+// variant="contained" 
+// color="primary"
+// style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",marginLeft:"15%",marginRight:"10%",marginTop:"20px"}}
+// >
+// Add Blog
+// </Button>
+// <Button
+// onClick={this.click.bind(this)}
+// id="button"
+// type="submit"
+// variant="contained"      
+// style={{width:"10%",margin:'theme.spacing(1)',color:"white",backgroundColor:"#FA3905",marginRight:"10%",marginTop:"20px"}}
+// >
+// See Bloges
+// </Button>
+// <Button
+// onClick={this.blog.bind(this)}
+// id="button"
+// type="submit"
+// variant="contained"      
+// style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px"}}
+// >
+// my Bloges
+// </Button>
+// <Button
+// onClick={this.logout.bind(this)}
+// id="button"
+// type="submit"
+// variant="contained"      
+// style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px",marginLeft:'10%'}}
+// >
+// log out
+// </Button>
+// </form>
+// <div>
+// {this.state.blogs.map(blog =>
 
-//             >
-//               See Bloges
-//             </Button>
-//             <Button
-//               onClick={this.blog.bind(this)}
-//               id="button"
-//               type="submit"
-//               variant="contained"
+// <Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
+// <CardHeader
+// avatar={
+// <Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
+// P
+// </Avatar>
+// }
+// title={blog.title}
+// subheader="September 14, 2018"
+// action={blog.country}
+// />
+// <CardMedia
+// style={{height: "0", paddingTop: '56.25%'}}
+// image={blog.image}
+// />
+// <CardContent>
+// <Typography variant="body2" color="textSecondary" component="p">
+// {blog.Blog}
+// </Typography>
+// </CardContent>
+// <CardActions disableSpacing>
+// <IconButton aria-label="Add to favorites" style={{color: "#E72C32"}}>
+// <FavoriteIcon />
+// </IconButton>
+// <IconButton aria-label="Share" style={{color: "#3D91EA"}}>
+// <ShareIcon />
+// </IconButton>
+// </CardActions>
+// </Card>
+// )}         
+// </div>
+// </div>
+// </Grid>
+// </Grid>
+       
+// </div>
+// ) : (
+// <Blogs              
+// username = {this.props.username}
+// Redirect to="/Blogs"
+// />
+// )}
+// </div>
+// )}
+// }
 
-//             >
-//               my Bloges
-//             </Button>
-//             <Button
-//               onClick={this.logout.bind(this)}
-//               id="button"
-//               type="submit"
-//               variant="contained"
-//             >
-//               log out
-//             </Button>
-//           </form>
-//           <table>
-//             <tbody>
-//               {this.state.blogs.map((blog, i) => (
-//                 <tr
-//                   key={blog.id}
 
-//                 >
-//                   <span style={{ color: "#FA3905", fontSize: "18px" }}>
-//                     <strong>Blog title:</strong>
-//                   </span>
-//                   <span>{blog.title}</span>
-//                   <span
 
-//                   >
-//                     <strong>country: </strong>
-//                   </span>
-//                   <span>{blog.country}</span>
-//                   <span
 
-//                   >
-//                     <strong>Blog: </strong>
-//                   </span>
-//                   <span>{blog.Blog}</span>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//     ) : (
-//       <Blogs username={this.props.username} Redirect to="/Blogs" />
-//     )} */}
+
