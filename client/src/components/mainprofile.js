@@ -31,6 +31,7 @@ import CardActions from '@material-ui/core/CardActions';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Route, Redirect } from 'react-router'
 import Modal from 'react-awesome-modal';
+import { StylesProvider } from "@material-ui/styles";
 
 const style = {
   "text-align": "center"
@@ -76,6 +77,8 @@ class Mainprofile extends React.Component{
         this.setState({ username: data.username }, () => {
           this.username();
         });
+      }).then(()=>{
+        this.blog();
       });
   }
 
@@ -204,12 +207,20 @@ class Mainprofile extends React.Component{
       .then(response => response.json())
       .then(data => {
         this.setState({ text: "your blog is uptodate" });
+      }).then(()=>{
+        this.setState({
+          title:"",
+          country:"",
+          blog:""
+        })
+      }).then(()=>{
+        this.closeModal()
       });
   }
 
   blog(e) {
     // const token = localStorage.getItem('token');
-    e.preventDefault();
+    // e.preventDefault();
     var that = this;
     fetch("blogs/", {
       method: "GET",
@@ -261,6 +272,7 @@ class Mainprofile extends React.Component{
   click() {
     this.setState({
       status: true
+    
     });
   }
 
@@ -291,9 +303,18 @@ closeModal() {
       {this.renderRedirect()}
       {!this.state.status ? (
         <div>
+        <Button
+        onClick={this.logout.bind(this)}
+        id="button"
+        type="submit"
+        variant="contained"      
+        style={{ width:"10%",margin:'theme.spacing(1)',backgroundColor:"#FA3905",color:"white",marginTop:"20px",marginLeft:'87%'}}
+        >
+        log out
+        </Button>
     <section className="section1 no-background">
         <div className="container1 has-text-centered">
-            <figure className="image1 is-128x128 center1" style={{marginLeft: "43%",
+            <figure className="image1 is-128x128 center1" style={{marginLeft: "41%",
     marginTop: "30px"}}>
             <Avatar className="avatar1"
             style={{
@@ -301,7 +322,9 @@ closeModal() {
               height: "250px",
               border: 0,
               objectFit: "cover",
-              alignItems: "center"
+              alignItems: "center",
+              border:'solid',
+              borderColor:'blue'
             }}
           >
             <img
@@ -321,7 +344,9 @@ closeModal() {
                         {!this.state.hide ? (
                           <div>
                             <p>{this.state.bio}</p>
-                            <Button onClick={this.hide.bind(this)}>update bio</Button>
+                            <Button onClick={this.hide.bind(this)}
+                            style={{border:'solid',
+                            borderColor:'blue'}}>update bio</Button>
                           </div>
                         ) : (
                           <div>
@@ -330,7 +355,11 @@ closeModal() {
                               name="bio1"
                               onChange={this.yourdata.bind(this)}
                             />
-                            <Button onClick={this.update.bind(this)}>update</Button>
+                            
+                            <Button onClick={this.update.bind(this)}
+                            style={{border:'solid',
+                            borderColor:'blue'}}>update</Button>
+
                             <Button onClick={this.show.bind(this)}>cancel</Button>
                           </div>
                         )}
@@ -341,16 +370,18 @@ closeModal() {
               type="file"
               name="image1"
               onChange={this.handleChange1}
-              style={{marginBottom: "20px", marginTop: "20px",
-              marginLeft: '25px'}}
+              style={{marginBottom: "20px", marginTop: "11px",
+              marginLeft: '25px',position:"absolute",marginLeft:'50%'}}
             />
-
-            <button
-              onClick={this.handleUpload1.bind(this)}
-              type="submit"
-            >
-              update
-            </button>
+            <span>
+            <div>
+                            
+                            <Button onClick={this.handleUpload1.bind(this)}
+                            type="submit"
+                            style={{border:'solid',
+                            borderColor:'blue',marginRight: '8.5%'}}>update pic</Button>
+                          </div>
+            </span>
         </div>
         </div>
     </section>
@@ -359,6 +390,148 @@ closeModal() {
       ):(
         <Blogs username={this.props.username} Redirect to="/Blogs" />
       )}
+      <div>
+        <Button onClick={() => this.openModal()}
+                    style={{border:'solid',
+                    borderColor:'blue',             
+                      float: "right",
+                      marginRight:'1%'
+                    }}>Add blog</Button>
+        <Modal visible={this.state.visible} width="500" height="600" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+            <div style={{    marginLeft: '7%'}}>
+            <form
+            noValidate
+          >
+            <p>
+              upload Travel image
+            </p>
+            <input
+              type="file"
+              name="image"
+              onChange={this.handleChange}
+            />
+
+            <Button
+              onClick={this.handleUpload.bind(this)}
+              type="submit"
+              className="Button"
+              variant="contained"
+              style={{marginRight: '-64%'}}
+            >
+              Upload
+            </Button>
+            <div
+            >
+              <Avatar
+                style={{
+                  borderRadius: "4px",
+                  width: "430px",
+                  margin: "theme.spacing(1)",
+                  height: "180px",
+                  margin: "theme.spacing(1)",
+                  objectFit: "cover"
+                }}
+              >
+                <img
+                  src={
+                    this.state.urlimg ||
+                    "https://i0.wp.com/addisonavenuemarketing.com/wp-content/uploads/2016/07/facebook-avatar.jpg?fit=690%2C435"
+                  }
+                  alt="uploaded image"
+                  style={{ objectFit: "cover" }}
+                />
+              </Avatar>
+            </div>
+          </form>
+          <form>
+            <TextField
+              onChange={this.yourdata.bind(this)}
+              variant="outlined"
+              margin="normal"
+              id="title"
+              label="title"
+              name="title"
+              autoComplete="title"
+              autoFocus
+            />
+            <TextField
+              onChange={this.yourdata.bind(this)}
+              variant="outlined"
+              margin="normal"
+              id="country"
+              label="country"
+              name="country"
+              autoComplete="country"
+              autoFocus
+            />
+            <TextField
+              onChange={this.yourdata.bind(this)}
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="Blog"
+              label="Blog"
+              name="Blog"
+              autoComplete="Blog"
+              autoFocus
+            />
+            <br />
+            <Button
+              onClick={this.server.bind(this)}
+              type="submit"
+              className="Button"
+              variant="contained"
+              color="primary"
+            >
+              Add Blog
+            </Button>
+            {/* <Button
+              onClick={this.click.bind(this)}
+              id="button"
+              type="submit"
+              variant="contained"
+
+            ></Button> */}
+            </form>
+                {/* <a href="javascript:void(0);" onClick={() => this.closeModal()}>share</a> */}
+            </div>
+        </Modal>
+        </div>
+
+ <div>
+{this.state.blogs.map(blog =>
+
+<Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
+<CardHeader
+avatar={
+<Avatar aria-label="Recipe" style={{ backgroundColor:"#E72C32"}}>
+P
+</Avatar>
+}
+title={blog.title}
+subheader="September 14, 2018"
+action={blog.country}
+/>
+<CardMedia
+style={{height: "0", paddingTop: '56.25%'}}
+image={blog.image}
+/>
+<CardContent>
+<Typography variant="body2" color="textSecondary" component="p">
+{blog.Blog}
+</Typography>
+</CardContent>
+<CardActions disableSpacing>
+<IconButton aria-label="Add to favorites" style={{color: "#E72C32"}}>
+<FavoriteIcon />
+</IconButton>
+<IconButton aria-label="Share" style={{color: "#3D91EA"}}>
+<ShareIcon />
+</IconButton>
+</CardActions>
+</Card>
+)}         
+</div>
       </div>
     )
   }
