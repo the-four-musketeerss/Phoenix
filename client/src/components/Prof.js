@@ -100,11 +100,7 @@ class Prof extends React.Component{
               </div>
              <h1> blogs</h1>
              {this.state.blogs.map(blog =>
-            <div key={blog.id} onClick = {(e) => {
-            this.setState({},()=>{
-                this.prof()
-    });
-  }}>
+
     <Card style={{maxWidth: 320 ,maxHeight: 410,float:"left",margin:"10px"}}>
       <CardHeader
           avatar={
@@ -134,7 +130,6 @@ class Prof extends React.Component{
         </IconButton>
       </CardActions>
     </Card>
-  </div>
   )}       
  </div>
 
